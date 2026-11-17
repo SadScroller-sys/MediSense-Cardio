@@ -1,0 +1,71 @@
+# --- Data (large, external, never committed) ---
+data/
+*.dat
+*.hea
+*.wfdb
+
+# --- Secrets ---
+.env
+.env.*
+*.key
+
+# --- Python and environments (never commit these) ---
+venv/
+.venv/
+.venv-gpu/
+venv-ecg-image-kit/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Vendored third-party tools (cloned, not authored here) ---
+# External repos with their own history and large model weights (~900 MB). Only the two clones are ignored:
+# our OWN scripts in scripts/tools/ (report, paper, poster, figure and submission builders) ARE committed.
+# Patches to the clones are documented in reproducibility/.
+scripts/tools/ecg-image-kit/
+scripts/tools/Open-ECG-Digitizer/
+
+# --- Claude Code local config (machine-specific, not project content) ---
+.claude/
+
+# --- Temporary working folders and duplicates ---
+scratchpad/
+scratchpad_diag/
+scratchpad_diary/
+SUBMISSION/09_code/
+~$*
+*.err
+*.log
+
+# --- Node / frontend (Phase 4+) ---
+node_modules/
+dist/
+build/
+.vite/
+
+# --- Notebook checkpoints ---
+.ipynb_checkpoints/
+
+# --- Results: commit the small text results, numbers and trained models; skip the heavy generated pictures and arrays (about 5 GB, regenerable) ---
+results/**/*.npz
+results/**/*.npy
+results/**/*.png
+results/**/*.jpg
+results/**/*.jpeg
+results/**/*.zip
+results/**/*.pdf
+results/**/*.flag
+results/**/_kit/
+results/**/source_records/
+results/**/inp*/
+# the one figure the demo needs is kept in demo/assets, and the figures for the report are in docs/reports/figures
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

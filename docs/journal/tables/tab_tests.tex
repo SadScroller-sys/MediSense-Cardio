@@ -1,0 +1,44 @@
+\begin{table}[ht]
+\centering\small
+\caption{Paired comparison of each degraded level with the same record's clean image (Wilcoxon signed-rank, Holm-corrected over 30 comparisons per metric). ``Lowest sig.\ level'' is the lowest level with adjusted $p<0.05$; the effect is the median paired excess error at level~5 (bpm for HR, ms otherwise).}\label{tab:tests}
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Metric & Axis & Lowest sig.\ level & Effect at level 5 & Significant cells (of 5) \\
+\midrule
+HR & Blur & 4 & +1.46 & 2 \\
+ & Low resolution & 5 & +2.45 & 1 \\
+ & Tilt & 4 & +0.31 & 2 \\
+ & JPEG & 3 & +0.00 & 1 \\
+ & Grid contrast & none & +0.00 & 0 \\
+ & Uneven lighting & 2 & -0.01 & 1 \\
+\midrule
+PR & Blur & 3 & +8.01 & 3 \\
+ & Low resolution & 5 & +7.23 & 1 \\
+ & Tilt & none & +1.65 & 0 \\
+ & JPEG & none & +0.10 & 0 \\
+ & Grid contrast & none & +0.00 & 0 \\
+ & Uneven lighting & none & +0.30 & 0 \\
+\midrule
+QRS & Blur & 2 & +98.05 & 4 \\
+ & Low resolution & 4 & +57.00 & 2 \\
+ & Tilt & 5 & +3.90 & 1 \\
+ & JPEG & none & +2.20 & 0 \\
+ & Grid contrast & none & +0.00 & 0 \\
+ & Uneven lighting & none & +0.10 & 0 \\
+\midrule
+QT & Blur & 2 & +57.52 & 4 \\
+ & Low resolution & 3 & +50.50 & 3 \\
+ & Tilt & none & +3.95 & 0 \\
+ & JPEG & none & +1.10 & 0 \\
+ & Grid contrast & none & +0.00 & 0 \\
+ & Uneven lighting & none & +0.30 & 0 \\
+\midrule
+QTc & Blur & 2 & +63.79 & 4 \\
+ & Low resolution & 3 & +52.30 & 3 \\
+ & Tilt & none & +4.30 & 0 \\
+ & JPEG & none & +1.70 & 0 \\
+ & Grid contrast & none & +0.00 & 0 \\
+ & Uneven lighting & none & +0.17 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}

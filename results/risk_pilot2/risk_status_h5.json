@@ -1,0 +1,22 @@
+{
+ "horizon_years": 5.0,
+ "auroc": 0.8325269005275161,
+ "auroc_lo95": 0.8099340922238143,
+ "auroc_age_alone": 0.8191899757930233,
+ "auroc_diff_vs_age": 0.013336924734492772,
+ "auroc_diff_lo95": -0.00521894916653598,
+ "auroc_diff_hi95": 0.0318774576232135,
+ "cal_slope": 1.1791772842407227,
+ "ece": 0.017868714317682617,
+ "categories_monotone": true,
+ "high_over_low_ratio_ok": true,
+ "pass_discrimination": true,
+ "pass_ecg_adds_value": false,
+ "pass_calibration": true,
+ "pass_categories": true,
+ "transfer_pages_ok": false,
+ "transfer_sim_ok": false,
+ "transfer_real_ok": true,
+ "ecg_only_transfer_real_spearman": 0.8920299652422654,
+ "shown_in_app": false
+}

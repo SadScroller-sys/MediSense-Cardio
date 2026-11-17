@@ -1,0 +1,14 @@
+damage,photos,wrong_readings,flagged_at_10,flagged_at_20,flagged_at_30,wrong_caught_at_20
+resolution 5,99,47,99,99,99,47
+blur 5,98,17,28,98,98,17
+brightness 3,99,6,0,0,0,0
+clean 0,99,3,0,0,0,0
+blur 3,99,3,0,56,99,1
+gridcontrast 5,99,3,0,0,84,0
+resolution 3,99,2,0,0,0,0
+gridcontrast 3,99,2,0,0,0,0
+brightness 5,98,1,0,0,0,0
+rotate 3,98,1,0,0,0,0
+jpeg 3,99,1,0,0,0,0
+jpeg 5,99,0,0,0,0,0
+rotate 5,80,0,0,0,0,0

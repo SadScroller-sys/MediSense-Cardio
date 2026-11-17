@@ -1,0 +1,4 @@
+model,overall_auc,within resolution level 5,within blur level 5
+OUT (15 output features),0.926 (0.89 to 0.95),0.873 (0.79 to 0.94),0.892 (0.79 to 0.96)
+OUT + DET (+5 detector-agreement),0.935 (0.91 to 0.96),0.890 (0.82 to 0.95),0.898 (0.81 to 0.97)
+DET alone (5 features),0.817 (0.74 to 0.90),0.761 (0.66 to 0.86),0.833 (0.75 to 0.91)

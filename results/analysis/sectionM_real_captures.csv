@@ -1,0 +1,5 @@
+subset,images,wrong,OUT,OUT+DET,det_spread alone,OUT+DET minus OUT
+"new 100, all 9 types",857,30,0.895 (0.81 to 0.96),0.895 (0.83 to 0.96),0.826 (higher = worse),-0.001 (95%: -0.051 to +0.075)
+first 40,344,16,0.982 (0.93 to 1.00),0.993 (0.97 to 1.00),0.930 (higher = worse),+0.011 (95%: -0.013 to +0.046)
+"pooled 140, all",1201,46,0.923 (0.86 to 0.97),0.928 (0.87 to 0.98),0.859 (higher = worse),+0.005 (95%: -0.030 to +0.056)
+"pooled 140, real C1-C8",1062,40,0.915 (0.84 to 0.97),0.918 (0.85 to 0.97),0.855 (higher = worse),+0.003 (95%: -0.034 to +0.061)

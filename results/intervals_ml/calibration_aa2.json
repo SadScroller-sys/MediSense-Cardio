@@ -1,0 +1,21 @@
+{
+ "epochs": 26,
+ "mu": [
+  97.58356475830078,
+  395.71771240234375,
+  419.87976512684065
+ ],
+ "sd": [
+  19.838794708251953,
+  39.28826904296875,
+  29.03265770686624
+ ],
+ "targets": [
+  "QRS_Dur_Global",
+  "QT_Int_Global",
+  "QT_IntFridericia_Global"
+ ],
+ "n_items": 658,
+ "seed": 42,
+ "note": "fine-tuned on all development items; no fresh test used"
+}

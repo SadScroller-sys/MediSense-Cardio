@@ -1,0 +1,7 @@
+axis,spearman_level_vs_abs_error,p_error,spearman_level_vs_wrong5,p_wrong5,rates_levels_1_to_5,monotone_nondecreasing
+resolution,0.444,1.2e-15,0.343,1.6e-09,"[2.0, 2.0, 8.2, 10.2, 42.9]",True
+blur,0.533,6.1e-23,0.174,0.0027,"[2.0, 4.1, 6.1, 12.2, 16.3]",True
+rotate,0.279,1.6e-06,-0.022,0.71,"[4.1, 2.0, 4.1, 4.1, 2.0]",False
+jpeg,-0.086,0.14,-0.011,0.85,"[6.1, 0.0, 2.0, 4.1, 4.1]",False
+brightness,-0.11,0.06,-0.066,0.26,"[6.1, 4.1, 2.0, 2.0, 2.0]",False
+gridcontrast,-0.028,0.64,-0.015,0.8,"[6.1, 4.1, 4.1, 4.1, 4.1]",False

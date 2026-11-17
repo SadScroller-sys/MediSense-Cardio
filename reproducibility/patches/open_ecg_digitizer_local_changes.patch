@@ -1,0 +1,20 @@
+diff --git a/src/utils.py b/src/utils.py
+index c40b06e..68fe59c 100644
+--- a/src/utils.py
++++ b/src/utils.py
+@@ -8,7 +8,14 @@ from typing import Any, Dict, List, Optional, Tuple
+ import matplotlib.pyplot as plt
+ import torch
+ import torch.optim.optimizer
+-from ray.tune import Stopper
++try:
++    from ray.tune import Stopper
++except ImportError:
++    # LOCAL PATCH (not upstream): ray has no build for this machine's Python version.
++    # Stopper is only used as EarlyStopper's base class, which is training-only and
++    # unused by src/digitize.py. This placeholder keeps inference working; EarlyStopper
++    # itself would still need real ray installed to actually run. See docs/PROGRESS-LOG.md.
++    Stopper = object  # type: ignore[assignment,misc]
+ from torch import nn
+ from torch.utils.data import DataLoader
+ from yacs.config import CfgNode as CN

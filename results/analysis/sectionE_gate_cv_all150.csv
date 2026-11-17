@@ -1,0 +1,4 @@
+gate,flag_top,caught,good_flagged,kept_wrong,wrong_overall,random_gate_caught
+"B. grouped cross-validation, all 150 recordings",10%,53% (44-65),7% (6-7),3.8% (2.3-5.5),7.2%,10%
+"B. grouped cross-validation, all 150 recordings",20%,68% (57-81),16% (15-17),2.8% (1.4-4.7),7.2%,20%
+"B. grouped cross-validation, all 150 recordings",30%,73% (62-84),27% (26-27),2.8% (1.4-4.7),7.2%,30%

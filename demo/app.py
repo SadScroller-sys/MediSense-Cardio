@@ -1,0 +1,380 @@
+"""MediSense-Cardio review demo: upload a photo of an ECG page -> heart rate + traffic light.
+Run:  python demo/app.py          (opens on http://127.0.0.1:7860, works without internet)
+      set DEMO_SHARE=1 first ONLY if you want a temporary public link (needs internet; ask the team first).
+Research prototype. Not a medical device. Photos are processed in a temporary folder and deleted; nothing is stored."""
+import os
+import sys
+import tempfile
+import traceback
+import gallery as GAL
+
+import cv2
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import gradio as gr  # noqa: E402
+
+import explain as X  # noqa: E402
+import axis_deg as AXD  # noqa: E402
+import pr_interval as PRI  # noqa: E402
+import pipeline as P  # noqa: E402
+
+# Heart health assessment module (added 2026-11-15, demo/health/). If plotly or the module is missing, the older tabs keep working.
+HEALTH = {}      # the last result for the heart health tab (the demo serves one person at a time)
+try:
+    from health import assess as HA  # noqa: E402
+    from health import dashboard as HD  # noqa: E402
+except Exception:
+    HA = HD = None
+
+COLORS = {"GREEN": "#1a9850", "AMBER": "#f0a000", "RED": "#d73027"}
+MEANING = {
+    "GREEN": "No warning from our checks. This is not a guarantee that the heart rate is right.",
+    "AMBER": "Have a person check this reading before using it.",
+    "RED": "Do not trust this heart rate.",
+}
+DISCLAIMER = ("**Research prototype for a university project. Not a medical device. Do not use it to make decisions about any person's health.** "
+              "Photos are processed in a temporary folder and deleted. Nothing is stored.")
+HOW = """
+**What happens when you press the button (all on this computer):**
+1. The page is found in the photo and straightened to a flat 2200 x 1700 picture (a photo taken with the phone held upright is first turned a quarter turn).
+2. The Open-ECG-Digitizer (published model, unchanged) turns the picture into 12 signals.
+3. The heart rate is measured on lead II (cleaned signal, then R-peaks, mean of 60 / RR).
+4. The traffic light looks only at the digitised signal: how regular the beats are, whether the 12 leads agree, how complete the leads are.
+
+**What we measured (our test photos: one phone, one screen, 20 recordings; details in the report):**
+- Straightening cut bad readings from 14 to 2 out of 40 new photos (exact paired test p = 0.0005).
+- In those 40 photos no bad reading got a GREEN light. In a larger simulation of 120 photos, 1 of 71 GREEN readings on straightened photos was still wrong: GREEN is not a guarantee.
+- On printed pages photographed by another person with another phone, straightening helped on 66 recompressed photos (31 to 15 bad readings) but was not confirmed on 22 straight full-size photos, and 2 of 19 GREEN readings there were wrong.
+- The tab "Our results (at a glance)" lists everything we found, including what we do not show and why.
+- It works only for ECG pages like the ones we tested (standard 12-lead page, shown on a screen or printed). It cannot tell a truly irregular heartbeat from a failed read.
+"""
+
+
+HEADLINE = {"GREEN": "No warning raised", "AMBER": "Please double-check", "RED": "Do not trust this reading"}
+
+
+def light_html(light, hr, n_beats, note=""):
+    hr_txt = "no usable heart rate" if (hr != hr) else f"{hr:.0f} beats per minute"
+    if light == "RED" and hr == hr:
+        hr_txt = "not shown, because the read looks unreliable"   # same rule as the patient explanation (docs/plan/EXPLANATION_WORDING.md)
+    lamps = "".join(f"<span class='lamp{' on' if k == light else ''}' style='--c:{COLORS[k]}'></span>" for k in ("RED", "AMBER", "GREEN"))
+    return (f"<div class='result' style='--c:{COLORS[light]}'>"
+            f"<div class='lamps' aria-hidden='true'>{lamps}</div>"
+            f"<div class='res-body'>"
+            f"<div class='res-word'>{light}</div>"
+            f"<div class='res-head'>{HEADLINE[light]}</div>"
+            f"<div class='res-hr'>Heart rate read from the photo: <b>{hr_txt}</b></div>"
+            f"<div class='res-note'>{MEANING[light]}</div>{note}</div></div>")
+
+
+EMPTY = ("<div class='empty'><b>Your result will appear here.</b><br>Upload a photo of an ECG page, or click one of the examples, then press "
+         "<b>Check this photo</b>.</div>")
+
+HEADER = """
+<div class='hero'>
+  <h1>MediSense-Cardio</h1>
+  <p class='tag'>Upload a photo of an ECG page. We tell you whether the heart rate we read from it can be trusted.</p>
+  <ol class='steps'>
+    <li><b>Upload</b> a photo, or pick an example</li>
+    <li>Press <b>Check this photo</b></li>
+    <li>Read the <b>colour</b>: green, amber or red</li>
+  </ol>
+  <p class='warn'>Research prototype for a university project. Not a medical device. Do not use it to make decisions about anyone's health.</p>
+</div>
+"""
+
+CSS = """
+/* the heart-health boxes are drawn on white: force dark text inside them (a dark browser theme would otherwise paint near-white text on white); elements that set their own colour keep it */
+.hh-light, .hh-light *:not([style*="color:"]) { color: #111 !important; }
+.gradio-container { max-width: 1120px !important; margin: 0 auto !important; }
+.hero { padding: 18px 4px 6px; }
+.hero h1 { font-size: 2.1rem; font-weight: 800; margin: 0 0 4px; letter-spacing: -.02em; }
+.hero .tag { font-size: 1.15rem; margin: 0 0 12px; opacity: .85; }
+.hero .steps { display: flex; flex-wrap: wrap; gap: 10px 26px; margin: 0 0 12px; padding: 0; list-style: none; counter-reset: s; }
+.hero .steps li { counter-increment: s; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+.hero .steps li::before { content: counter(s); display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: #1d4ed8; color: #fff; font-weight: 700; font-size: .9rem; }
+.hero .warn { font-size: .9rem; background: rgba(240,160,0,.14); border: 1px solid rgba(240,160,0,.5); border-radius: 8px; padding: 8px 12px; margin: 0; }
+.result { display: flex; gap: 18px; align-items: center; border: 1px solid rgba(128,128,128,.35); border-left: 10px solid var(--c); border-radius: 12px; padding: 16px 18px; }
+.lamps { display: flex; flex-direction: column; gap: 8px; padding: 8px 10px; background: #2a2a2e; border-radius: 28px; }
+.lamp { width: 34px; height: 34px; border-radius: 50%; background: #55555b; opacity: .45; }
+.lamp.on { background: var(--c); opacity: 1; box-shadow: 0 0 14px var(--c); }
+.res-word { font-size: 2rem; font-weight: 800; color: var(--c); line-height: 1; letter-spacing: .02em; }
+.res-head { font-size: 1.2rem; font-weight: 700; margin: 4px 0 8px; }
+.res-hr { font-size: 1.15rem; }
+.res-note { font-size: 1rem; margin-top: 6px; opacity: .85; }
+.empty { border: 2px dashed rgba(128,128,128,.5); border-radius: 12px; padding: 26px 18px; font-size: 1.05rem; text-align: center; opacity: .85; }
+.foot { font-size: .85rem; opacity: .75; padding: 6px 4px 18px; }
+button.primary, .primary { font-size: 1.1rem !important; }
+@media (max-width: 700px) { .result { flex-direction: column; align-items: flex-start; } .lamps { flex-direction: row; } }
+"""
+
+
+def lead_plot(leads):
+    fig, ax = plt.subplots(figsize=(10, 2.6))
+    if leads is not None and leads.get("II") is not None:
+        s = np.asarray(leads["II"], float) / 1000.0
+        t = np.arange(len(s)) / 1000.0
+        ax.plot(t, s, lw=0.8, color="#222")
+        ax.set_xlabel("seconds")
+        ax.set_ylabel("lead II (mV)")
+        ax.set_title("Lead II as read by the digitiser (gaps are parts it could not read)")
+        ax.grid(alpha=0.3)
+    else:
+        ax.text(0.5, 0.5, "no lead II signal", ha="center", va="center")
+        ax.axis("off")
+    fig.tight_layout()
+    return fig
+
+
+LAYOUT_TEXT = {"3x4+1R": "standard 12-lead page: 3 rows of 4 leads plus a long lead II strip at the bottom"}
+LIGHT_MEANING = {
+    "GREEN": "The checks found no sign of a failed read, so this heart rate is probably reliable. It is still not a guarantee.",
+    "AMBER": "Some checks look unusual. Have a person look at this reading before using it.",
+    "RED": "The checks found signs of a failed or unreliable read. Do not trust this heart rate.",
+}
+
+
+# Known condition of the source recording of each new test sample (PTB-XL diagnosis labels, pages_mapping.csv + scp_statements.csv).
+SAMPLE_CONDITIONS = {
+    "sample1_straight_clean.jpg": ("normal ECG", True),
+    "sample2_angled_left.jpg": ("left ventricular hypertrophy (thickened heart muscle), non-specific signs that could relate to reduced blood flow (ischemia), and a non-specific delay in the electrical conduction inside the ventricles", False),
+    "sample3_angled_from_below.jpg": ("complete left bundle branch block (an electrical conduction problem)", False),
+    "sample4_dim_uneven_light.jpg": ("incomplete right bundle branch block (a mild conduction problem) and non-specific ST changes", False),
+    "sample5_far_and_small.jpg": ("left ventricular hypertrophy (thickened heart muscle), plus a possible old inferior heart attack (low likelihood, 15 out of 100)", False),
+    "sample6_blurry_and_angled.jpg": ("normal ECG (likelihood 80 out of 100)", True),
+}
+
+
+def sample_note(path):
+    """Presenter-only: the known condition of the source recording of a TEST sample (never for an uploaded photo)."""
+    cond = SAMPLE_CONDITIONS.get(os.path.basename(path or ""))
+    if not cond:
+        return ""
+    txt, normal = cond
+    extra = ("" if normal else " **Our heart rate measure cannot see this.** The reading and the light can look fine while the ECG is abnormal, which is exactly why a heart rate alone must never be read as 'the ECG is normal'.")
+    return ("### For the presenter: the known condition of this test sample\n\n"
+            f"The recording this picture was drawn from is labelled in the public PTB-XL dataset as: {txt}.{extra}")
+
+
+def describe_colour(path):
+    raw = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+    if raw is None:
+        return "unknown"
+    if raw.ndim == 2:
+        return "grayscale (one channel; the tool turns it into 3 equal channels, so the pink grid colour cannot help it)"
+    ch = raw.shape[2]
+    small = raw[::8, ::8, :3].astype(int)
+    spread = int(np.max(np.abs(small[..., 0] - small[..., 1]))) if small.size else 0
+    spread = max(spread, int(np.max(np.abs(small[..., 1] - small[..., 2]))) if small.size else 0)
+    base = "colour, 3 channels (red, green, blue), 8 bits each" if spread > 25 else "stored with 3 channels but the colours are all equal, so it is really gray (the grid colour cannot help the tool)"
+    return base + (" plus an unused transparency channel (dropped)" if ch == 4 else "")
+
+
+def explain_photo(path, shape, r):
+    """Plain-words description of what the tool recognised in this photo. Facts only; the traffic light stays the only warning."""
+    h, w = shape[:2]
+    ext = os.path.splitext(path)[1].lower().lstrip(".").upper() or "image"
+    lines = ["### About this photo (what the tool recognised)"]
+    lines.append(f"**The photo you gave:** {w} x {h} pixels, {ext} file, {describe_colour(path)}.")
+    if r["page_found"]:
+        lines.append("**The page:** the bright page was found in the photo and straightened to a flat 2200 x 1700 picture, which is the size the digitiser was built for. Tilt is corrected here, so the grid squares become equal again.")
+    else:
+        lines.append("**The page:** its edges were not found, so the photo was used as it is. A tilted or cropped photo is harder for the digitiser.")
+    leads, meta = r.get("leads"), r.get("meta") or {}
+    if leads is None:
+        lines.append("**What the digitiser recognised:** nothing usable. It gave no output, which usually means it could not find an ECG layout in the picture.")
+        _n = sample_note(path)
+        if _n:
+            lines.append(_n)
+        return "\n\n".join(lines)
+    lay = str(meta.get("lead_layout", "unknown"))
+    cost = meta.get("matching_cost")
+    cost_txt = f" The layout match cost is {float(cost):.2f} (lower means a closer match to a known layout)." if cost is not None and cost == cost else ""
+    flip = " The page looked flipped to the tool." if str(meta.get("is_flipped", "False")) == "True" else ""
+    if lay == "Unknown layout":
+        lines.append("**What the digitiser recognised:** it could not match this page to any layout it knows (blur, damage or a different page format can cause this), so the lead names are unreliable." + cost_txt)
+    else:
+        lines.append(f"**What the digitiser recognised:** layout {lay}, a {LAYOUT_TEXT.get(lay, 'layout from its list of known layouts')}.{cost_txt}{flip}")
+    share = {k: (float(np.mean(np.isfinite(np.asarray(leads[k], float)))) if leads.get(k) is not None else 0.0) for k in P.LEADS}
+    std = lay == "3x4+1R"
+    expect = {k: (1.0 if (k == "II" or not std) else 0.25) for k in P.LEADS}
+    good = [k for k in P.LEADS if share[k] >= 0.9 * expect[k]]
+    part = [f"{k} {share[k]*100:.0f}% (expected about {expect[k]*100:.0f}%)" for k in P.LEADS if 0 < share[k] < 0.9 * expect[k]]
+    none = [k for k in P.LEADS if share[k] == 0]
+    note = " In this layout each lead except II is printed for 2.5 s (a quarter of the page), and lead II also runs the full 10 s on the long strip." if std else ""
+    if std:
+        txt = f"**What it read:** {len(good)} of 12 leads were read for the expected length of time.{note}"
+        if part:
+            txt += " Partly read: " + ", ".join(part) + "."
+        if none:
+            txt += " Not read at all: " + ", ".join(none) + "."
+    else:
+        txt = ("**What it read:** because the layout was not recognised, we cannot say how long each lead should be. Share of the 10 seconds that has a signal, by lead: "
+               + ", ".join(f"{k} {share[k]*100:.0f}%" for k in P.LEADS) + ". Many gaps or very low shares mean the digitiser lost parts of the trace.")
+    lines.append(txt)
+    ii = leads.get("II")
+    sec = float(np.mean(np.isfinite(np.asarray(ii, float)))) * 10 if ii is not None else 0.0
+    hr_txt = "no usable heart rate (fewer than 3 beats found)" if r["hr"] != r["hr"] else f"{r['hr']:.0f} bpm"
+    lines.append(f"**Lead II:** {sec:.1f} of 10 seconds read, {r['n_beats']} beats found, heart rate {hr_txt}. The heart rate is the mean of 60 divided by the gap between neighbouring beats.")
+    spread = r.get("detector_spread")
+    if spread is not None and spread == spread:
+        lines.append(f"**Do five different beat finders agree?** They differ by {spread:.0f} bpm. A small number means the beats are easy to find; a large number means the signal is ambiguous.")
+    lines.append(f"**What the light means for this photo:** {LIGHT_MEANING[r['light']]}")
+    _n = sample_note(path)
+    if _n:
+        lines.append(_n)
+    lines.append("*These are facts about this one photo. They are not a medical reading or a diagnosis.*")
+    return "\n\n".join(lines)
+
+
+def check(path, compare, progress=gr.Progress()):
+    HEALTH.clear()
+    if not path:
+        return "<b>Please upload a photo first, or click one of the examples.</b>", None, None, "", "", "", "", ""
+    try:
+        img = cv2.imread(path)
+        if img is None:
+            return "<b>This file could not be read as a picture. Use a JPG or PNG photo.</b>", None, None, "", "", "", "", ""
+        dev = P.device_name()
+        progress(0.05, desc="Step 1 of 3: finding the page and straightening it ...")
+        wait = "about 1 minute" if dev == "cpu" else "about 15 seconds"
+        progress(0.15, desc=f"Step 2 of 3: reading the ECG from the picture (on {dev.upper()}, {wait}) ...")
+        r = P.run(img, dev)
+        note = ""
+        if r["notes"]:
+            note = "<div style='margin-top:8px;color:#8a5a00'>" + " ".join(r["notes"]) + "</div>"
+        if r["error"]:
+            note += f"<div style='margin-top:8px'>{r['error']}</div>"
+        html = light_html(r["light"], r["hr"], r["n_beats"], note)
+        reasons = "\n".join(f"- {x}" for x in r["reasons"]) if r["reasons"] else "- no reason to warn"
+        reasons = f"**Reasons given by the traffic light (information only):**\n{reasons}"
+        extra = ""
+        if compare:
+            progress(0.6, desc="Digitising the original photo without straightening ...")
+            q = P.run_plain(img, dev)
+            hr_txt = "no usable heart rate" if q["hr"] != q["hr"] else f"{q['hr']:.0f} bpm"
+            extra = f"**Without straightening:** {hr_txt}, light **{q['light']}**.  **With straightening:** " + \
+                    ("no usable heart rate" if r["hr"] != r["hr"] else f"{r['hr']:.0f} bpm") + f", light **{r['light']}**."
+        info = f"Done in {r['seconds']:.0f} seconds on {P.LAST_DEVICE.upper()}. Page found: {'yes' if r['page_found'] else 'no'}."
+        straight = cv2.cvtColor(r["straightened"], cv2.COLOR_BGR2RGB)
+        pr_ms = float("nan")           # PR interval: frozen method of Section U; only for a GREEN light and a straightened photo (explain.py decides again)
+        if r.get("leads") is not None and r["light"] == "GREEN" and r["page_found"]:
+            try:
+                pr_ms = PRI.pr_from_leads(r["leads"])
+            except Exception:
+                pr_ms = float("nan")
+        axis_deg = float("nan")        # frontal QRS axis: frozen method of Section W; only for a GREEN light and a straightened photo (explain.py decides again)
+        if r.get("leads") is not None and r["light"] == "GREEN" and r["page_found"]:
+            try:
+                axis_deg = AXD.axis_from_leads(r["leads"])
+            except Exception:
+                axis_deg = float("nan")
+        if axis_deg == axis_deg:
+            info += f" QRS axis computed by the research method: {axis_deg:.0f} degrees (shown to the user only under the rules in docs/plan/EXPLANATION_WORDING.md)."
+        if pr_ms == pr_ms:
+            info += f" PR interval computed by the research method: {pr_ms:.0f} ms (shown to the user only under the rules in docs/plan/EXPLANATION_WORDING.md)."
+        rr_cv = (r.get("features") or {}).get("rr_cv")
+        HEALTH.update(r=r, pr_ms=pr_ms, axis_deg=axis_deg, rr_cv=rr_cv, name=os.path.basename(path))
+        patient = X.patient_explanation(r["light"], r["hr"], r["reasons"], r["page_found"], bool(r["error"]), pr_ms, rr_cv, axis_deg)
+        general = X.general_information(r["light"], r["hr"], r["reasons"], bool(r["error"]), pr_ms, r["page_found"], rr_cv, axis_deg)
+        return html, straight, lead_plot(r.get("leads")), reasons + "\n\n" + extra, info, explain_photo(path, img.shape, r), patient, general
+    except Exception:
+        return f"<b>Something went wrong.</b><pre>{traceback.format_exc()[-1200:]}</pre>", None, None, "", "", "", "", ""
+
+
+def health_update():
+    """Fills the heart health tab from the result of the check that just ran (see demo/health/)."""
+    empty = ("<div style='padding:10px'>Press <b>Check this photo</b> first. This tab shows the heart health assessment of that photo (research module).</div>", None, None, None, "")
+    if HA is None:
+        return ("<div style='padding:10px'>The heart health module is not available (install plotly in the demo environment).</div>", None, None, None, "")
+    if not HEALTH:
+        return empty
+    try:
+        r = HEALTH["r"]
+        a = HA.assess(r.get("leads"), r.get("light", "RED"), r.get("reasons"), r.get("page_found", False), r.get("hr", float("nan")), r.get("n_beats", 0),
+                      HEALTH.get("rr_cv"), HEALTH.get("pr_ms", float("nan")), HEALTH.get("axis_deg", float("nan")), no_output=bool(r.get("error")))
+        return HD.risk_box(a), HD.waveform(r.get("leads")), HD.parameter_chart(a), HD.findings_chart(a), GAL.truth_box(HEALTH.get("name"), a) + HD.results_panel(a)
+    except Exception:
+        return (f"<b>The heart health tab hit a problem.</b><pre>{traceback.format_exc()[-900:]}</pre>", None, None, None, "")
+
+
+def build():
+    ex_dir = os.path.join(HERE, "dataset_examples")     # dataset pictures (simulated phone photos of PTB-XL recordings, set N): the true answer is shown after a check; the clicked photos of the old examples folder are no longer listed
+    examples = [[os.path.join(ex_dir, f)] for f in sorted(os.listdir(ex_dir)) if f.lower().endswith((".jpg", ".jpeg", ".png"))] if os.path.isdir(ex_dir) else []
+    new_dir = os.path.join(HERE, "new_samples")   # six extra simulated phone photos (see new_samples/README.md)
+    if os.path.isdir(new_dir):
+        examples += [[os.path.join(new_dir, f)] for f in sorted(os.listdir(new_dir)) if f.lower().endswith((".jpg", ".jpeg", ".png"))]
+    with gr.Blocks(title="MediSense-Cardio demo", delete_cache=(60, 60)) as demo:
+        gr.HTML(HEADER)
+        with gr.Row(equal_height=False):
+            with gr.Column(scale=5):
+                img = gr.Image(type="filepath", label="Photo of an ECG page (JPG or PNG)", height=340)
+                btn = gr.Button("Check this photo", variant="primary", size="lg")
+                with gr.Accordion("More options", open=False):
+                    compare = gr.Checkbox(label="Also read the original photo without straightening (twice as slow; shows what straightening changes)", value=False)
+                if examples:
+                    gr.Examples(examples=examples, inputs=[img], label="Or try an example: dataset pictures (the true answer is shown after the check)", examples_per_page=6)
+            with gr.Column(scale=6):
+                out_html = gr.HTML(value=EMPTY)
+                out_patient = gr.Markdown()
+        with gr.Tabs():
+            with gr.Tab("Pictures"):
+                with gr.Row():
+                    out_img = gr.Image(label="Page after straightening", height=300)
+                    out_plot = gr.Plot(label="Digitised lead II")
+            with gr.Tab("Heart health assessment (research module)"):
+                gr.HTML("<div style='font-size:13px'>AI-assisted research assessment, not a medical diagnosis. Cardiac risk is not available; findings are ECG patterns that passed our pre-set tests.</div>")
+                out_hrisk = gr.HTML()
+                out_hwave = gr.Plot(label="B. ECG waveform")
+                with gr.Row():
+                    out_hpar = gr.Plot(label="C. Measured parameters against reference ranges")
+                    out_hfind = gr.Plot(label="D. Supported findings")
+                out_hpanel = gr.HTML()
+            with gr.Tab("Our results (at a glance)"):
+                gr.Markdown("**What we found, and what we refuse to show.** Every rule was written before its result was seen, and negative results are reported as measured. "
+                            "Numbers come from the project's frozen results file; the pass rules are the team's proposal and are not approved by the guide yet.")
+                gr.Image(value=os.path.join(HERE, "assets", "fig_results_at_a_glance.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=640)
+                with gr.Accordion("Public-data networks A and B on their held-out benchmarks (ROC and calibration)", open=False):
+                    gr.Image(value=os.path.join(HERE, "assets", "fig_find2_roc_calibration.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=620)
+                    gr.Markdown("Benchmarks are clean recordings, not phone photos. On our photos these networks could not be tested (too few positive photos), so their findings appear only in the research-only block of the heart health tab.")
+            with gr.Tab("Dataset gallery (instant results)"):
+                if GAL.available():
+                    gr.Markdown("**Results on dataset pictures, instantly.** 120 simulated phone photos made from PTB-XL recordings (not real phone photos). The tool saw only the picture; the true answer is the dataset label. "
+                                "Every picture is listed, so you can look for hits, misses and false alarms yourself.")
+                    gr.HTML(GAL.scoreboard_html())
+                    _first = GAL.default_case()
+                    _p, _h1, _h2 = GAL.show(_first)
+                    gal_dd = gr.Dropdown(choices=GAL.choices(), value=_first, label="Choose a picture (all 120 are listed; the true answer is shown after the |)", interactive=True)
+                    with gr.Row():
+                        gal_img = gr.Image(value=_p, label="The picture the tool saw", height=360, interactive=False)
+                        gal_truth = gr.HTML(value=_h1)
+                    gal_panel = gr.HTML(value=_h2)
+                    gal_dd.change(GAL.show, inputs=gal_dd, outputs=[gal_img, gal_truth, gal_panel], show_progress="hidden")
+                else:
+                    gr.Markdown("The dataset gallery is not available (results/paper_n/gallery_cache.json is missing; build it with scripts/tools/build_gallery_cache.py).")
+            with gr.Tab("What an ECG shows"):
+                out_general = gr.Markdown()
+            with gr.Tab("How it works"):
+                gr.Markdown(HOW)
+            with gr.Tab("Details for the presenter"):
+                out_txt = gr.Markdown()
+                out_info = gr.Markdown()
+                out_about = gr.Markdown()
+        gr.HTML("<div class='foot'>" + DISCLAIMER.replace("**", "") + "</div>")
+        ev = btn.click(check, inputs=[img, compare], outputs=[out_html, out_img, out_plot, out_txt, out_info, out_about, out_patient, out_general], concurrency_limit=1,
+                       show_progress="full", show_progress_on=[out_html])   # one loading bar (on the result box), not one on every output
+        ev.then(health_update, inputs=None, outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hpanel], show_progress="hidden")
+    return demo
+
+
+if __name__ == "__main__":
+    app = build()
+    app.queue(default_concurrency_limit=1)
+    share = os.environ.get("DEMO_SHARE", "0") == "1"
+    app.launch(server_name="127.0.0.1", server_port=int(os.environ.get("PORT") or os.environ.get("DEMO_PORT") or 7860), share=share, inbrowser=False, show_error=True, theme=gr.themes.Soft(primary_hue="blue"), css=CSS)

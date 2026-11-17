@@ -1,0 +1,7 @@
+file,light,hr,pr_ms,ref_pr_12SL,shown,rr_cv,axis_deg,ref_axis_12SL
+sample1_straight_clean.jpg,GREEN,56.9,163.7,168.0,True,0.073,19.2,11.0
+sample2_angled_left.jpg,GREEN,74.6,213.6,212.0,True,0.037,-19.6,-19.0
+sample3_angled_from_below.jpg,GREEN,77.6,,172.0,False,0.014,1.7,9.0
+sample4_dim_uneven_light.jpg,GREEN,69.4,173.7,,False,0.141,-38.9,-30.0
+sample5_far_and_small.jpg,GREEN,62.4,192.4,182.0,True,0.026,61.1,55.0
+sample6_blurry_and_angled.jpg,RED,61.4,,182.0,False,0.344,,78.0

@@ -1,0 +1,70 @@
+{
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-16 late night",
+ "primary": "s97",
+ "thresholds": {
+  "A:ASMI": {
+   "s95": 0.225961832651623,
+   "s97": 0.3529741279851281,
+   "s99": 0.7025561106546453,
+   "old_youden": 0.10086224179292794,
+   "validation_negatives": 1941,
+   "validation_positives": 201
+  },
+  "A:NDT": {
+   "s95": 0.30745803837656505,
+   "s97": 0.3934940211290445,
+   "s99": 0.5618678913506427,
+   "old_youden": 0.08172562260282995,
+   "validation_negatives": 1962,
+   "validation_positives": 180
+  },
+  "A:LVH": {
+   "s95": 0.18348413681999712,
+   "s97": 0.31924259599318355,
+   "s99": 0.5961012792180373,
+   "old_youden": 0.09991545313440058,
+   "validation_negatives": 1984,
+   "validation_positives": 158
+  },
+  "A:LAFB": {
+   "s95": 0.1562559230506187,
+   "s97": 0.33211705362483246,
+   "s99": 0.6384254952948191,
+   "old_youden": 0.05180609031949174,
+   "validation_negatives": 1985,
+   "validation_positives": 157
+  },
+  "A:IRBBB": {
+   "s95": 0.13503589346632458,
+   "s97": 0.25008316662837576,
+   "s99": 0.4600336540941022,
+   "old_youden": 0.04918013496516023,
+   "validation_negatives": 2032,
+   "validation_positives": 110
+  },
+  "B:AF": {
+   "s95": 0.02578124672536297,
+   "s97": 0.059675128812152735,
+   "s99": 0.2566588495715392,
+   "old_youden": 0.03163820955652228,
+   "validation_negatives": 13038,
+   "validation_positives": 275
+  },
+  "B:LBBB": {
+   "s95": 0.005950414384605849,
+   "s97": 0.01761665609162016,
+   "s99": 0.16181316807945606,
+   "old_youden": 0.022210915569737807,
+   "validation_negatives": 13094,
+   "validation_positives": 219
+  },
+  "B:1dAVb": {
+   "s95": 0.054046425804754036,
+   "s97": 0.10541052494351824,
+   "s99": 0.28535379066003974,
+   "old_youden": 0.011464178283991952,
+   "validation_negatives": 13056,
+   "validation_positives": 257
+  }
+ }
+}

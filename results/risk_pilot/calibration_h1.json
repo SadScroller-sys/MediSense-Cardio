@@ -1,0 +1,13 @@
+{
+ "horizon_years": 1.0,
+ "best_epoch": 11,
+ "val_auroc": 0.7760014871270565,
+ "platt": {
+  "a": 0.7527343034744263,
+  "b": -0.12159273028373718
+ },
+ "seed": 42,
+ "n_train": 21706,
+ "n_val": 3098,
+ "note": "Platt fitted on the validation split (original, non-emulated input); test split untouched"
+}

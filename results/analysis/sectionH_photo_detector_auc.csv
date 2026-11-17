@@ -1,0 +1,7 @@
+subset,target,images,events,auc
+all 9 types,wrong5,857,109,0.516 (0.46 to 0.57)
+real C1-C8,wrong5,758,98,0.516 (0.46 to 0.58)
+all 9 types,bad,900,152,0.638 (0.59 to 0.70)
+real C1-C8,bad,800,140,0.641 (0.60 to 0.70)
+without screen photos,wrong5,796,101,0.508 (0.46 to 0.56)
+screen photos only (who gets no output?),bad,100,47,0.488 (0.37 to 0.60)

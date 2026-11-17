@@ -1,0 +1,7 @@
+damage,images,wrong,model,auc_within_damage,ci95
+resolution level 5,99,47,PHOTO (five photo scores),0.496,0.39 to 0.61
+resolution level 5,99,47,OUTPUT (digitised-signal features),0.818,0.73 to 0.89
+resolution level 5,99,47,BOTH,0.859,0.78 to 0.92
+blur level 5,98,17,PHOTO (five photo scores),0.371,0.21 to 0.54
+blur level 5,98,17,OUTPUT (digitised-signal features),0.829,0.69 to 0.94
+blur level 5,98,17,BOTH,0.856,0.77 to 0.93

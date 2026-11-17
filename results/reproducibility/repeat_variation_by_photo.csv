@@ -1,0 +1,11 @@
+photo,runs,hr_range_bpm,lights,light_changed,pr_values,pr_range_ms,pr_present_in_some_runs_only,axis_range_deg,score_range,rr_cv_range
+example1_angled_photo_fixed_by_straightening.jpg,3,0.0,GREEN,False,3,0.0,False,0.0,0.0,0.0
+example2_straight_photo_green.jpg,3,0.0,GREEN,False,3,0.0,False,0.0,0.0,0.0
+example3_angled_photo_amber.jpg,3,0.0,AMBER,False,3,0.0,False,0.0,0.0,0.0
+example4_hard_page_red.jpg,3,0.02,RED,False,0,,False,0.1,0.0006,0.0001
+sample1_straight_clean.jpg,3,0.0,GREEN,False,3,0.0,False,0.0,0.0,0.0
+sample2_angled_left.jpg,3,0.0,GREEN,False,3,0.2,False,0.1,0.0017,0.0004
+sample3_angled_from_below.jpg,3,0.0,GREEN,False,0,,False,0.0,0.0,0.0
+sample4_dim_uneven_light.jpg,3,0.01,GREEN,False,3,22.3,False,0.1,0.0011,0.0001
+sample5_far_and_small.jpg,3,0.01,GREEN,False,3,5.0,False,11.3,0.0037,0.0003
+sample6_blurry_and_angled.jpg,3,0.08,RED,False,0,,False,0.0,0.0015,0.0001

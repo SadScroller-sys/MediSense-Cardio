@@ -1,0 +1,6 @@
+score,spearman_with_abs_error,boot95
+blur_log,-0.368,-0.39 to -0.34
+skew_deg,0.003,-0.03 to 0.03
+resolution_score,-0.369,-0.41 to -0.33
+contrast_score,-0.283,-0.31 to -0.26
+blockiness_score,0.224,0.19 to 0.26

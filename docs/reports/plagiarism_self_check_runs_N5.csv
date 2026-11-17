@@ -1,0 +1,34 @@
+text,words,start,passage,sources
+IEEE paper,6,1005,25 mm s 10 mm mv,A._ECG_Digitisation/01_2510.pdf; A._ECG_Digitisation/03_2604.pdf; G._Reporting_and_Method_Standards/60_s41746-025-02327-1.pdf
+IEEE paper,5,731,teams to digitize and classify,G._Reporting_and_Method_Standards/57_PMC12891466.pdf
+IEEE paper,5,781,the quality of ecg signals,Recovered_Papers/PMC8539388.pdf
+IEEE paper,5,807,of automation bias overall but,E._Selective_Prediction___Deferral___Risk_Control/40_2508.pdf
+IEEE paper,5,883,two commercial algorithms 12sl and,B._Dataset_and_ECG_Measurement/13_s41597-023-02153-8.pdf
+IEEE paper,5,1425,value of at least 0,Recovered_Papers/PMC6519266.pdf
+IEEE paper,5,1716,0 03 0 06 0,A._ECG_Digitisation/07_2412.pdf
+IEEE paper,5,1728,0 05 0 10 0,B._Dataset_and_ECG_Measurement/15_2004.pdf; C._Image_Damage_and_Robustness/28_2102.pdf; E._Selective_Prediction___Deferral___Risk_Control/32_2101.pdf; E._Selective_Prediction___Deferral___Risk_Control/33_2208.pdf; E._Selective_Prediction___Deferral___Risk_Control/35_2306.pdf; E._Selective_Prediction
+IEEE paper,5,1918,0 0 2 5 5,E._Selective_Prediction___Deferral___Risk_Control/32_2101.pdf; E._Selective_Prediction___Deferral___Risk_Control/39_2312.pdf
+IEEE paper,5,2301,0 2 0 1 0,G._Reporting_and_Method_Standards/43_bmj.pdf; Recovered_Papers/PMC6492164.pdf
+IEEE paper,5,3762,incomplete right bundle branch block,B._Dataset_and_ECG_Measurement/11_s41597-020-0495-6.pdf; B._Dataset_and_ECG_Measurement/13_s41597-023-02153-8.pdf
+Report,7,643,the george b moody physionet challenge 2024,A._ECG_Digitisation/01_2510.pdf; A._ECG_Digitisation/04_8013.pdf; A._ECG_Digitisation/05_2307.pdf; A._ECG_Digitisation/08_2410.pdf; A._ECG_Digitisation/09_2502.pdf; G._Reporting_and_Method_Standards/57_PMC12891466.pdf; G._Reporting_and_Method_Standards/60_s41746-025-02327-1.pdf
+Report,7,698,algorithm for digitizing paper ecgs at scale,A._ECG_Digitisation/01_2510.pdf; A._ECG_Digitisation/03_2604.pdf; A._ECG_Digitisation/04_8013.pdf; G._Reporting_and_Method_Standards/60_s41746-025-02327-1.pdf; tool: scripts/tools/Open-ECG-Digitizer/README.md
+Report,7,1975,25 mm s and 10 mm mv,A._ECG_Digitisation/01_2510.pdf; G._Reporting_and_Method_Standards/60_s41746-025-02327-1.pdf
+Report,7,2427,to the end of the t wave,G._Reporting_and_Method_Standards/54_PMC5736701.pdf; Recovered_Papers/PMC5581168.pdf
+Report,6,2565,area under the roc curve auc,Recovered_Papers/PMC6912996.pdf
+Report,6,10532,25 mm s 10 mm mv,A._ECG_Digitisation/01_2510.pdf; A._ECG_Digitisation/03_2604.pdf; G._Reporting_and_Method_Standards/60_s41746-025-02327-1.pdf
+Report,5,516,the digitization of paper ecgs,A._ECG_Digitisation/07_2412.pdf
+Report,5,651,teams to digitize and classify,G._Reporting_and_Method_Standards/57_PMC12891466.pdf
+Report,5,946,of abstention selective prediction and,G._Reporting_and_Method_Standards/62_s44387-026-00097-z.pdf
+Report,5,1065,a study of 259 clinicians,E._Selective_Prediction___Deferral___Risk_Control/40_2508.pdf
+Report,5,1077,of automation bias overall but,E._Selective_Prediction___Deferral___Risk_Control/40_2508.pdf
+Report,5,1261,standardization and interpretation of the,B._Dataset_and_ECG_Measurement/11_s41597-020-0495-6.pdf
+Report,5,1321,at high heart rates and,Recovered_Papers/PMC4937268.pdf
+Report,5,1344,prediction model the sample size,G._Reporting_and_Method_Standards/43_bmj.pdf
+Report,5,1366,rules of thumb such as,Recovered_Papers/PMC6519266.pdf
+Report,5,1675,2 1 overview of the,E._Selective_Prediction___Deferral___Risk_Control/31_2110.pdf
+Report,5,1818,two commercial algorithms 12sl and,B._Dataset_and_ECG_Measurement/13_s41597-023-02153-8.pdf
+Report,5,1999,is dt 1 016 d,A._ECG_Digitisation/05_2307.pdf
+Report,5,2010,is dv 2 54 d,A._ECG_Digitisation/05_2307.pdf
+Report,5,2554,bias and limits of agreement,Recovered_Papers/PMC4937268.pdf
+Report,5,2587,in both training and test,B._Dataset_and_ECG_Measurement/15_2004.pdf
+Report,5,7479,incomplete right bundle branch block,B._Dataset_and_ECG_Measurement/11_s41597-020-0495-6.pdf; B._Dataset_and_ECG_Measurement/13_s41597-023-02153-8.pdf

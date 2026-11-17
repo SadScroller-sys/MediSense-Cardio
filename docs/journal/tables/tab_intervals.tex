@@ -1,0 +1,23 @@
+\begin{table}[ht]
+\centering\small
+\caption{Median absolute error against ground truth, by level, for the two axes that matter (49 reliable records; intervals against 500\,Hz ground truth; heart rate in bpm, intervals in ms). Level 0 is the clean image.}\label{tab:intervals}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Axis & Level & HR & PR & QRS & QT & QTc \\
+\midrule
+Clean & 0 & 0.13 & 9.1 & 16.2 & 12.9 & 17.3 \\
+\midrule
+Blur & 1 & 0.12 & 9.8 & 17.7 & 14.1 & 17.3 \\
+ & 2 & 0.15 & 10.2 & 34.8 & 23.3 & 24.4 \\
+ & 3 & 0.16 & 16.4 & 66.5 & 40.7 & 45.0 \\
+ & 4 & 0.64 & 22.2 & 107.3 & 67.9 & 77.8 \\
+ & 5 & 1.65 & 16.6 & 117.6 & 77.0 & 90.8 \\
+\midrule
+Low resolution & 1 & 0.12 & 8.2 & 17.5 & 12.9 & 16.2 \\
+ & 2 & 0.12 & 10.5 & 18.0 & 17.5 & 21.7 \\
+ & 3 & 0.15 & 11.3 & 25.2 & 19.6 & 20.7 \\
+ & 4 & 0.21 & 13.3 & 41.1 & 30.2 & 35.1 \\
+ & 5 & 2.54 & 17.4 & 77.1 & 65.1 & 73.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

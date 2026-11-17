@@ -1,0 +1,4 @@
+flag_top,wrong_readings_caught,good_readings_flagged,wrong_rate_among_kept,wrong_rate_overall
+10% of photos,60%,6%,3.0%,6.8%
+20% of photos,76%,16%,2.1%,6.8%
+30% of photos,80%,26%,1.9%,6.8%

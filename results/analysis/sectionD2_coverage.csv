@@ -1,0 +1,13 @@
+model,flag_top,caught,good_flagged,kept_wrong,wrong_overall
+PHOTO (five photo scores),10%,59% (49-72),6%,3.1% (1.8-4.6),6.8%
+PHOTO (five photo scores),20%,76% (67-86),16%,2.1% (1.0-3.3),6.8%
+PHOTO (five photo scores),30%,78% (68-89),27%,2.1% (0.9-3.6),6.8%
+OUTPUT (digitised-signal features),10%,64% (54-76),6%,2.7% (1.5-4.2),6.8%
+OUTPUT (digitised-signal features),20%,78% (69-91),16%,1.9% (0.7-3.1),6.8%
+OUTPUT (digitised-signal features),30%,90% (80-98),26%,1.0% (0.2-2.3),6.8%
+BOTH,10%,73% (62-84),5%,2.0% (1.0-3.3),6.8%
+BOTH,20%,88% (78-100),15%,1.0% (0.0-2.2),6.8%
+BOTH,30%,97% (91-100),25%,0.3% (0.0-1.0),6.8%
+ORACLE (told damage type and level),10%,55% (45-66),7%,3.4% (2.0-5.0),6.8%
+ORACLE (told damage type and level),20%,74% (64-86),16%,2.2% (0.9-3.6),6.8%
+ORACLE (told damage type and level),30%,81% (71-93),26%,1.8% (0.6-3.4),6.8%

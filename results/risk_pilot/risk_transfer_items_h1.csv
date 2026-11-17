@@ -1,0 +1,940 @@
+group,ecg_id,risk_original,risk_digitised
+"drawn pages (dev: new100, F, G)",115,0.007970462,0.009245561
+"drawn pages (dev: new100, F, G)",176,0.022207048,0.02518826
+"drawn pages (dev: new100, F, G)",509,0.012286108,0.014234812
+"drawn pages (dev: new100, F, G)",543,0.0153028695,0.017553736
+"drawn pages (dev: new100, F, G)",844,0.018847382,0.017006533
+"drawn pages (dev: new100, F, G)",899,0.012437657,0.016303457
+"drawn pages (dev: new100, F, G)",904,0.0051563447,0.005335403
+"drawn pages (dev: new100, F, G)",1014,0.016523076,0.022866342
+"drawn pages (dev: new100, F, G)",1084,0.019325461,0.020552551
+"drawn pages (dev: new100, F, G)",1157,0.057271983,0.05617957
+"drawn pages (dev: new100, F, G)",1271,0.020427944,0.023770649
+"drawn pages (dev: new100, F, G)",2082,0.03079985,0.033619214
+"drawn pages (dev: new100, F, G)",2532,0.037662208,0.020285737
+"drawn pages (dev: new100, F, G)",2574,0.015392657,0.017853921
+"drawn pages (dev: new100, F, G)",2579,0.025524346,0.02180054
+"drawn pages (dev: new100, F, G)",3231,0.02520335,0.024832632
+"drawn pages (dev: new100, F, G)",3700,0.018240366,0.017885027
+"drawn pages (dev: new100, F, G)",4011,0.014717857,0.017198658
+"drawn pages (dev: new100, F, G)",4088,0.0061025894,0.007110543
+"drawn pages (dev: new100, F, G)",4435,0.00927734,0.010333326
+"drawn pages (dev: new100, F, G)",4444,0.015595473,0.020167198
+"drawn pages (dev: new100, F, G)",4695,0.065497175,0.06642785
+"drawn pages (dev: new100, F, G)",4756,0.092087485,0.09788216
+"drawn pages (dev: new100, F, G)",5078,0.029640723,0.030270582
+"drawn pages (dev: new100, F, G)",5350,0.0112711685,0.011631202
+"drawn pages (dev: new100, F, G)",5365,0.0764913,0.0726494
+"drawn pages (dev: new100, F, G)",5385,0.008377319,0.010631254
+"drawn pages (dev: new100, F, G)",5843,0.008388517,0.010853706
+"drawn pages (dev: new100, F, G)",5856,0.021401322,0.020548508
+"drawn pages (dev: new100, F, G)",6036,0.011242303,0.011100788
+"drawn pages (dev: new100, F, G)",6046,0.019986784,0.020370148
+"drawn pages (dev: new100, F, G)",6686,0.013408471,0.013128584
+"drawn pages (dev: new100, F, G)",6885,0.017508458,0.017211309
+"drawn pages (dev: new100, F, G)",7352,0.0068212403,0.0072536184
+"drawn pages (dev: new100, F, G)",7857,0.024007998,0.025158564
+"drawn pages (dev: new100, F, G)",7890,0.040007617,0.044807725
+"drawn pages (dev: new100, F, G)",7949,0.003999714,0.004927514
+"drawn pages (dev: new100, F, G)",8207,0.0050072093,0.005560947
+"drawn pages (dev: new100, F, G)",8218,0.04102045,0.044032417
+"drawn pages (dev: new100, F, G)",8233,0.011085299,0.012912557
+"drawn pages (dev: new100, F, G)",8289,0.0072528855,0.008052323
+"drawn pages (dev: new100, F, G)",8673,0.012826176,0.013207493
+"drawn pages (dev: new100, F, G)",8733,0.043587487,0.046035048
+"drawn pages (dev: new100, F, G)",9068,0.06486828,0.06613466
+"drawn pages (dev: new100, F, G)",9095,0.0236262,0.027650977
+"drawn pages (dev: new100, F, G)",9439,0.023427002,0.031223997
+"drawn pages (dev: new100, F, G)",9896,0.01819498,0.019185655
+"drawn pages (dev: new100, F, G)",9950,0.020769967,0.022498894
+"drawn pages (dev: new100, F, G)",9951,0.08646106,0.04982334
+"drawn pages (dev: new100, F, G)",10068,0.012874384,0.011621596
+"drawn pages (dev: new100, F, G)",10248,0.007164586,0.0061716475
+"drawn pages (dev: new100, F, G)",10308,0.07649128,0.07431271
+"drawn pages (dev: new100, F, G)",10595,0.015235665,0.018305937
+"drawn pages (dev: new100, F, G)",10771,0.03424448,0.034813136
+"drawn pages (dev: new100, F, G)",10923,0.021757906,0.024265314
+"drawn pages (dev: new100, F, G)",11078,0.014411497,0.013924229
+"drawn pages (dev: new100, F, G)",11411,0.008788944,0.011687561
+"drawn pages (dev: new100, F, G)",11894,0.1172532,0.09606494
+"drawn pages (dev: new100, F, G)",11991,0.014702806,0.018473744
+"drawn pages (dev: new100, F, G)",12363,0.0048316913,0.0061833565
+"drawn pages (dev: new100, F, G)",12372,0.014312604,0.017502062
+"drawn pages (dev: new100, F, G)",12896,0.017611763,0.018759869
+"drawn pages (dev: new100, F, G)",13226,0.016890611,0.019223193
+"drawn pages (dev: new100, F, G)",13767,0.013059496,0.013691055
+"drawn pages (dev: new100, F, G)",13913,0.03614075,0.04317009
+"drawn pages (dev: new100, F, G)",13999,0.014052299,0.015609659
+"drawn pages (dev: new100, F, G)",14210,0.008875217,0.0074054883
+"drawn pages (dev: new100, F, G)",14243,0.04939614,0.056108527
+"drawn pages (dev: new100, F, G)",14484,0.007983454,0.011266058
+"drawn pages (dev: new100, F, G)",14505,0.056142665,0.058521725
+"drawn pages (dev: new100, F, G)",14651,0.016826421,0.018694906
+"drawn pages (dev: new100, F, G)",14745,0.062935054,0.06385029
+"drawn pages (dev: new100, F, G)",15111,0.013794832,0.0144877415
+"drawn pages (dev: new100, F, G)",15427,0.046605825,0.0071081463
+"drawn pages (dev: new100, F, G)",15443,0.0065301484,0.008465916
+"drawn pages (dev: new100, F, G)",15556,0.0055139447,0.0055215037
+"drawn pages (dev: new100, F, G)",16028,0.015033603,0.01591332
+"drawn pages (dev: new100, F, G)",16438,0.01747744,0.018347837
+"drawn pages (dev: new100, F, G)",16750,0.035161503,0.045524128
+"drawn pages (dev: new100, F, G)",16801,0.028274799,0.012433507
+"drawn pages (dev: new100, F, G)",16917,0.018441023,0.021149948
+"drawn pages (dev: new100, F, G)",17060,0.0070058815,0.006870695
+"drawn pages (dev: new100, F, G)",17548,0.026785813,0.032570235
+"drawn pages (dev: new100, F, G)",17550,0.0073409188,0.011269898
+"drawn pages (dev: new100, F, G)",17762,0.012334915,0.01507669
+"drawn pages (dev: new100, F, G)",18016,0.02963752,0.03139517
+"drawn pages (dev: new100, F, G)",18027,0.006894795,0.007926013
+"drawn pages (dev: new100, F, G)",18035,0.022527846,0.019659204
+"drawn pages (dev: new100, F, G)",18061,0.004348914,0.004909544
+"drawn pages (dev: new100, F, G)",18399,0.0028705483,0.0034823664
+"drawn pages (dev: new100, F, G)",18441,0.0083649615,0.010429269
+"drawn pages (dev: new100, F, G)",18757,0.013989904,0.017095419
+"drawn pages (dev: new100, F, G)",18824,0.010038115,0.010808446
+"drawn pages (dev: new100, F, G)",18830,0.008347035,0.009715539
+"drawn pages (dev: new100, F, G)",19620,0.029949259,0.03149785
+"drawn pages (dev: new100, F, G)",20388,0.016107349,0.022888955
+"drawn pages (dev: new100, F, G)",20509,0.023841897,0.02874989
+"drawn pages (dev: new100, F, G)",20523,0.0154785365,0.01946662
+"drawn pages (dev: new100, F, G)",21205,0.07648067,0.1531489
+"drawn pages (dev: new100, F, G)",21218,0.017064437,0.018394861
+"drawn pages (dev: new100, F, G)",15,0.009500079,0.010305066
+"drawn pages (dev: new100, F, G)",152,0.012439088,0.01711619
+"drawn pages (dev: new100, F, G)",497,0.006721852,0.0065955953
+"drawn pages (dev: new100, F, G)",538,0.013734656,0.01696765
+"drawn pages (dev: new100, F, G)",562,0.023131108,0.028947378
+"drawn pages (dev: new100, F, G)",649,0.0104541145,0.012698301
+"drawn pages (dev: new100, F, G)",817,0.019111866,0.016879426
+"drawn pages (dev: new100, F, G)",950,0.008725849,0.010747262
+"drawn pages (dev: new100, F, G)",1432,0.017799737,0.018402336
+"drawn pages (dev: new100, F, G)",1491,0.018671058,0.01890048
+"drawn pages (dev: new100, F, G)",1771,0.013425999,0.015509655
+"drawn pages (dev: new100, F, G)",1866,0.011105306,0.011275182
+"drawn pages (dev: new100, F, G)",2033,0.08550704,0.08792011
+"drawn pages (dev: new100, F, G)",2072,0.029062347,0.028594207
+"drawn pages (dev: new100, F, G)",2286,0.009633934,0.024305547
+"drawn pages (dev: new100, F, G)",2435,0.011607687,0.013594805
+"drawn pages (dev: new100, F, G)",2487,0.04922804,0.051674694
+"drawn pages (dev: new100, F, G)",2588,0.025915597,0.025871716
+"drawn pages (dev: new100, F, G)",2599,0.0973068,0.10271702
+"drawn pages (dev: new100, F, G)",2621,0.030296145,0.02738424
+"drawn pages (dev: new100, F, G)",2649,0.01110935,0.011888447
+"drawn pages (dev: new100, F, G)",3001,0.025276091,0.002201993
+"drawn pages (dev: new100, F, G)",3193,0.020320376,0.018800328
+"drawn pages (dev: new100, F, G)",3342,0.014662353,0.022206074
+"drawn pages (dev: new100, F, G)",3381,0.047986656,0.050228853
+"drawn pages (dev: new100, F, G)",3438,0.0066310763,0.0070697344
+"drawn pages (dev: new100, F, G)",3441,0.009778132,0.009839616
+"drawn pages (dev: new100, F, G)",3568,0.017823502,0.014478466
+"drawn pages (dev: new100, F, G)",3616,0.02645728,0.027590118
+"drawn pages (dev: new100, F, G)",3718,0.015711486,0.019209566
+"drawn pages (dev: new100, F, G)",4364,0.020053724,0.022842031
+"drawn pages (dev: new100, F, G)",5211,0.030519076,0.030149324
+"drawn pages (dev: new100, F, G)",5573,0.018820904,0.021931672
+"drawn pages (dev: new100, F, G)",5580,0.0072200303,0.008067149
+"drawn pages (dev: new100, F, G)",5781,0.009824654,0.011387258
+"drawn pages (dev: new100, F, G)",6268,0.023599675,0.024605637
+"drawn pages (dev: new100, F, G)",6770,0.012693764,0.01228773
+"drawn pages (dev: new100, F, G)",7003,0.030495215,0.034144014
+"drawn pages (dev: new100, F, G)",7218,0.010107939,0.011450517
+"drawn pages (dev: new100, F, G)",7332,0.013891584,0.015876256
+"drawn pages (dev: new100, F, G)",7903,0.02207506,0.015155534
+"drawn pages (dev: new100, F, G)",8159,0.0067104204,0.010368999
+"drawn pages (dev: new100, F, G)",8393,0.014911224,0.017211728
+"drawn pages (dev: new100, F, G)",8463,0.017631102,0.014441024
+"drawn pages (dev: new100, F, G)",8602,0.032028325,0.022918828
+"drawn pages (dev: new100, F, G)",8680,0.032464866,0.034725696
+"drawn pages (dev: new100, F, G)",8713,0.015503554,0.01808607
+"drawn pages (dev: new100, F, G)",8833,0.01312849,0.012404995
+"drawn pages (dev: new100, F, G)",8902,0.005628703,0.004530096
+"drawn pages (dev: new100, F, G)",9455,0.011152987,0.011966311
+"drawn pages (dev: new100, F, G)",9730,0.021060517,0.023653252
+"drawn pages (dev: new100, F, G)",9877,0.02000336,0.020475501
+"drawn pages (dev: new100, F, G)",9934,0.010065014,0.011939011
+"drawn pages (dev: new100, F, G)",10278,0.011401245,0.010912443
+"drawn pages (dev: new100, F, G)",10337,0.022144549,0.021845954
+"drawn pages (dev: new100, F, G)",10580,0.014406656,0.018618943
+"drawn pages (dev: new100, F, G)",10738,0.06577727,0.124438256
+"drawn pages (dev: new100, F, G)",11257,0.0074059158,0.007909427
+"drawn pages (dev: new100, F, G)",11337,0.03456899,0.033386186
+"drawn pages (dev: new100, F, G)",11452,0.027034324,0.020844258
+"drawn pages (dev: new100, F, G)",12276,0.0031686136,0.0032683082
+"drawn pages (dev: new100, F, G)",12701,0.01503025,0.019544033
+"drawn pages (dev: new100, F, G)",12882,0.013742209,0.012690567
+"drawn pages (dev: new100, F, G)",12968,0.01975076,0.025317028
+"drawn pages (dev: new100, F, G)",13021,0.020237954,0.021414611
+"drawn pages (dev: new100, F, G)",13073,0.016798258,0.017239029
+"drawn pages (dev: new100, F, G)",13371,0.0037950808,0.0037223503
+"drawn pages (dev: new100, F, G)",13855,0.064406775,0.06783546
+"drawn pages (dev: new100, F, G)",14752,0.022173464,0.024661053
+"drawn pages (dev: new100, F, G)",15017,0.0050834627,0.005250248
+"drawn pages (dev: new100, F, G)",15392,0.025891697,0.029627694
+"drawn pages (dev: new100, F, G)",15528,0.01318985,0.0160848
+"drawn pages (dev: new100, F, G)",15819,0.007995918,0.008910092
+"drawn pages (dev: new100, F, G)",15843,0.021636635,0.025092715
+"drawn pages (dev: new100, F, G)",15974,0.012914369,0.012496058
+"drawn pages (dev: new100, F, G)",16002,0.0064782784,0.00739784
+"drawn pages (dev: new100, F, G)",16045,0.00442229,0.004684554
+"drawn pages (dev: new100, F, G)",16334,0.011094921,0.010611982
+"drawn pages (dev: new100, F, G)",16340,0.03635949,0.031561427
+"drawn pages (dev: new100, F, G)",16392,0.0118720345,0.012895471
+"drawn pages (dev: new100, F, G)",16452,0.020349378,0.020622112
+"drawn pages (dev: new100, F, G)",16504,0.008705552,0.008859066
+"drawn pages (dev: new100, F, G)",17254,0.017229589,0.01996854
+"drawn pages (dev: new100, F, G)",17532,0.011675699,0.012550356
+"drawn pages (dev: new100, F, G)",17759,0.055761307,0.04674939
+"drawn pages (dev: new100, F, G)",17786,0.0113748815,0.012961782
+"drawn pages (dev: new100, F, G)",17849,0.011013104,0.015418977
+"drawn pages (dev: new100, F, G)",18057,0.03169305,0.03573509
+"drawn pages (dev: new100, F, G)",18444,0.027164506,0.03408025
+"drawn pages (dev: new100, F, G)",18644,0.01885068,0.017604915
+"drawn pages (dev: new100, F, G)",19185,0.011550993,0.013677785
+"drawn pages (dev: new100, F, G)",19253,0.014737239,0.015329585
+"drawn pages (dev: new100, F, G)",19971,0.013703152,0.014534508
+"drawn pages (dev: new100, F, G)",20269,0.027067838,0.027922247
+"drawn pages (dev: new100, F, G)",20270,0.059228145,0.057495203
+"drawn pages (dev: new100, F, G)",20359,0.016958365,0.01798974
+"drawn pages (dev: new100, F, G)",20551,0.029593742,0.032744832
+"drawn pages (dev: new100, F, G)",20640,0.05740581,0.060784027
+"drawn pages (dev: new100, F, G)",20659,0.01790192,0.018511996
+"drawn pages (dev: new100, F, G)",21208,0.029854713,0.03130421
+"drawn pages (dev: new100, F, G)",362,0.005108812,0.0067851963
+"drawn pages (dev: new100, F, G)",492,0.01574701,0.016959684
+"drawn pages (dev: new100, F, G)",635,0.0038715808,0.002797574
+"drawn pages (dev: new100, F, G)",656,0.0153705,0.014224712
+"drawn pages (dev: new100, F, G)",939,0.0115289595,0.016271414
+"drawn pages (dev: new100, F, G)",1183,0.024345385,0.023951175
+"drawn pages (dev: new100, F, G)",1252,0.029154636,0.029048484
+"drawn pages (dev: new100, F, G)",1377,0.021169038,0.023293748
+"drawn pages (dev: new100, F, G)",1527,0.009646673,0.009408494
+"drawn pages (dev: new100, F, G)",1543,0.010736834,0.012708419
+"drawn pages (dev: new100, F, G)",1580,0.017531235,0.024029247
+"drawn pages (dev: new100, F, G)",1810,0.04807477,0.050124913
+"drawn pages (dev: new100, F, G)",1837,0.015804842,0.015361928
+"drawn pages (dev: new100, F, G)",1909,0.0061823167,0.0073739714
+"drawn pages (dev: new100, F, G)",2407,0.02184979,0.02400392
+"drawn pages (dev: new100, F, G)",2520,0.024953052,0.025233593
+"drawn pages (dev: new100, F, G)",2715,0.02710765,0.027486308
+"drawn pages (dev: new100, F, G)",2865,0.021131968,0.02278963
+"drawn pages (dev: new100, F, G)",2914,0.017178593,0.017585738
+"drawn pages (dev: new100, F, G)",2991,0.015570559,0.019742204
+"drawn pages (dev: new100, F, G)",3008,0.019610396,0.026857808
+"drawn pages (dev: new100, F, G)",3287,0.009768832,0.010640538
+"drawn pages (dev: new100, F, G)",3689,0.028852036,0.032283124
+"drawn pages (dev: new100, F, G)",3703,0.019860674,0.017110607
+"drawn pages (dev: new100, F, G)",3830,0.0047835554,0.005357726
+"drawn pages (dev: new100, F, G)",4030,0.0153443115,0.017955462
+"drawn pages (dev: new100, F, G)",4183,0.018778618,0.02143076
+"drawn pages (dev: new100, F, G)",4457,0.024758253,0.026366293
+"drawn pages (dev: new100, F, G)",4519,0.016748434,0.020600948
+"drawn pages (dev: new100, F, G)",4803,0.0123347705,0.011688839
+"drawn pages (dev: new100, F, G)",5091,0.021937303,0.023738602
+"drawn pages (dev: new100, F, G)",5565,0.009991996,0.013664635
+"drawn pages (dev: new100, F, G)",5566,0.006932667,0.010409773
+"drawn pages (dev: new100, F, G)",5932,0.01358944,0.014441316
+"drawn pages (dev: new100, F, G)",6045,0.017822903,0.016498655
+"drawn pages (dev: new100, F, G)",6052,0.023538636,0.022665454
+"drawn pages (dev: new100, F, G)",6063,0.0119719785,0.011069456
+"drawn pages (dev: new100, F, G)",6090,0.032041933,0.0025966777
+"drawn pages (dev: new100, F, G)",6262,0.009015554,0.010229234
+"drawn pages (dev: new100, F, G)",6315,0.067990474,0.055444587
+"drawn pages (dev: new100, F, G)",6669,0.03472484,0.03905334
+"drawn pages (dev: new100, F, G)",7160,0.016127069,0.023369262
+"drawn pages (dev: new100, F, G)",7491,0.0044620465,0.0034147482
+"drawn pages (dev: new100, F, G)",7524,0.023159938,0.023841813
+"drawn pages (dev: new100, F, G)",7900,0.0028747236,0.0035221062
+"drawn pages (dev: new100, F, G)",8199,0.0063916934,0.0066999714
+"drawn pages (dev: new100, F, G)",8621,0.02625408,0.029901125
+"drawn pages (dev: new100, F, G)",8699,0.022574898,0.026132477
+"drawn pages (dev: new100, F, G)",8763,0.0077893585,0.016847324
+"drawn pages (dev: new100, F, G)",9098,0.07515132,0.0724829
+"drawn pages (dev: new100, F, G)",9176,0.017444937,0.018438762
+"drawn pages (dev: new100, F, G)",9552,0.0046361634,0.0048458627
+"drawn pages (dev: new100, F, G)",9928,0.011880177,0.01432109
+"drawn pages (dev: new100, F, G)",9991,0.03783115,0.040953074
+"drawn pages (dev: new100, F, G)",10164,0.0039841314,0.0035579924
+"drawn pages (dev: new100, F, G)",10365,0.036852792,0.04238423
+"drawn pages (dev: new100, F, G)",10401,0.018177569,0.018554991
+"drawn pages (dev: new100, F, G)",10484,0.008363067,0.009742861
+"drawn pages (dev: new100, F, G)",10747,0.0121502485,0.013548774
+"drawn pages (dev: new100, F, G)",10790,0.026764851,0.026528792
+"drawn pages (dev: new100, F, G)",11155,0.008019842,0.010460564
+"drawn pages (dev: new100, F, G)",11407,0.020861715,0.016944665
+"drawn pages (dev: new100, F, G)",11489,0.0063714385,0.006995447
+"drawn pages (dev: new100, F, G)",11526,0.008832026,0.007934109
+"drawn pages (dev: new100, F, G)",11881,0.034354392,0.033905443
+"drawn pages (dev: new100, F, G)",11944,0.037924014,0.038512725
+"drawn pages (dev: new100, F, G)",12421,0.071585976,0.077014394
+"drawn pages (dev: new100, F, G)",12516,0.05946844,0.05804533
+"drawn pages (dev: new100, F, G)",12979,0.030591113,0.025960848
+"drawn pages (dev: new100, F, G)",13447,0.021025902,0.023530584
+"drawn pages (dev: new100, F, G)",14198,0.056739412,0.049396582
+"drawn pages (dev: new100, F, G)",14352,0.016348392,0.020763056
+"drawn pages (dev: new100, F, G)",14370,0.02558387,0.026076533
+"drawn pages (dev: new100, F, G)",14979,0.018403074,0.01996478
+"drawn pages (dev: new100, F, G)",15921,0.020767266,0.021454062
+"drawn pages (dev: new100, F, G)",16647,0.013085224,0.01418057
+"drawn pages (dev: new100, F, G)",16834,0.09045251,0.0879611
+"drawn pages (dev: new100, F, G)",16909,0.028288385,0.028147373
+"drawn pages (dev: new100, F, G)",16974,0.025299963,0.02687318
+"drawn pages (dev: new100, F, G)",17231,0.018714359,0.019541802
+"drawn pages (dev: new100, F, G)",17482,0.016054964,0.019013967
+"drawn pages (dev: new100, F, G)",17844,0.07994834,0.120429635
+"drawn pages (dev: new100, F, G)",18022,0.012757439,0.015670333
+"drawn pages (dev: new100, F, G)",18056,0.009237344,0.01083725
+"drawn pages (dev: new100, F, G)",18138,0.01326446,0.012669763
+"drawn pages (dev: new100, F, G)",18286,0.021654176,0.02233058
+"drawn pages (dev: new100, F, G)",18319,0.016132312,0.018493554
+"drawn pages (dev: new100, F, G)",18381,0.022600591,0.023371598
+"drawn pages (dev: new100, F, G)",18458,0.018092502,0.021688912
+"drawn pages (dev: new100, F, G)",18480,0.014774306,0.012947344
+"drawn pages (dev: new100, F, G)",18587,0.025384573,0.020611554
+"drawn pages (dev: new100, F, G)",18737,0.031779572,0.039752226
+"drawn pages (dev: new100, F, G)",19256,0.017644523,0.023696117
+"drawn pages (dev: new100, F, G)",19292,0.01749889,0.022027394
+"drawn pages (dev: new100, F, G)",19360,0.021353507,0.022324307
+"drawn pages (dev: new100, F, G)",19752,0.0180594,0.018475192
+"drawn pages (dev: new100, F, G)",19787,0.016053036,0.020317033
+"drawn pages (dev: new100, F, G)",19804,0.01917826,0.020537086
+"drawn pages (dev: new100, F, G)",20344,0.019159969,0.020985324
+"drawn pages (dev: new100, F, G)",20557,0.022175431,0.02187158
+drawn pages (dev: K),144,0.039329037,0.023084983
+drawn pages (dev: K),184,0.028686514,0.039140213
+drawn pages (dev: K),186,0.03196155,0.03264876
+drawn pages (dev: K),291,0.017090483,0.018644938
+drawn pages (dev: K),489,0.027793381,0.030830372
+drawn pages (dev: K),869,0.039154496,0.041479897
+drawn pages (dev: K),930,0.011504272,0.012653809
+drawn pages (dev: K),1044,0.046966337,0.050430566
+drawn pages (dev: K),1141,0.0069773206,0.007351468
+drawn pages (dev: K),1178,0.021741938,0.020917602
+drawn pages (dev: K),1474,0.021491176,0.02190658
+drawn pages (dev: K),1783,0.008188475,0.0099025
+drawn pages (dev: K),1846,0.016028764,0.014984244
+drawn pages (dev: K),1941,0.08368328,0.08858414
+drawn pages (dev: K),2028,0.030679192,0.03353436
+drawn pages (dev: K),2045,0.017850058,0.018948909
+drawn pages (dev: K),2402,0.042000603,0.04355054
+drawn pages (dev: K),2523,0.043237183,0.044555373
+drawn pages (dev: K),3025,0.016649965,0.015838632
+drawn pages (dev: K),3343,0.014487791,0.017359415
+drawn pages (dev: K),3400,0.017737638,0.01678128
+drawn pages (dev: K),3883,0.03161577,0.034555327
+drawn pages (dev: K),3947,0.059419747,0.057409663
+drawn pages (dev: K),4051,0.02274839,0.02369459
+drawn pages (dev: K),4744,0.017046772,0.019680494
+drawn pages (dev: K),5185,0.018097026,0.019462723
+drawn pages (dev: K),5219,0.02574451,0.032741103
+drawn pages (dev: K),5405,0.023590073,0.024097437
+drawn pages (dev: K),5579,0.009380348,0.010073797
+drawn pages (dev: K),5885,0.044453815,0.04950045
+drawn pages (dev: K),5944,0.0099272765,0.009679195
+drawn pages (dev: K),6300,0.027350461,0.031231537
+drawn pages (dev: K),6569,0.0097679095,0.011542308
+drawn pages (dev: K),6817,0.07876886,0.07804025
+drawn pages (dev: K),6838,0.05786692,0.063931614
+drawn pages (dev: K),7741,0.040568575,0.046698987
+drawn pages (dev: K),8127,0.010425794,0.011103196
+drawn pages (dev: K),8130,0.014491331,0.01662232
+drawn pages (dev: K),8238,0.021199048,0.027232306
+drawn pages (dev: K),8244,0.01111221,0.009829054
+drawn pages (dev: K),8278,0.014743949,0.017971184
+drawn pages (dev: K),8337,0.0084597785,0.005846745
+drawn pages (dev: K),8506,0.01682673,0.01761366
+drawn pages (dev: K),8627,0.011942292,0.012186003
+drawn pages (dev: K),8704,0.012479095,0.015777355
+drawn pages (dev: K),8764,0.026659723,0.031021662
+drawn pages (dev: K),8812,0.032493383,0.041793045
+drawn pages (dev: K),8886,0.00597183,0.0005526962
+drawn pages (dev: K),9118,0.013538458,0.021318778
+drawn pages (dev: K),9349,0.007434057,0.0075461455
+drawn pages (dev: K),9676,0.038032006,0.042961523
+drawn pages (dev: K),10092,0.050020088,0.04743088
+drawn pages (dev: K),10108,0.10656137,0.09877117
+drawn pages (dev: K),10272,0.017103538,0.018070638
+drawn pages (dev: K),10495,0.047104612,0.040449906
+drawn pages (dev: K),10517,0.034528475,0.031231876
+drawn pages (dev: K),10644,0.00907499,0.00867355
+drawn pages (dev: K),10886,0.022083892,0.02425284
+drawn pages (dev: K),10905,0.005891688,0.007364288
+drawn pages (dev: K),11021,0.020724948,0.020483209
+drawn pages (dev: K),11084,0.015066187,0.01651516
+drawn pages (dev: K),11121,0.0116815595,0.013395628
+drawn pages (dev: K),11170,0.0156189455,0.017070837
+drawn pages (dev: K),11981,0.02556978,0.026846355
+drawn pages (dev: K),12068,0.036825314,0.041058484
+drawn pages (dev: K),12085,0.027020881,0.025369119
+drawn pages (dev: K),12411,0.021469872,0.019286077
+drawn pages (dev: K),12585,0.019681139,0.03548227
+drawn pages (dev: K),12629,0.031090194,0.03115128
+drawn pages (dev: K),12843,0.037096728,0.040390715
+drawn pages (dev: K),13321,0.04251271,0.04704264
+drawn pages (dev: K),14061,0.0077768005,0.008320845
+drawn pages (dev: K),14194,0.014724041,0.015976632
+drawn pages (dev: K),14815,0.06921506,0.07868548
+drawn pages (dev: K),15235,0.028434457,0.03157958
+drawn pages (dev: K),15947,0.017631128,0.018875953
+drawn pages (dev: K),15956,0.03236335,0.03626886
+drawn pages (dev: K),15958,0.035398908,0.03796285
+drawn pages (dev: K),16128,0.014165079,0.014133904
+drawn pages (dev: K),16360,0.019613411,0.021345891
+drawn pages (dev: K),16534,0.008393536,0.011099228
+drawn pages (dev: K),16710,0.02505806,0.024063114
+drawn pages (dev: K),17090,0.008155524,0.008761851
+drawn pages (dev: K),17100,0.027890787,0.028673092
+drawn pages (dev: K),17538,0.021999307,0.023227219
+drawn pages (dev: K),17626,0.044221185,0.04871968
+drawn pages (dev: K),17704,0.007980988,0.008544876
+drawn pages (dev: K),17975,0.15792678,0.12336515
+drawn pages (dev: K),17998,0.015188107,0.014514775
+drawn pages (dev: K),18078,0.048618875,0.052821007
+drawn pages (dev: K),18877,0.1282145,0.094818905
+drawn pages (dev: K),19113,0.028803136,0.028196689
+drawn pages (dev: K),19307,0.010682369,0.0015345389
+drawn pages (dev: K),19316,0.04555471,0.04920132
+drawn pages (dev: K),19327,0.057849985,0.065239705
+drawn pages (dev: K),19525,0.011506566,0.011942725
+drawn pages (dev: K),20561,0.03833061,0.040809143
+drawn pages (dev: K),21245,0.012895958,0.012592227
+drawn pages (dev: K),21450,0.10840176,0.11853674
+drawn pages (dev: K),21836,0.009014617,0.011377537
+real phone photos (dev),394,0.014845721,0.016013663
+real phone photos (dev),394,0.014845721,0.0069997376
+real phone photos (dev),1944,0.022231573,0.023876023
+real phone photos (dev),1944,0.022231573,0.025301104
+real phone photos (dev),2220,0.024691563,0.031657707
+real phone photos (dev),2220,0.024691563,0.02683002
+real phone photos (dev),2690,0.015782367,0.008153831
+real phone photos (dev),2690,0.015782367,0.015094404
+real phone photos (dev),3552,0.005619778,0.024381423
+real phone photos (dev),3552,0.005619778,0.025868747
+real phone photos (dev),3569,0.0126962075,0.014644851
+real phone photos (dev),3569,0.0126962075,0.00021373504
+real phone photos (dev),5641,0.024652665,0.02331256
+real phone photos (dev),5641,0.024652665,0.02654729
+real phone photos (dev),7380,0.018151343,0.022061517
+real phone photos (dev),7380,0.018151343,0.035703775
+real phone photos (dev),8177,0.026769256,0.037478093
+real phone photos (dev),8177,0.026769256,0.03593226
+real phone photos (dev),8772,0.14417222,0.14060855
+real phone photos (dev),8772,0.14417222,0.058949206
+real phone photos (dev),8791,0.009146706,0.010393145
+real phone photos (dev),8791,0.009146706,0.016003283
+real phone photos (dev),8859,0.016724836,0.03469161
+real phone photos (dev),8859,0.016724836,0.01695014
+real phone photos (dev),8989,0.108155,0.010469595
+real phone photos (dev),8989,0.108155,0.007394074
+real phone photos (dev),9652,0.014850181,0.012891667
+real phone photos (dev),9652,0.014850181,0.01567354
+real phone photos (dev),11675,0.021185242,0.019028643
+real phone photos (dev),11675,0.021185242,0.02424174
+real phone photos (dev),12814,0.018575039,0.014315019
+real phone photos (dev),12814,0.018575039,0.0070173154
+real phone photos (dev),13466,0.034192994,0.04325799
+real phone photos (dev),13466,0.034192994,0.03575749
+real phone photos (dev),14537,0.020839073,0.023155374
+real phone photos (dev),14537,0.020839073,0.029330099
+real phone photos (dev),14556,0.030867986,0.025916316
+real phone photos (dev),14556,0.030867986,0.030728979
+real phone photos (dev),14804,0.02056409,0.016225744
+real phone photos (dev),14804,0.02056409,0.016219838
+real phone photos (dev),15641,0.030503258,0.036286704
+real phone photos (dev),15641,0.030503258,0.033665083
+real phone photos (dev),16022,0.0178309,0.01738239
+real phone photos (dev),16022,0.0178309,0.010950593
+real phone photos (dev),17874,0.019612916,0.021592496
+real phone photos (dev),17874,0.019612916,0.020446878
+real phone photos (dev),18719,0.032824844,0.035479665
+real phone photos (dev),18719,0.032824844,0.035524257
+real phone photos (dev),20244,0.014656822,0.018763218
+real phone photos (dev),20244,0.014656822,0.020409413
+real phone photos (dev),20524,0.022281813,0.015615075
+real phone photos (dev),20524,0.022281813,0.024750149
+real phone photos (dev),20851,0.020918366,0.025635952
+real phone photos (dev),20851,0.020918366,0.030288644
+real phone photos (dev),21146,0.015001031,0.016323628
+real phone photos (dev),21146,0.015001031,0.019008098
+real phone photos (dev),21559,0.015503531,0.01445851
+real phone photos (dev),21559,0.015503531,0.018266521
+real phone photos (dev),21689,0.09133453,0.032029197
+real phone photos (dev),21689,0.09133453,0.013294518
+real phone photos (dev),6159,0.020060679,0.01983292
+real phone photos (dev),6159,0.020060679,0.02737413
+real phone photos (dev),8929,0.017816082,0.021217132
+real phone photos (dev),8929,0.017816082,0.0062354184
+real phone photos (dev),9260,0.0125392685,0.017935252
+real phone photos (dev),9260,0.0125392685,0.01978085
+real phone photos (dev),11147,0.014376509,0.021119613
+real phone photos (dev),11147,0.014376509,0.018155733
+real phone photos (dev),11540,0.047251,0.05484545
+real phone photos (dev),11540,0.047251,0.049247093
+real phone photos (dev),11613,0.016500475,0.018510394
+real phone photos (dev),11613,0.016500475,0.020643072
+real phone photos (dev),11732,0.0061274315,0.0067358306
+real phone photos (dev),11732,0.0061274315,0.0067408155
+real phone photos (dev),12290,0.017856095,0.015325081
+real phone photos (dev),12290,0.017856095,0.015270927
+real phone photos (dev),12375,0.029384624,0.024535876
+real phone photos (dev),12375,0.029384624,0.029985307
+real phone photos (dev),12515,0.050362714,0.05305938
+real phone photos (dev),12515,0.050362714,0.054694388
+real phone photos (dev),12993,0.035429563,0.009300584
+real phone photos (dev),12993,0.035429563,0.005547783
+real phone photos (dev),14671,0.025672542,0.02715034
+real phone photos (dev),14671,0.025672542,0.027892983
+real phone photos (dev),15421,0.013673977,0.015546298
+real phone photos (dev),15421,0.013673977,0.0154398605
+real phone photos (dev),15977,0.011640803,0.017779341
+real phone photos (dev),15977,0.011640803,0.015074364
+real phone photos (dev),16675,0.017838517,0.019024003
+real phone photos (dev),16675,0.017838517,0.018994784
+real phone photos (dev),16960,0.008708693,0.010093893
+real phone photos (dev),16960,0.008708693,0.008969049
+real phone photos (dev),17022,0.012744049,0.012556195
+real phone photos (dev),17022,0.012744049,0.013042396
+real phone photos (dev),17388,0.017223299,0.012589827
+real phone photos (dev),17388,0.017223299,0.011234816
+real phone photos (dev),17722,0.009388651,0.006029637
+real phone photos (dev),17722,0.009388651,0.007058937
+real phone photos (dev),20176,0.021390827,0.026375802
+real phone photos (dev),20176,0.021390827,0.026917573
+real phone photos (dev),362,0.005108812,0.0030669242
+real phone photos (dev),362,0.005108812,0.0037410941
+real phone photos (dev),492,0.01574701,0.015890127
+real phone photos (dev),492,0.01574701,0.011791954
+real phone photos (dev),635,0.0038715808,0.007550645
+real phone photos (dev),635,0.0038715808,0.008013578
+real phone photos (dev),656,0.0153705,0.018323855
+real phone photos (dev),656,0.0153705,0.012870974
+real phone photos (dev),939,0.0115289595,0.014366386
+real phone photos (dev),939,0.0115289595,0.012995377
+real phone photos (dev),1183,0.024345385,0.027861556
+real phone photos (dev),1183,0.024345385,0.026916398
+real phone photos (dev),1252,0.029154636,0.035916448
+real phone photos (dev),1252,0.029154636,0.015003758
+real phone photos (dev),1377,0.021169038,0.01745985
+real phone photos (dev),1377,0.021169038,0.017513152
+real phone photos (dev),1527,0.009646673,0.011464321
+real phone photos (dev),1527,0.009646673,0.0118834805
+real phone photos (dev),1543,0.010736834,0.015291694
+real phone photos (dev),1543,0.010736834,0.006149418
+real phone photos (dev),1580,0.017531235,0.01874747
+real phone photos (dev),1580,0.017531235,0.021426592
+real phone photos (dev),1810,0.04807477,0.05342532
+real phone photos (dev),1810,0.04807477,0.047133565
+real phone photos (dev),1837,0.015804842,0.015262575
+real phone photos (dev),1837,0.015804842,0.01609758
+real phone photos (dev),1909,0.0061823167,0.008471935
+real phone photos (dev),1909,0.0061823167,0.008612803
+real phone photos (dev),2407,0.02184979,0.0267778
+real phone photos (dev),2407,0.02184979,0.028220436
+real phone photos (dev),2520,0.024953052,0.032609582
+real phone photos (dev),2520,0.024953052,0.007460121
+real phone photos (dev),2715,0.02710765,0.028650213
+real phone photos (dev),2715,0.02710765,0.026065513
+real phone photos (dev),2865,0.021131968,0.027150314
+real phone photos (dev),2865,0.021131968,0.029467165
+real phone photos (dev),2914,0.017178593,0.018418225
+real phone photos (dev),2914,0.017178593,0.019850766
+real phone photos (dev),2991,0.015570559,0.020019367
+real phone photos (dev),2991,0.015570559,0.015252948
+simulated photos (dev),3008,0.019610396,0.02742799
+simulated photos (dev),3008,0.019610396,0.02368225
+simulated photos (dev),3287,0.009768832,0.012554441
+simulated photos (dev),3287,0.009768832,0.021791894
+simulated photos (dev),3689,0.028852036,0.038810074
+simulated photos (dev),3689,0.028852036,0.0025670547
+simulated photos (dev),3703,0.019860674,0.028698575
+simulated photos (dev),3703,0.019860674,0.0016727081
+simulated photos (dev),3830,0.0047835554,0.0049635023
+simulated photos (dev),3830,0.0047835554,0.0013880638
+simulated photos (dev),4030,0.0153443115,0.018562442
+simulated photos (dev),4030,0.0153443115,0.0044516944
+simulated photos (dev),4183,0.018778618,0.020039927
+simulated photos (dev),4183,0.018778618,0.02896478
+simulated photos (dev),4457,0.024758253,0.035081677
+simulated photos (dev),4519,0.016748434,0.030663338
+simulated photos (dev),4519,0.016748434,0.012669864
+simulated photos (dev),4803,0.0123347705,0.013789734
+simulated photos (dev),4803,0.0123347705,0.009991929
+simulated photos (dev),5091,0.021937303,0.023988636
+simulated photos (dev),5091,0.021937303,0.018270608
+simulated photos (dev),5565,0.009991996,0.01198353
+simulated photos (dev),5565,0.009991996,0.0015291825
+simulated photos (dev),5566,0.006932667,0.0076822084
+simulated photos (dev),5566,0.006932667,0.017764466
+simulated photos (dev),5932,0.01358944,0.015311667
+simulated photos (dev),5932,0.01358944,0.00022407022
+simulated photos (dev),6045,0.017822903,0.016772643
+simulated photos (dev),6045,0.017822903,0.04074779
+simulated photos (dev),6052,0.023538636,0.026302123
+simulated photos (dev),6052,0.023538636,6.76526e-05
+simulated photos (dev),6063,0.0119719785,0.0038846964
+simulated photos (dev),6063,0.0119719785,0.010810834
+simulated photos (dev),6090,0.032041933,0.034848716
+simulated photos (dev),6090,0.032041933,2.0024656e-05
+simulated photos (dev),6262,0.009015554,0.011935721
+simulated photos (dev),6262,0.009015554,0.010610552
+simulated photos (dev),6315,0.067990474,0.041768853
+simulated photos (dev),6315,0.067990474,0.010670472
+simulated photos (dev),6669,0.03472484,0.04101377
+simulated photos (dev),6669,0.03472484,0.014308097
+simulated photos (dev),7160,0.016127069,0.0071680024
+simulated photos (dev),7160,0.016127069,0.0008226497
+simulated photos (dev),7491,0.0044620465,0.0049725184
+simulated photos (dev),7491,0.0044620465,0.02054512
+simulated photos (dev),7524,0.023159938,0.035560347
+simulated photos (dev),7524,0.023159938,0.008925411
+simulated photos (dev),7900,0.0028747236,0.0035465807
+simulated photos (dev),7900,0.0028747236,0.008520415
+simulated photos (dev),8199,0.0063916934,0.007250724
+simulated photos (dev),8199,0.0063916934,0.0011216797
+simulated photos (dev),8621,0.02625408,0.030163184
+simulated photos (dev),8621,0.02625408,0.006211245
+simulated photos (dev),8699,0.022574898,0.023038939
+simulated photos (dev),8699,0.022574898,0.021868482
+simulated photos (dev),8763,0.0077893585,0.009879511
+simulated photos (dev),8763,0.0077893585,0.008516817
+simulated photos (dev),9098,0.07515132,0.08613662
+simulated photos (dev),9098,0.07515132,0.00326367
+simulated photos (dev),9176,0.017444937,0.024012307
+simulated photos (dev),9176,0.017444937,0.04210224
+simulated photos (dev),9552,0.0046361634,0.005320153
+simulated photos (dev),9552,0.0046361634,0.00033132857
+simulated photos (dev),9928,0.011880177,0.013239295
+simulated photos (dev),9928,0.011880177,0.00018286583
+simulated photos (dev),9991,0.03783115,0.045575343
+simulated photos (dev),9991,0.03783115,0.039292287
+simulated photos (dev),10164,0.0039841314,0.004693641
+simulated photos (dev),10164,0.0039841314,0.011559048
+simulated photos (dev),10365,0.036852792,0.026854359
+simulated photos (dev),10365,0.036852792,0.0008393275
+simulated photos (dev),10401,0.018177569,0.019526934
+simulated photos (dev),10401,0.018177569,0.022947427
+simulated photos (dev),10484,0.008363067,0.013488204
+simulated photos (dev),10484,0.008363067,0.007293665
+simulated photos (dev),10747,0.0121502485,0.014200921
+simulated photos (dev),10747,0.0121502485,0.012097633
+simulated photos (dev),10790,0.026764851,0.04162788
+simulated photos (dev),10790,0.026764851,0.03631164
+simulated photos (dev),11155,0.008019842,0.0071413587
+simulated photos (dev),11155,0.008019842,0.0007783627
+simulated photos (dev),11407,0.020861715,0.023321442
+simulated photos (dev),11407,0.020861715,0.038866635
+simulated photos (dev),11489,0.0063714385,0.012876445
+simulated photos (dev),11489,0.0063714385,0.0021062705
+simulated photos (dev),11526,0.008832026,0.01331836
+simulated photos (dev),11526,0.008832026,0.019907989
+simulated photos (dev),11881,0.034354392,0.036015153
+simulated photos (dev),11881,0.034354392,0.018353099
+simulated photos (dev),11944,0.037924014,0.040778622
+simulated photos (dev),11944,0.037924014,0.044387855
+simulated photos (dev),12421,0.071585976,0.07719002
+simulated photos (dev),12421,0.071585976,0.010951098
+simulated photos (dev),12516,0.05946844,0.05845845
+simulated photos (dev),12979,0.030591113,0.049300965
+simulated photos (dev),12979,0.030591113,0.0038000674
+simulated photos (dev),13447,0.021025902,0.02663081
+simulated photos (dev),13447,0.021025902,0.0014006003
+simulated photos (dev),14198,0.056739412,0.06726719
+simulated photos (dev),14198,0.056739412,0.06356889
+simulated photos (dev),14352,0.016348392,0.022009045
+simulated photos (dev),14352,0.016348392,0.011239694
+simulated photos (dev),14370,0.02558387,0.025589447
+simulated photos (dev),14370,0.02558387,0.0074161864
+simulated photos (dev),14979,0.018403074,0.04189825
+simulated photos (dev),14979,0.018403074,0.0011633415
+simulated photos (dev),15921,0.020767266,0.026018592
+simulated photos (dev),15921,0.020767266,0.020538129
+simulated photos (dev),16647,0.013085224,0.016234841
+simulated photos (dev),16647,0.013085224,0.0015621292
+simulated photos (dev),16834,0.09045251,0.09090076
+simulated photos (dev),16834,0.09045251,0.07724451
+simulated photos (dev),16909,0.028288385,0.027796755
+simulated photos (dev),16909,0.028288385,0.0013806946
+simulated photos (dev),16974,0.025299963,0.027716234
+simulated photos (dev),16974,0.025299963,0.018358814
+simulated photos (dev),17231,0.018714359,0.02036346
+simulated photos (dev),17231,0.018714359,0.02894027
+drawn pages (fresh L),580,0.008099555,0.0098743625
+drawn pages (fresh L),667,0.010992105,0.012305427
+drawn pages (fresh L),681,0.023930604,0.026613994
+drawn pages (fresh L),732,0.011618288,0.0153493695
+drawn pages (fresh L),788,0.003676676,0.0045666127
+drawn pages (fresh L),957,0.039078675,0.036980104
+drawn pages (fresh L),1260,0.011649287,0.012238768
+drawn pages (fresh L),1265,0.011527959,0.012198965
+drawn pages (fresh L),1275,0.06204401,0.070594646
+drawn pages (fresh L),1410,0.010297939,0.011405106
+drawn pages (fresh L),1490,0.02369252,0.020715646
+drawn pages (fresh L),1611,0.040957887,0.04242278
+drawn pages (fresh L),1619,0.011854278,0.017496027
+drawn pages (fresh L),1958,0.01751357,0.01892163
+drawn pages (fresh L),2117,0.016103972,0.014734255
+drawn pages (fresh L),2330,0.00781393,0.00931142
+drawn pages (fresh L),2462,0.016809179,0.017383898
+drawn pages (fresh L),3177,0.039686747,0.013453882
+drawn pages (fresh L),3646,0.0229857,0.026613826
+drawn pages (fresh L),3787,0.012873701,0.012902594
+drawn pages (fresh L),3860,0.013787985,0.0134707205
+drawn pages (fresh L),3862,0.016767424,0.019806173
+drawn pages (fresh L),4195,0.044320237,0.041816752
+drawn pages (fresh L),4210,0.0053132866,0.0056130593
+drawn pages (fresh L),4355,0.017984794,0.020281436
+drawn pages (fresh L),4626,0.11535367,0.11790181
+drawn pages (fresh L),4767,0.01585643,0.014601941
+drawn pages (fresh L),4781,0.02388201,0.02553866
+drawn pages (fresh L),4934,0.085338086,0.08917052
+drawn pages (fresh L),5303,0.017300848,0.03003721
+drawn pages (fresh L),5593,0.04340212,0.041265596
+drawn pages (fresh L),5752,0.026775207,0.029309625
+drawn pages (fresh L),6186,0.03954458,0.039261837
+drawn pages (fresh L),6475,0.041694574,0.042160902
+drawn pages (fresh L),6784,0.015842482,0.016122945
+drawn pages (fresh L),6875,0.013685744,0.014081676
+drawn pages (fresh L),6984,0.032461368,0.035339233
+drawn pages (fresh L),7045,0.041150052,0.0417882
+drawn pages (fresh L),7528,0.019100808,0.020634616
+drawn pages (fresh L),7697,0.048094314,0.049683057
+drawn pages (fresh L),7882,0.012182036,0.012917111
+drawn pages (fresh L),7950,0.02341451,0.028979925
+drawn pages (fresh L),7954,0.022079447,0.020841768
+drawn pages (fresh L),7962,0.033724673,0.036429588
+drawn pages (fresh L),8031,0.03265164,0.03262247
+drawn pages (fresh L),8341,0.007352593,0.008285127
+drawn pages (fresh L),8422,0.01475372,0.016142607
+drawn pages (fresh L),8868,0.035300575,0.0322876
+drawn pages (fresh L),9110,0.012855273,0.012186209
+drawn pages (fresh L),9562,0.18975237,0.19006394
+drawn pages (fresh L),10026,0.006866447,0.008191264
+drawn pages (fresh L),10077,0.005774366,0.006658477
+drawn pages (fresh L),10361,0.016173111,0.02054956
+drawn pages (fresh L),10585,0.010856813,0.015449382
+drawn pages (fresh L),10984,0.032355767,0.032095358
+drawn pages (fresh L),11724,0.057169434,0.0014472288
+drawn pages (fresh L),11728,0.023161992,0.02063726
+drawn pages (fresh L),11915,0.010232861,0.012259382
+drawn pages (fresh L),11923,0.049234666,0.029283691
+drawn pages (fresh L),11963,0.01031033,0.012227814
+drawn pages (fresh L),11978,0.017675525,0.02113805
+drawn pages (fresh L),12198,0.04337567,0.0422971
+drawn pages (fresh L),12288,0.033763167,0.07003841
+drawn pages (fresh L),12328,0.00999159,0.011129131
+drawn pages (fresh L),12685,0.025479807,0.032751396
+drawn pages (fresh L),12905,0.0119177,0.013046031
+drawn pages (fresh L),13527,0.01649915,0.016572384
+drawn pages (fresh L),13844,0.024399133,0.019840686
+drawn pages (fresh L),13889,0.010759138,0.012998081
+drawn pages (fresh L),13926,0.012076912,0.0031015142
+drawn pages (fresh L),13961,0.015554084,0.017888067
+drawn pages (fresh L),14040,0.0044772914,0.005173581
+drawn pages (fresh L),14111,0.019204818,0.018975275
+drawn pages (fresh L),14126,0.035489284,0.035117578
+drawn pages (fresh L),14388,0.033904843,0.021089697
+drawn pages (fresh L),14459,0.011515388,0.012886037
+drawn pages (fresh L),14560,0.0063692206,0.0081752455
+drawn pages (fresh L),14573,0.01816139,0.021793442
+drawn pages (fresh L),14742,0.042340375,0.042734962
+drawn pages (fresh L),15093,0.0131018115,0.01267759
+drawn pages (fresh L),15998,0.02391274,0.026959157
+drawn pages (fresh L),16256,0.034441326,0.018827235
+drawn pages (fresh L),16462,0.008568974,0.014314844
+drawn pages (fresh L),16634,0.029502548,0.032641213
+drawn pages (fresh L),16807,0.023913814,0.026239257
+drawn pages (fresh L),17605,0.0033208618,0.0040830118
+drawn pages (fresh L),17784,0.025926339,0.029442582
+drawn pages (fresh L),18361,0.0191623,0.018699054
+drawn pages (fresh L),18569,0.02478923,0.029917628
+drawn pages (fresh L),18700,0.04807727,0.02416801
+drawn pages (fresh L),18864,0.010498747,0.01234754
+drawn pages (fresh L),18905,0.033481285,0.0328582
+drawn pages (fresh L),18987,0.01956824,0.021215051
+drawn pages (fresh L),19257,0.01199685,0.016134508
+drawn pages (fresh L),19421,0.017542696,0.02048044
+drawn pages (fresh L),19811,0.041443378,0.04536249
+drawn pages (fresh L),20266,0.006829942,0.0077906954
+drawn pages (fresh L),20569,0.033294663,0.03823877
+drawn pages (fresh L),20668,0.021692127,0.019347496
+drawn pages (fresh L),21572,0.16005749,0.15275717
+drawn pages (fresh M),199,0.024527416,0.02373022
+drawn pages (fresh M),244,0.007939973,0.008088258
+drawn pages (fresh M),296,0.09661085,0.0179385
+drawn pages (fresh M),535,0.023712257,0.023876086
+drawn pages (fresh M),625,0.011099244,0.01267737
+drawn pages (fresh M),864,0.009898989,0.010585566
+drawn pages (fresh M),998,0.010166538,0.011461096
+drawn pages (fresh M),1075,0.03769357,0.03808689
+drawn pages (fresh M),1656,0.01879838,0.008649627
+drawn pages (fresh M),1685,0.004143573,0.003645121
+drawn pages (fresh M),1805,0.06403317,0.08767622
+drawn pages (fresh M),2111,0.019526321,0.019056462
+drawn pages (fresh M),2162,0.018142855,0.019696075
+drawn pages (fresh M),2289,0.009014573,0.009460446
+drawn pages (fresh M),2422,0.01644099,0.017250495
+drawn pages (fresh M),2529,0.0144474525,0.016554024
+drawn pages (fresh M),2717,0.0093168765,0.009459482
+drawn pages (fresh M),2826,0.017992154,0.018690376
+drawn pages (fresh M),3387,0.01590345,0.014562044
+drawn pages (fresh M),3423,0.011204172,0.011782389
+drawn pages (fresh M),3432,0.013410736,0.015130287
+drawn pages (fresh M),3558,0.010814786,0.012773623
+drawn pages (fresh M),3774,0.030840602,0.024058664
+drawn pages (fresh M),3844,0.02564303,0.027139029
+drawn pages (fresh M),3951,0.010763182,0.011048069
+drawn pages (fresh M),4038,0.036230903,0.006750301
+drawn pages (fresh M),4353,0.014781469,0.011202249
+drawn pages (fresh M),4691,0.0064077,0.0070100096
+drawn pages (fresh M),4699,0.0041483017,0.004836694
+drawn pages (fresh M),5114,0.013256785,0.013555874
+drawn pages (fresh M),5293,0.06869023,0.051763944
+drawn pages (fresh M),5617,0.016330473,0.020525364
+drawn pages (fresh M),5697,0.01784135,0.019082796
+drawn pages (fresh M),5887,0.010249976,0.007957617
+drawn pages (fresh M),6118,0.021309996,0.021847196
+drawn pages (fresh M),6138,0.00975692,0.009001774
+drawn pages (fresh M),6537,0.066148534,0.06407991
+drawn pages (fresh M),6648,0.037192263,0.062299524
+drawn pages (fresh M),7450,0.08723512,0.11649806
+drawn pages (fresh M),7970,0.04104459,0.040250186
+drawn pages (fresh M),8265,0.029039647,0.029519401
+drawn pages (fresh M),8662,0.05244322,0.053050637
+drawn pages (fresh M),8999,0.04990475,0.046654772
+drawn pages (fresh M),9021,0.037067212,0.03934981
+drawn pages (fresh M),9063,0.020047424,0.019610446
+drawn pages (fresh M),9153,0.015430772,0.015757116
+drawn pages (fresh M),10024,0.024367884,0.030006465
+drawn pages (fresh M),10044,0.023327926,0.034017753
+drawn pages (fresh M),10219,0.08267077,0.10175667
+drawn pages (fresh M),10290,0.0035296166,0.0045520067
+drawn pages (fresh M),10629,0.017188119,0.01675195
+drawn pages (fresh M),10775,0.014189632,0.016799504
+drawn pages (fresh M),11045,0.017044025,0.01727202
+drawn pages (fresh M),11179,0.017951652,0.019167824
+drawn pages (fresh M),11254,0.01389809,0.011661873
+drawn pages (fresh M),11300,0.0325018,0.033216756
+drawn pages (fresh M),11436,0.009114598,0.008447731
+drawn pages (fresh M),11745,0.009135227,0.011135309
+drawn pages (fresh M),11844,0.042918302,0.05063026
+simulated photos (fresh L),580,0.008099555,0.013075978
+simulated photos (fresh L),667,0.010992105,0.016437156
+simulated photos (fresh L),681,0.023930604,0.027344042
+simulated photos (fresh L),732,0.011618288,0.01885351
+simulated photos (fresh L),788,0.003676676,0.0060279374
+simulated photos (fresh L),957,0.039078675,0.21279415
+simulated photos (fresh L),1260,0.011649287,0.01345851
+simulated photos (fresh L),1265,0.011527959,0.0013985356
+simulated photos (fresh L),1275,0.06204401,0.06664213
+simulated photos (fresh L),1410,0.010297939,0.015807757
+simulated photos (fresh L),1490,0.02369252,0.025851028
+simulated photos (fresh L),1611,0.040957887,0.035932485
+simulated photos (fresh L),1619,0.011854278,0.011098239
+simulated photos (fresh L),1958,0.01751357,0.016931208
+simulated photos (fresh L),2117,0.016103972,0.018372249
+simulated photos (fresh L),2330,0.00781393,0.0010113848
+simulated photos (fresh L),2462,0.016809179,0.02645214
+simulated photos (fresh L),3177,0.039686747,0.0064370013
+simulated photos (fresh L),3646,0.0229857,0.024435079
+simulated photos (fresh L),3787,0.012873701,0.008975956
+simulated photos (fresh L),3860,0.013787985,0.015345386
+simulated photos (fresh L),3862,0.016767424,0.002969976
+simulated photos (fresh L),4195,0.044320237,0.04817949
+simulated photos (fresh L),4210,0.0053132866,0.0068271225
+simulated photos (fresh L),4355,0.017984794,0.020748528
+simulated photos (fresh L),4626,0.11535367,0.03203431
+simulated photos (fresh L),4767,0.01585643,0.022061791
+simulated photos (fresh L),4781,0.02388201,0.027330657
+simulated photos (fresh L),4934,0.085338086,0.08526582
+simulated photos (fresh L),5303,0.017300848,0.044858966
+simulated photos (fresh L),5593,0.04340212,0.048225194
+simulated photos (fresh L),5752,0.026775207,0.0014157762
+simulated photos (fresh L),6186,0.03954458,0.040147275
+simulated photos (fresh L),6475,0.041694574,0.039955772
+simulated photos (fresh L),6784,0.015842482,0.017907456
+simulated photos (fresh L),6875,0.013685744,0.0024115236
+simulated photos (fresh L),6984,0.032461368,0.04056445
+simulated photos (fresh L),7045,0.041150052,0.036377944
+simulated photos (fresh L),7528,0.019100808,0.017676322
+simulated photos (fresh L),7697,0.048094314,0.048749913
+simulated photos (fresh L),7882,0.012182036,0.014132217
+simulated photos (fresh L),7950,0.02341451,0.043877255
+simulated photos (fresh L),7954,0.022079447,0.02237709
+simulated photos (fresh L),7962,0.033724673,0.036465496
+simulated photos (fresh L),8031,0.03265164,0.034039978
+simulated photos (fresh L),8341,0.007352593,0.00089748646
+simulated photos (fresh L),8422,0.01475372,0.01795995
+simulated photos (fresh L),8868,0.035300575,0.038339965
+simulated photos (fresh L),9110,0.012855273,0.012508905
+simulated photos (fresh L),9562,0.18975237,0.22144993
+simulated photos (fresh L),10026,0.006866447,0.0079864655
+simulated photos (fresh L),10077,0.005774366,0.0050749886
+simulated photos (fresh L),10361,0.016173111,0.019624421
+simulated photos (fresh L),10585,0.010856813,0.014259831
+simulated photos (fresh L),10984,0.032355767,0.033796415
+simulated photos (fresh L),11724,0.057169434,0.049675345
+simulated photos (fresh L),11728,0.023161992,0.030014439
+simulated photos (fresh L),11915,0.010232861,0.025654523
+simulated photos (fresh L),11923,0.049234666,0.04702062
+simulated photos (fresh L),11963,0.01031033,0.0076281447
+simulated photos (fresh L),11978,0.017675525,0.020148389
+simulated photos (fresh L),12198,0.04337567,0.002791836
+simulated photos (fresh L),12288,0.033763167,0.03350006
+simulated photos (fresh L),12328,0.00999159,0.0008858492
+simulated photos (fresh L),12685,0.025479807,0.03110977
+simulated photos (fresh L),12905,0.0119177,0.013566744
+simulated photos (fresh L),13527,0.01649915,0.017527599
+simulated photos (fresh L),13844,0.024399133,0.0055313916
+simulated photos (fresh L),13889,0.010759138,0.011744456
+simulated photos (fresh L),13926,0.012076912,0.012778885
+simulated photos (fresh L),13961,0.015554084,0.016649801
+simulated photos (fresh L),14040,0.0044772914,0.00012904734
+simulated photos (fresh L),14111,0.019204818,0.023248447
+simulated photos (fresh L),14126,0.035489284,0.0008822818
+simulated photos (fresh L),14388,0.033904843,0.032987423
+simulated photos (fresh L),14459,0.011515388,0.0015231791
+simulated photos (fresh L),14560,0.0063692206,0.007105623
+simulated photos (fresh L),14573,0.01816139,0.019829793
+simulated photos (fresh L),14742,0.042340375,0.050024863
+simulated photos (fresh L),15093,0.0131018115,0.04556174
+simulated photos (fresh L),15998,0.02391274,0.023534019
+simulated photos (fresh L),16256,0.034441326,0.022040613
+simulated photos (fresh L),16462,0.008568974,0.01768741
+simulated photos (fresh L),16634,0.029502548,0.026268976
+simulated photos (fresh L),16807,0.023913814,0.022139108
+simulated photos (fresh L),17605,0.0033208618,0.014968428
+simulated photos (fresh L),17784,0.025926339,0.026962105
+simulated photos (fresh L),18361,0.0191623,0.023520203
+simulated photos (fresh L),18569,0.02478923,0.030155897
+simulated photos (fresh L),18700,0.04807727,0.01687105
+simulated photos (fresh L),18864,0.010498747,0.00993951
+simulated photos (fresh L),18905,0.033481285,0.0021646628
+simulated photos (fresh L),18987,0.01956824,0.021541178
+simulated photos (fresh L),19257,0.01199685,0.020963741
+simulated photos (fresh L),19421,0.017542696,0.01977237
+simulated photos (fresh L),19811,0.041443378,0.044776246
+simulated photos (fresh L),20266,0.006829942,0.006519265
+simulated photos (fresh L),20569,0.033294663,0.03815138
+simulated photos (fresh L),20668,0.021692127,0.017330455
+simulated photos (fresh L),21572,0.16005749,0.013307882
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",14982,0.042815305,0.045116052
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",2105,0.014416993,0.018834703
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",10755,0.01589664,0.017954081
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",10398,0.011604185,0.01526958
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",12197,0.021587253,0.02011151
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",13510,0.020865334,0.026736675
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",14590,0.0097588785,0.01011623
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",13283,0.018259248,0.014765993
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",6690,0.025419876,0.0082859155
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",9900,0.011606986,0.011799335
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",9689,0.009792148,0.012422873
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",15982,0.024101313,0.043416873
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",15691,0.021931473,0.032118015
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",13903,0.021464065,0.02078839
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",2562,0.014665804,0.013451382
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",19796,0.02392756,0.009310823
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",18957,0.027125226,0.02086362
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",15691,0.021931473,0.03378159
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",14301,0.00650074,0.0062073865
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",14590,0.0097588785,0.028159797
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",14982,0.042815305,0.017598107
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",15982,0.024101313,0.027234603

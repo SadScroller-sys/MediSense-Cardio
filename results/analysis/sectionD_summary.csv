@@ -1,0 +1,8 @@
+analysis,n_images,wrong_readings,auc,ci95
+"C3 primary: train first 50 -> score new 100 (wrong HR, images with output)",1265,86,0.858,0.81 to 0.91
+  oracle (told damage type and level),1265,86,0.827,0.77 to 0.90
+C3 secondary: bad = wrong or no output (all images),1287,108,0.831,0.78 to 0.88
+"  oracle, secondary",1287,108,0.817,0.76 to 0.88
+Swapped: train new 100 -> test first 50 (shared versions),630,50,0.75,0.64 to 0.91
+Grouped 5-fold CV on all 150 (13 shared versions),1895,136,0.795,0.73 to 0.87
+"  oracle, same CV",1895,136,0.785,0.72 to 0.87

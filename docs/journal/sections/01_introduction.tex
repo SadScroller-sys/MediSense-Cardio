@@ -1,0 +1,23 @@
+\section{Introduction}
+
+\subsection{Background}
+An electrocardiogram (ECG) recorded in a clinic is normally read by trained staff on calibrated equipment. Increasingly, people meet a printed or photographed ECG outside that setting: a printout from a home device, a photograph of a clinic report sent through a messaging application, or an image uploaded to a health application that promises to read it back into numbers and explain them. Reading a paper ECG back into a digital waveform is now technically mature. Open-source tools report signal-to-noise ratios of roughly 20\,dB on real scanned pages \citep{ref5}, an international challenge has benchmarked digitisation methods \citep{ref2}, and purpose-built toolkits can render realistic printed ECG pages from digital signals for controlled testing \citep{ref1}.
+
+What is much less well characterised is how such a pipeline behaves when the input is a poor photograph. Digitisers are normally validated on clean, well-scanned images. A patient's own photograph may be out of focus, tilted, low-resolution, over-compressed, unevenly lit or printed faintly. If the digitised heart rate or interval is wrong because the picture was poor, and the tool reports it with the same confidence as a good one, a downstream statement to the patient can be wrong in the most harmful direction: an abnormal reading described as normal. We call this \emph{false reassurance}. A safeguard against it can only be designed if we know \emph{which} kinds of image degradation produce it, and how severe they must be.
+
+\subsection{Objective}
+This paper asks: \emph{how does controlled degradation of a photographed paper ECG propagate through an open-source digitisation pipeline into clinically meaningful measurements, and at what severity, for which degradations, does it produce a falsely reassuring result?} We answer it with a simulation study on public data in which the ground truth is known exactly.
+
+\subsection{What this paper contributes}
+\begin{enumerate}
+\item A \textbf{complete, step-by-step account} of the study from an empty computer to the final analysis, with the real output of every step (Section~\ref{sec:methods}, Section~\ref{sec:results}), including the dead ends, the bugs and the corrections. The aim is that another group can repeat it.
+\item A \textbf{controlled measurement} of six degradation axes at five severities each over 1{,}550 tests, repeated in a second sweep (a computational repeat, not an independent replication), reporting heart rate, PR, QRS, QT and QTc against ground truth with paired statistics.
+\item A \textbf{patient-facing outcome analysis}: whether the digitised value would move a patient across a clinical boundary, for heart rate and (more cautiously) QTc.
+\item \textbf{Two methodological findings} that matter beyond this study: interval measurements from a reconstructed signal carry a much larger error floor than heart rate, part of which is an artefact of ground-truth sampling rate; and an unpinned digitiser dependency changed which records failed between two runs five days apart.
+\end{enumerate}
+
+\subsection{What this paper does not claim}
+The project this study belongs to was conceived as a full system: digitise, extract measurements, explain them to the patient in plain language behind a safety boundary, and deliver this through a web application. \textbf{Only the first part has been built and measured.} The explanation, safety-boundary and application stages were deferred and are not evaluated here; they appear only as future work. We also do not claim a diagnostic tool, a validated clinical threshold, or performance on real photographs (Section~\ref{sec:limitations}).
+
+\subsection{Organisation}
+Section~\ref{sec:related} places the work in the literature. Section~\ref{sec:methods} describes the data, the software environment and each step of the pipeline, in the order in which it was built. Section~\ref{sec:results} reports the output of each step. Sections~\ref{sec:discussion} and~\ref{sec:limitations} interpret the findings and state their limits.

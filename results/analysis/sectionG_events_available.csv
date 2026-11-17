@@ -1,0 +1,3 @@
+set,recordings,images,events,prevalence,events_per_predictor,recordings_with_an_event,top5_recordings_share_of_events
+first 50 (training),49,1509,89,5.9%,17.8,27,70%
+new 100 (test),99,1265,86,6.8%,,54,27%

@@ -1,0 +1,25 @@
+diff --git a/codes/ecg-image-generator/gen_ecg_image_from_data.py b/codes/ecg-image-generator/gen_ecg_image_from_data.py
+index 2cb0e9f..391b957 100644
+--- a/codes/ecg-image-generator/gen_ecg_image_from_data.py
++++ b/codes/ecg-image-generator/gen_ecg_image_from_data.py
+@@ -7,7 +7,6 @@ import numpy as np
+ from scipy.stats import bernoulli
+ from helper_functions import find_files
+ from extract_leads import get_paper_ecg
+-from HandwrittenText.generate import get_handwritten
+ from CreasesWrinkles.creases import get_creased
+ from ImageAugmentation.augment import get_augment
+ import warnings
+@@ -150,6 +149,12 @@ def run_single_file(args):
+             
+             #Handwritten text addition
+             if(hw_text):
++                # LOCAL PATCH (not upstream): moved from a top-level import. This feature
++                # needs tensorflow/spacy, which don't work on this machine (see
++                # docs/PROGRESS-LOG.md and requirements-core.txt). Deferred here so the
++                # rest of the tool works without them; only breaks if hw_text is actually
++                # requested.
++                from HandwrittenText.generate import get_handwritten
+                 num_words = args.num_words if (args.deterministic_num_words) else random.choice(range(2,args.num_words+1))
+                 x_offset = args.x_offset if (args.deterministic_offset) else random.choice(range(1,args.x_offset+1))
+                 y_offset = args.y_offset if (args.deterministic_offset) else random.choice(range(1,args.y_offset+1))

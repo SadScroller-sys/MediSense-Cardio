@@ -1,0 +1,10 @@
+gate,flag_top,caught,good_flagged,kept_wrong,wrong_overall,random_gate_caught
+"A. photo scores, trained on first 50, scored on new 100",10%,60% (51-73),6% (5-7),3.0% (1.6-4.5),6.8%,10%
+"A. photo scores, trained on first 50, scored on new 100",20%,76% (66-86),16% (15-17),2.1% (1.0-3.5),6.8%,20%
+"A. photo scores, trained on first 50, scored on new 100",30%,80% (72-89),26% (25-27),1.9% (0.9-3.3),6.8%,30%
+oracle: told damage type and level (new 100),10%,62% (52-74),6% (5-7),2.9% (1.6-4.3),6.8%,10%
+oracle: told damage type and level (new 100),20%,77% (66-88),16% (15-17),2.0% (0.9-3.4),6.8%,20%
+oracle: told damage type and level (new 100),30%,80% (70-91),26% (25-27),1.9% (0.7-3.4),6.8%,30%
+best single score on the first 50: blur_log (new 100),10%,37% (29-47),8% (7-9),4.7% (3.3-6.4),6.8%,10%
+best single score on the first 50: blur_log (new 100),20%,78% (68-88),16% (15-17),1.9% (0.8-3.3),6.8%,20%
+best single score on the first 50: blur_log (new 100),30%,80% (70-91),26% (25-27),1.9% (0.7-3.4),6.8%,30%

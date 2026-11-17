@@ -1,0 +1,29 @@
+{
+ "QRS": {
+  "passed_K": true,
+  "passed_G": true,
+  "contradicted_by_G": false,
+  "passed_photos": false,
+  "shown_in_app": false,
+  "af_bias_K": -4.222830168125547,
+  "needs_af_guard": false
+ },
+ "QT": {
+  "passed_K": false,
+  "passed_G": true,
+  "contradicted_by_G": false,
+  "passed_photos": false,
+  "shown_in_app": false,
+  "af_bias_K": 2.547055199619456,
+  "needs_af_guard": false
+ },
+ "QTc (Fridericia)": {
+  "passed_K": false,
+  "passed_G": false,
+  "contradicted_by_G": false,
+  "passed_photos": false,
+  "shown_in_app": false,
+  "af_bias_K": 4.623839502334784,
+  "needs_af_guard": false
+ }
+}

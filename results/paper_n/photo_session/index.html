@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Photo session N</title>
+<style>html,body{margin:0;height:100%;background:#fff;font-family:Arial,sans-serif}
+#img{position:fixed;left:0;top:0;width:100vw;height:100vh;object-fit:contain;background:#fff}
+#bar{position:fixed;left:0;bottom:0;width:100%;background:rgba(0,0,0,.72);color:#fff;font-size:18px;padding:8px 14px;box-sizing:border-box}
+#bar.hide{display:none}</style></head><body>
+<img id="img" alt="ECG page"><div id="bar"></div>
+<script>
+const pages=["pages/S01.png","pages/S02.png","pages/S03.png","pages/S04.png","pages/S05.png","pages/S06.png","pages/S07.png","pages/S08.png","pages/S09.png","pages/S10.png","pages/S11.png","pages/S12.png","pages/S13.png","pages/S14.png","pages/S15.png","pages/S16.png","pages/S17.png","pages/S18.png","pages/S19.png","pages/S20.png","pages/S21.png","pages/S22.png","pages/S23.png","pages/S24.png","pages/S25.png","pages/S26.png","pages/S27.png","pages/S28.png","pages/S29.png","pages/S30.png","pages/S31.png","pages/S32.png","pages/S33.png","pages/S34.png","pages/S35.png","pages/S36.png","pages/S37.png","pages/S38.png","pages/S39.png","pages/S40.png","pages/S41.png","pages/S42.png","pages/S43.png","pages/S44.png","pages/S45.png","pages/S46.png","pages/S47.png","pages/S48.png","pages/S49.png","pages/S50.png","pages/S51.png","pages/S52.png","pages/S53.png","pages/S54.png","pages/S55.png","pages/S56.png","pages/S57.png","pages/S58.png","pages/S59.png","pages/S60.png"];
+let i=0, bar=document.getElementById('bar'), img=document.getElementById('img');
+function show(){img.src=pages[i];bar.textContent='Page '+(i+1)+' of '+pages.length+':  take 2 photos (1 = phone straight in front, 2 = tilted about 30 degrees).  Next: arrow right or space.  Hide this bar: H.  Full screen: F.';}
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){i=Math.min(i+1,pages.length-1);show();e.preventDefault();}
+ else if(e.key==='ArrowLeft'||e.key==='Backspace'||e.key==='PageUp'){i=Math.max(i-1,0);show();e.preventDefault();}
+ else if(e.key==='h'||e.key==='H'){bar.classList.toggle('hide');}
+ else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+});
+show();
+</script></body></html>

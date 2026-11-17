@@ -1,0 +1,11 @@
+card,kind,id,truth_bpm,read_bpm,light,axis_12sl,axis_ours,pr_ms,rr_cv,hidden_by_demo_guard,gain_error_pct
+1,"GREEN wrong, competition",2596413640__C3_phone_photo_print,51.6,60.8,GREEN,,,,,,
+2,"GREEN wrong, competition",3356121866__C8_mold_scan_bw,67.5,51.1,GREEN,,,,,,
+3,3. GREEN but wrong (simulated photo),G035_angled,75.9,63.5,GREEN,,,,,,
+4,4. Largest error after straightening,G079_angled,87.5,65.1,RED,,,,,,
+5,stays wrong after straightening (Q2),IMG_20261111_192156,57.9,66.0,AMBER,,,,,,
+6,axis failure (W confirmation),IMG_20261110_133007,,,n/a,148.0,-91.4,,,,
+7,AF page with a PR value,G004,,,AMBER,,,208.9,0.234,True,
+8,"no usable HR (Z, original photo)",G021_angled,97.7,,RED by rule,,,,,,
+9,"amplitude shrink (R, own phone P)",IMG_20261110_132921,,,RED,,,,,,-91.2
+10,false alarm on a right reading (AF page),G071,99.8,100.4,AMBER,,,,,,

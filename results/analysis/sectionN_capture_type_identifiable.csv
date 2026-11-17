@@ -1,0 +1,10 @@
+capture,auc_identify_this_capture_type
+C0_kit_original,0.999
+C1_print_scan_colour,0.909
+C2_print_scan_bw,0.932
+C3_phone_photo_print,0.816
+C4_phone_photo_screen,0.999
+C5_stained_soaked_photo,0.975
+C6_extensive_damage_photo,0.988
+C7_mold_scan_colour,0.973
+C8_mold_scan_bw,0.968

@@ -1,0 +1,11 @@
+damage,feature,auc,higher_means
+resolution level 5,det_spread,0.623,worse
+resolution level 5,det_std,0.611,worse
+resolution level 5,det_n_agree,0.761,better
+resolution level 5,det_nkclean_vs_pt,0.713,worse
+resolution level 5,det_n_missing,0.51,better
+blur level 5,det_spread,0.698,worse
+blur level 5,det_std,0.698,worse
+blur level 5,det_n_agree,0.843,better
+blur level 5,det_nkclean_vs_pt,0.77,worse
+blur level 5,det_n_missing,0.506,better

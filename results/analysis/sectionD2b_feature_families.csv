@@ -1,0 +1,5 @@
+feature_family,overall_auc,within resolution level 5,within blur level 5
+RR regularity only,0.892 (0.84 to 0.94),0.880 (0.81 to 0.94),0.866 (0.76 to 0.96)
+cross-lead consistency only,0.838 (0.77 to 0.90),0.642 (0.52 to 0.75),0.749 (0.60 to 0.88)
+completeness only,0.723 (0.65 to 0.80),0.448 (0.33 to 0.57),0.542 (0.40 to 0.69)
+all output features,0.914 (0.88 to 0.95),0.818 (0.73 to 0.89),0.829 (0.69 to 0.94)

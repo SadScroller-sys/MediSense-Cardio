@@ -1,0 +1,13 @@
+file,true patterns (dataset labels),light on the cached run,true heart rate (bpm)
+N012_angled.jpg,"MI, ASMI, AF",GREEN,65
+N017_straight.jpg,"MI, STTC, AF",GREEN,70
+N004_angled.jpg,LBBB,GREEN,70
+N011_straight.jpg,LBBB,GREEN,53
+N005_straight.jpg,"MI, 1dAVb",GREEN,77
+N014_angled.jpg,1dAVb,GREEN,64
+N001_straight.jpg,"MI, STTC, ASMI, LVH, LAFB",GREEN,71
+N021_straight.jpg,LVH,GREEN,83
+N002_angled.jpg,LAFB,GREEN,81
+N003_straight.jpg,LAFB,GREEN,66
+N008_angled.jpg,IRBBB,GREEN,69
+N016_angled.jpg,"MI, ASMI, IRBBB",GREEN,57

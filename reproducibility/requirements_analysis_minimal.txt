@@ -1,0 +1,12 @@
+# Minimal packages for reproduction levels 1 and 2 (check the numbers, redo the analyses). Python 3.13.
+# Pinned to the versions used on 2026-11-14. The full dumps of the two environments are the other two requirements_*.txt files.
+# Level 3 (redo the digitising on a GPU) also needs PyTorch and the digitiser's own requirements: see REPRODUCE.md section 4 and 8.
+numpy==2.5.2
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.9.1
+neurokit2==0.3.0
+wfdb==4.3.1
+matplotlib==3.11.2
+pillow==12.3.0
+opencv-python-headless==5.0.0.93

@@ -1,0 +1,55 @@
+% MediSense-Cardio -- journal manuscript (Physiological Measurement, IOP). DRAFT scaffold, 2026-09-25.
+%
+% Written as a plain `article` so it compiles anywhere. Before submission, port to IOP's `iopart` template
+% (optional per IOP) and switch the bibliography to Harvard author-year (IOP requires Harvard for this journal).
+% Body text is split into sections/*.tex. Anything not yet verified or still pending is marked with \pending{...}
+% (red) so it cannot be missed. Numbers come from scripts/analysis/*.py and docs/journal/tables/*.csv.
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,array,tabularx,longtable}
+\usepackage{xcolor}
+\usepackage[authoryear,round]{natbib}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\setstretch{1.1}
+
+\newcommand{\pending}[1]{\textcolor{red}{\textbf{[PENDING: #1]}}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand{\bpm}{\,bpm}
+\newcommand{\ms}{\,ms}
+
+\title{From a photographed paper ECG to what a patient is told: a step-by-step, reproducible study of how image degradation propagates through an open-source digitisation pipeline\\[2pt]
+\large\textit{[working title -- confirm with the guide]}}
+\author{\todo{author names, affiliations, corresponding author e-mail}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_methods}
+\input{sections/04_results}
+\input{sections/05_discussion}
+\input{sections/06_limitations_conclusions}
+\input{sections/07_back_matter}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\appendix
+\input{sections/08_supplement}
+
+\end{document}

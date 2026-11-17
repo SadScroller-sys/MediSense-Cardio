@@ -1,0 +1,7 @@
+file,page,true_hr,light,hr,score,n_beats,error,reasons,seconds
+sample1_straight_clean.jpg,Q02,57.0,GREEN,56.9,0.021238269578086864,9,,"['minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)', 'minor note (did not change the light): five beat detectors disagree about the heart rate by 33 bpm']",43
+sample2_angled_left.jpg,Q05,74.6,GREEN,74.6,0.035562748369468766,12,,['minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)'],38
+sample3_angled_from_below.jpg,Q09,77.6,GREEN,77.6,0.014762403341580303,13,,['minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)'],36
+sample4_dim_uneven_light.jpg,Q12,69.3,GREEN,69.4,0.08882981860828809,10,,"['minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)', 'minor note (did not change the light): five beat detectors disagree about the heart rate by 25 bpm']",36
+sample5_far_and_small.jpg,Q15,62.4,GREEN,62.4,0.01549872942145963,10,,['minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)'],36
+sample6_blurry_and_angled.jpg,Q18,48.3,RED,61.5,0.9982517230005084,8,,"['beat spacing is irregular', 'one beat gap is much longer than the others (a missed beat?)', 'leads I, II and III disagree with each other (should satisfy II = I + III)', 'aVR, aVL and aVF disagree with each other (should add up to zero)', 'other leads count a different number of beats than lead II",47

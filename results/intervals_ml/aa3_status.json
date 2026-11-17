@@ -1,0 +1,29 @@
+{
+ "QRS": {
+  "passed_L_pages": true,
+  "passed_L_sim": false,
+  "sim_contradicts": true,
+  "passed_real_photos": false,
+  "shown_in_app": false,
+  "af_bias_L": 5.711441718370962,
+  "needs_af_guard": false
+ },
+ "QT": {
+  "passed_L_pages": false,
+  "passed_L_sim": false,
+  "sim_contradicts": false,
+  "passed_real_photos": false,
+  "shown_in_app": false,
+  "af_bias_L": 19.919750849721407,
+  "needs_af_guard": false
+ },
+ "QTc (Fridericia)": {
+  "passed_L_pages": false,
+  "passed_L_sim": false,
+  "sim_contradicts": false,
+  "passed_real_photos": false,
+  "shown_in_app": false,
+  "af_bias_L": 29.80671147573112,
+  "needs_af_guard": true
+ }
+}

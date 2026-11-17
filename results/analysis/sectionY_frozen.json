@@ -1,0 +1,80 @@
+{
+ "p": {
+  "candidate": "PA",
+  "orig_c": -0.02348251879699249,
+  "table": [
+   {
+    "cand": "PA",
+    "share": 0.9673,
+    "n": 1064,
+    "cv_median_abs": 0.0121,
+    "cv_within": 0.9276,
+    "cv_bias": 0.0,
+    "cv_slope": 0.9674,
+    "sign": 0.9766
+   },
+   {
+    "cand": "PB",
+    "share": 0.9673,
+    "n": 1064,
+    "cv_median_abs": 0.0121,
+    "cv_within": 0.9267,
+    "cv_bias": 0.0,
+    "cv_slope": 0.93,
+    "sign": 0.9748
+   },
+   {
+    "cand": "PC",
+    "share": 0.9727,
+    "n": 1070,
+    "cv_median_abs": 0.0171,
+    "cv_within": 0.9215,
+    "cv_bias": -0.0,
+    "cv_slope": 0.7423,
+    "sign": 0.9839
+   }
+  ],
+  "photo_c": -0.01767062320439789,
+  "photo_fit_in_sample": {
+   "n": 192,
+   "median_abs": 0.014696363937298007,
+   "slope": 1.1250528932445052
+  }
+ },
+ "t": {
+  "candidate": null,
+  "table": [
+   {
+    "cand": "TA",
+    "share": 0.9673,
+    "n": 1064,
+    "cv_median_abs": 0.0146,
+    "cv_within": 0.9051,
+    "cv_bias": -0.0,
+    "cv_slope": 0.6799,
+    "sign": 0.966
+   },
+   {
+    "cand": "TB",
+    "share": 0.9673,
+    "n": 1064,
+    "cv_median_abs": 0.0174,
+    "cv_within": 0.9051,
+    "cv_bias": 0.0,
+    "cv_slope": 0.6579,
+    "sign": 0.966
+   },
+   {
+    "cand": "TC",
+    "share": 0.9855,
+    "n": 1084,
+    "cv_median_abs": 0.0339,
+    "cv_within": 0.7703,
+    "cv_bias": 0.0,
+    "cv_slope": 0.7154,
+    "sign": 0.9384
+   }
+  ]
+ },
+ "written": "2026-11-14 13:14"
+}

@@ -1,0 +1,89 @@
+{
+ "rules": "docs/plan/analysis_plan_changes.md 2026-11-15",
+ "classes": {
+  "NORM": {
+   "supported_drawn_pages": true,
+   "supported_phone_photos": true,
+   "testable_drawn": true,
+   "testable_photos": true,
+   "show_percentage_photos": true,
+   "show_percentage_drawn": true,
+   "threshold": 0.43786701517986576,
+   "T1_auroc": 0.9322394961503563,
+   "T2_auroc": 0.8816444444444443,
+   "T2_lo95": 0.841196593014039,
+   "T3_auroc": 0.7535744322960471,
+   "T1_ece": 0.017114306615945752
+  },
+  "MI": {
+   "supported_drawn_pages": true,
+   "supported_phone_photos": true,
+   "testable_drawn": true,
+   "testable_photos": true,
+   "show_percentage_photos": true,
+   "show_percentage_drawn": true,
+   "threshold": 0.27857008133628836,
+   "T1_auroc": 0.8979601990049751,
+   "T2_auroc": 0.9076397515527951,
+   "T2_lo95": 0.8682368908898306,
+   "T3_auroc": 0.8565051020408163,
+   "T1_ece": 0.02005932411834538
+  },
+  "STTC": {
+   "supported_drawn_pages": true,
+   "supported_phone_photos": true,
+   "testable_drawn": true,
+   "testable_photos": true,
+   "show_percentage_photos": true,
+   "show_percentage_drawn": true,
+   "threshold": 0.32360671994551604,
+   "T1_auroc": 0.9173789208585645,
+   "T2_auroc": 0.8863463488843812,
+   "T2_lo95": 0.8455646213389576,
+   "T3_auroc": 0.8653333333333333,
+   "T1_ece": 0.020555075410269037
+  },
+  "CD": {
+   "supported_drawn_pages": true,
+   "supported_phone_photos": true,
+   "testable_drawn": true,
+   "testable_photos": true,
+   "show_percentage_photos": true,
+   "show_percentage_drawn": true,
+   "threshold": 0.23210699768844442,
+   "T1_auroc": 0.9079851849979144,
+   "T2_auroc": 0.8951207845013155,
+   "T2_lo95": 0.8390175745025565,
+   "T3_auroc": 0.8746811224489796,
+   "T1_ece": 0.01779170870826899
+  },
+  "HYP": {
+   "supported_drawn_pages": false,
+   "supported_phone_photos": false,
+   "testable_drawn": true,
+   "testable_photos": true,
+   "show_percentage_photos": false,
+   "show_percentage_drawn": false,
+   "threshold": 0.1137474686101192,
+   "T1_auroc": 0.8817974900290254,
+   "T2_auroc": 0.7752808988764046,
+   "T2_lo95": 0.6891476156140872,
+   "T3_auroc": 0.6364942528735632,
+   "T1_ece": 0.008082550882962376
+  },
+  "AF": {
+   "supported_drawn_pages": true,
+   "supported_phone_photos": false,
+   "testable_drawn": true,
+   "testable_photos": false,
+   "show_percentage_photos": false,
+   "show_percentage_drawn": true,
+   "threshold": 0.1580361982320135,
+   "T1_auroc": 0.9721095982518071,
+   "T2_auroc": 0.8692512949301522,
+   "T2_lo95": 0.7581163841503401,
+   "T3_auroc": 0.8658854166666666,
+   "T1_ece": 0.009597925332075015
+  }
+ }
+}

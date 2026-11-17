@@ -1,0 +1,85 @@
+{
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-17 set Q; thresholds from DAMAGED validation data only",
+ "thresholds": {
+  "A2:ASMI": {
+   "s97": 0.36993085966697997,
+   "validation_negatives": 1941,
+   "validation_positives": 201
+  },
+  "A2:NDT": {
+   "s97": 0.43261307366038904,
+   "validation_negatives": 1962,
+   "validation_positives": 180
+  },
+  "A2:LVH": {
+   "s97": 0.30806314251808803,
+   "validation_negatives": 1984,
+   "validation_positives": 158
+  },
+  "A2:IMI": {
+   "s97": 0.40390737506878216,
+   "validation_negatives": 1971,
+   "validation_positives": 171
+  },
+  "A2:LAFB": {
+   "s97": 0.30612688582884706,
+   "validation_negatives": 1985,
+   "validation_positives": 157
+  },
+  "A2:ISC_": {
+   "s97": 0.26619893432026986,
+   "validation_negatives": 2020,
+   "validation_positives": 122
+  },
+  "A2:IRBBB": {
+   "s97": 0.26406718978975513,
+   "validation_negatives": 2032,
+   "validation_positives": 110
+  },
+  "A2:PVC": {
+   "s97": 0.0859651476824896,
+   "validation_negatives": 2043,
+   "validation_positives": 99
+  },
+  "A2:1AVB": {
+   "s97": 0.20609242126652458,
+   "validation_negatives": 2062,
+   "validation_positives": 80
+  },
+  "A2:IVCD": {
+   "s97": 0.1373250195489151,
+   "validation_negatives": 2066,
+   "validation_positives": 76
+  },
+  "A2:ISCAL": {
+   "s97": 0.1931928751361481,
+   "validation_negatives": 2078,
+   "validation_positives": 64
+  },
+  "A2:NST_": {
+   "s97": 0.12143407032823861,
+   "validation_negatives": 2088,
+   "validation_positives": 54
+  },
+  "A2:CRBBB": {
+   "s97": 0.02226145413008848,
+   "validation_negatives": 2087,
+   "validation_positives": 55
+  },
+  "A2:CLBBB": {
+   "s97": 0.02649655078605139,
+   "validation_negatives": 2088,
+   "validation_positives": 54
+  },
+  "A2:ILMI": {
+   "s97": 0.1090616246750768,
+   "validation_negatives": 2101,
+   "validation_positives": 41
+  },
+  "A2:LAO/LAE": {
+   "s97": 0.07787504458326475,
+   "validation_negatives": 2103,
+   "validation_positives": 39
+  }
+ }
+}

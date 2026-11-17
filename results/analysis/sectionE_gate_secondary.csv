@@ -1,0 +1,4 @@
+gate,flag_top,caught,good_flagged,kept_wrong,wrong_overall,random_gate_caught
+"secondary target (wrong OR no output), held-out new 100",10%,50% (41-59),6% (6-7),4.7% (3.3-6.4),8.4%,10%
+"secondary target (wrong OR no output), held-out new 100",20%,74% (65-83),15% (14-16),2.7% (1.5-4.3),8.4%,20%
+"secondary target (wrong OR no output), held-out new 100",30%,81% (72-89),25% (24-27),2.3% (1.1-3.9),8.4%,30%

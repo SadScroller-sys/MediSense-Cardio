@@ -1,0 +1,91 @@
+{
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-17 (evening, set R)",
+ "normal_pictures_flagged": {
+  "pages": [
+   40,
+   0
+  ],
+  "sim": [
+   40,
+   0
+  ]
+ },
+ "pairs": {
+  "B2:AF": {
+   "decision": true,
+   "pages_pos": 48,
+   "pages_auroc": 0.9875578703703702,
+   "pages_lo95": 0.9701603207332444,
+   "pages_sens": 0.9791666666666666,
+   "pages_spec": 0.9027777777777778,
+   "sim_pos": 48,
+   "sim_auroc": 0.8353587962962962,
+   "sim_lo95": 0.7404400113668655,
+   "sim_sens": 0.7083333333333334,
+   "sim_spec": 0.9305555555555556,
+   "threshold": 0.059110518972242565,
+   "pass_pages": true,
+   "pass_sim_auc": true,
+   "pass_sim_operating_point": true,
+   "available": true,
+   "verdict": "AVAILABLE: validated on dataset pictures (drawn pages and simulated photos)"
+  },
+  "B2:LBBB": {
+   "decision": true,
+   "pages_pos": 41,
+   "pages_auroc": 0.9595554183389935,
+   "pages_lo95": 0.8990533438575609,
+   "pages_sens": 0.926829268292683,
+   "pages_spec": 0.9493670886075949,
+   "sim_pos": 41,
+   "sim_auroc": 0.8135226921889472,
+   "sim_lo95": 0.7009755175757351,
+   "sim_sens": 0.6585365853658537,
+   "sim_spec": 0.9367088607594937,
+   "threshold": 0.01811498987329679,
+   "pass_pages": true,
+   "pass_sim_auc": true,
+   "pass_sim_operating_point": true,
+   "available": true,
+   "verdict": "AVAILABLE: validated on dataset pictures (drawn pages and simulated photos)"
+  },
+  "B:AF": {
+   "decision": false,
+   "pages_pos": 48,
+   "pages_auroc": 0.9835069444444444,
+   "pages_lo95": 0.9636239210358056,
+   "pages_sens": 0.9375,
+   "pages_spec": 0.9027777777777778,
+   "sim_pos": 48,
+   "sim_auroc": 0.8249421296296295,
+   "sim_lo95": 0.7277023274398806,
+   "sim_sens": 0.75,
+   "sim_spec": 0.8611111111111112,
+   "threshold": 0.059675128812152735,
+   "pass_pages": true,
+   "pass_sim_auc": true,
+   "pass_sim_operating_point": false,
+   "available": false,
+   "verdict": "descriptive only (first network)"
+  },
+  "B:LBBB": {
+   "decision": false,
+   "pages_pos": 41,
+   "pages_auroc": 0.9419573942574869,
+   "pages_lo95": 0.8622902817347262,
+   "pages_sens": 0.9024390243902439,
+   "pages_spec": 0.8987341772151899,
+   "sim_pos": 41,
+   "sim_auroc": 0.8116702686014202,
+   "sim_lo95": 0.7056857108940442,
+   "sim_sens": 0.7317073170731707,
+   "sim_spec": 0.8734177215189873,
+   "threshold": 0.01761665609162016,
+   "pass_pages": true,
+   "pass_sim_auc": true,
+   "pass_sim_operating_point": false,
+   "available": false,
+   "verdict": "descriptive only (first network)"
+  }
+ }
+}

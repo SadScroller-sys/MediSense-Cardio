@@ -1,0 +1,5 @@
+model,auc,ci95
+PHOTO (five photo scores),0.828,0.77 to 0.89
+OUTPUT (digitised-signal features),0.914,0.88 to 0.95
+BOTH,0.95,0.93 to 0.97
+ORACLE (told damage type and level),0.821,0.76 to 0.89

@@ -1,0 +1,15 @@
+dataset,answered,coverage_pct,images_answered,bad_among_answered,selective_risk_pct,random_pct
+A,GREEN only,72.8,917,2,0.22,8.17
+A,GREEN + AMBER,89.0,1121,16,1.43,8.17
+B,GREEN only,73.3,660,2,0.3,8.11
+B,GREEN + AMBER,88.9,800,12,1.5,8.11
+C,GREEN only,36.7,22,0,0.0,33.33
+C,GREEN + AMBER,61.7,37,1,2.7,33.33
+D0,GREEN only,50.0,20,0,0.0,35.0
+D0,GREEN + AMBER,67.5,27,1,3.7,35.0
+D2,GREEN only,80.0,32,0,0.0,5.0
+D2,GREEN + AMBER,97.5,39,1,2.56,5.0
+E0,GREEN only,25.0,30,0,0.0,53.33
+E0,GREEN + AMBER,39.2,47,3,6.38,53.33
+E2,GREEN only,59.2,71,1,1.41,17.5
+E2,GREEN + AMBER,80.8,97,11,11.34,17.5

@@ -1,0 +1,10 @@
+axis,blur_score,skew_deg,resolution_score,contrast_score,blockiness_score
+C0 clean kit page,6668.97,0.0,0.5,45.54,4.28
+C1 print-scan colour,2092.53,0.0,0.53,34.33,1.95
+C2 print-scan black/white,31767.76,45.0,0.73,71.53,1.71
+C3 phone photo of print,634.48,0.99,0.43,45.03,3.93
+C4 phone photo of screen,6940.78,45.0,0.69,73.45,2.98
+C5 stained/soaked,411.5,0.0,0.42,52.08,4.04
+C6 extensive damage,205.58,0.0,0.24,31.05,2.53
+C7 mould scan colour,1952.14,0.0,0.54,33.69,1.85
+C8 mould scan b/w,33146.71,45.0,0.73,72.73,1.36

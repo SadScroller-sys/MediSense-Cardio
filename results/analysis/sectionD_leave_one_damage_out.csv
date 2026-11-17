@@ -1,0 +1,7 @@
+unseen_damage,images,wrong_readings,auc
+resolution,296,74,0.781
+blur,294,31,0.556
+rotate,270,4,too few wrong readings (<8)
+jpeg,296,4,too few wrong readings (<8)
+brightness,295,9,0.374
+gridcontrast,296,9,0.478

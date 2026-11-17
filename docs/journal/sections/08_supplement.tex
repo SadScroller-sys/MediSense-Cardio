@@ -1,0 +1,48 @@
+\section{Supplementary material}
+
+\subsection{Reproducing the study}\label{sec:repro}
+Everything below is in the project repository. Run in this order.
+
+\begin{enumerate}
+\item \textbf{Environment.} Python~3.11 with ECG-Image-Kit's core requirements (handwriting extras omitted); Python~3.13+ with NumPy, SciPy, pandas, Matplotlib, OpenCV, \texttt{wfdb}, NeuroKit2 for analysis; Google Colab (T4) for digitisation. \emph{Record the commit of every tool at the start of each run} (not done in this study).
+\item \textbf{Sweep 1.} \texttt{colab/MediSense\_Cardio\_FullSweep\_v1.ipynb} (built by \texttt{scripts/notebook\_builders/build\_fullsweep\_notebook.py}). Set the runtime to T4 GPU, confirm the log prints \texttt{Using device: cuda}, and run all; it resumes from \texttt{results.csv} on Drive.
+\item \textbf{Sweep 1 analysis.} \texttt{colab/MediSense\_Cardio\_Analysis\_Part1.ipynb} (cleaning), \texttt{Part1b} (failing records), \texttt{Part2} (heart-rate outcomes), \texttt{Part3\_figures}.
+\item \textbf{Sweep 2.} \texttt{colab/MediSense\_Cardio\_FullSweep\_v2\_Intervals.ipynb}, writing \texttt{results\_v2.csv}.
+\item \textbf{Sweep 2 analysis (local).} \texttt{scripts/analysis/analyze\_v2\_intervals.py} (cleaning, intervals, QTc outcome), \texttt{hr\_outcomes\_v2.py}, \texttt{check\_gt\_sampling\_rate.py} and \texttt{redo\_intervals\_gt500.py} (500\,Hz ground truth), \texttt{journal\_extra\_analysis.py}, \texttt{journal\_tables.py}, \texttt{journal\_latex\_tables.py}.
+\item \textbf{Figures.} \texttt{journal\_fig\_degradation\_grid.py}, \texttt{journal\_figs\_results.py}; Sweep~1 figures from \texttt{Part3\_figures}.
+\end{enumerate}
+
+\subsection{Results file data dictionary}
+\begin{longtable}{@{}>{\ttfamily}p{3.6cm}p{11.2cm}@{}}
+\caption{Columns of the Sweep~2 results file (\texttt{results\_v2.csv}, 1{,}550 rows).}\label{tab:dict}\\
+\toprule
+Column & Meaning \\
+\midrule
+\endfirsthead
+variant\_id & Unique test identifier: record, axis and level (for example \texttt{15049\_lr-0\_\_blur5}). \\
+record & PTB-XL record name. \\
+axis & \texttt{clean}, \texttt{blur}, \texttt{rotate}, \texttt{jpeg}, \texttt{resolution}, \texttt{brightness} or \texttt{gridcontrast}. \\
+level & 0 (clean) or 1--5. \\
+sex & \texttt{male} or \texttt{female}, from PTB-XL metadata. \\
+gt\_hr & Ground-truth lead~II heart rate (bpm), from the 100\,Hz record. \\
+gt\_pr\_ms, gt\_qrs\_ms, gt\_qt\_ms, gt\_qtc\_ms & Ground-truth intervals (ms) from the 100\,Hz record (the analysis recomputes them at 500\,Hz). \\
+gt\_qtc\_abnormal & Ground-truth QTc above the sex-specific threshold. \\
+dig\_hr, dig\_pr\_ms, dig\_qrs\_ms, dig\_qt\_ms, dig\_qtc\_ms & Values from the digitised signal; empty if none could be extracted. \\
+dig\_qtc\_abnormal & Digitised QTc above the sex-specific threshold. \\
+diff\_bpm, diff\_pr\_ms, diff\_qrs\_ms, diff\_qt\_ms, diff\_qtc\_ms & Absolute difference between digitised and ground-truth values. \\
+snr\_db & \textbf{Invalid; do not use} (Section~\ref{sec:metrics}). \\
+\bottomrule
+\end{longtable}
+
+\subsection{Digitiser configuration}
+Key settings passed to Open-ECG-Digitizer in both sweeps: segmentation U-Net weights \texttt{unet\_weights\_07072025.pt} (4 output channels, 8 stages, depth 2); lead-name U-Net \texttt{lead\_name\_unet\_weights\_07072025.pt}; layout file \texttt{lead\_layouts\_george-moody-2024.yml}; \texttt{target\_num\_samples} 10{,}000; \texttt{resample\_size} 3{,}000; dewarping off; perspective detector 250 angles; pixel-size finder 30--70 grid lines. The full generated configuration is in the sweep notebooks.
+
+\subsection{Corrections made while preparing this manuscript}
+For transparency, the following were found and corrected during preparation, and are recorded so that readers of earlier drafts know what changed.
+\begin{itemize}
+\item The planned SNR tier was found to be computed on unaligned signals and was removed.
+\item A first attribution of the interval error floor to delineation alone was revised after the 500\,Hz ground-truth check.
+\item A first QTc false-reassurance count of 39 (100\,Hz ground truth) or 26 (500\,Hz) was found to be dominated by records already misclassified on their clean image, and was corrected to 6.
+\item An earlier draft labelled a mean as a 90th percentile; several citations were re-assigned after re-checking the reference list against the sources.
+\item A patient age of 300 in PTB-XL was recognised as a de-identification code.
+\end{itemize}

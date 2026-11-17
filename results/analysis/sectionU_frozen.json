@@ -1,0 +1,123 @@
+{
+ "qrs": {
+  "candidate": "qrs_C_5",
+  "offset_ms": -7.600000000000001,
+  "table": [
+   {
+    "cand": "qrs_A_5",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -27.04,
+    "offset": -26.0,
+    "median_abs_after": 12.0,
+    "rho": 0.283
+   },
+   {
+    "cand": "qrs_A_10",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -36.52,
+    "offset": -34.0,
+    "median_abs_after": 10.0,
+    "rho": 0.238
+   },
+   {
+    "cand": "qrs_B_5",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -33.38,
+    "offset": -31.5,
+    "median_abs_after": 9.0,
+    "rho": 0.239
+   },
+   {
+    "cand": "qrs_B_10",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -43.16,
+    "offset": -40.0,
+    "median_abs_after": 8.5,
+    "rho": 0.222
+   },
+   {
+    "cand": "qrs_C_5",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -8.408,
+    "offset": -7.6,
+    "median_abs_after": 6.8,
+    "rho": 0.581
+   },
+   {
+    "cand": "qrs_C_10",
+    "share": 1.0,
+    "n": 50,
+    "bias_before": -25.46,
+    "offset": -24.2,
+    "median_abs_after": 9.7,
+    "rho": 0.334
+   }
+  ]
+ },
+ "pr": {
+  "candidate": "pr_B_tan",
+  "offset_ms": 5.751381435102388,
+  "table": [
+   {
+    "cand": "pr_A_tan",
+    "share": 0.935,
+    "n": 43,
+    "bias_before": 3.885,
+    "offset": 4.204,
+    "median_abs_after": 9.872,
+    "rho": 0.755
+   },
+   {
+    "cand": "pr_A_thr",
+    "share": 0.478,
+    "n": 22,
+    "bias_before": 40.0,
+    "offset": 39.0,
+    "median_abs_after": 27.0,
+    "rho": 0.354
+   },
+   {
+    "cand": "pr_B_tan",
+    "share": 0.957,
+    "n": 44,
+    "bias_before": 6.456,
+    "offset": 5.751,
+    "median_abs_after": 7.541,
+    "rho": 0.78
+   },
+   {
+    "cand": "pr_B_thr",
+    "share": 0.826,
+    "n": 38,
+    "bias_before": 14.842,
+    "offset": 17.5,
+    "median_abs_after": 12.0,
+    "rho": 0.437
+   },
+   {
+    "cand": "pr_C_tan",
+    "share": 0.957,
+    "n": 44,
+    "bias_before": 28.251,
+    "offset": 24.903,
+    "median_abs_after": 15.416,
+    "rho": 0.561
+   },
+   {
+    "cand": "pr_C_thr",
+    "share": 0.826,
+    "n": 38,
+    "bias_before": 52.437,
+    "offset": 49.5,
+    "median_abs_after": 18.8,
+    "rho": 0.253
+   }
+  ]
+ },
+ "written": "2026-11-14 00:26"
+}

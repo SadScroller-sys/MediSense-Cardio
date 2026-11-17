@@ -1,0 +1,22 @@
+{
+ "qt_available": false,
+ "t1_qt_pass_all_conditions": true,
+ "qt_sim": {
+  "part": "sim",
+  "target": "QT",
+  "n": 266,
+  "mae": 65.55347872499544,
+  "median_abs": 46.078793704509735,
+  "within": 0.4548872180451128,
+  "within_ms": 40,
+  "bias": 14.235106084754873,
+  "slope": 0.6138013004645804,
+  "pass_rule": false,
+  "n_short": 37.0,
+  "short_bias": 53.44043990169224,
+  "n_long": 28.0,
+  "long_bias": 2.6318004386765614
+ },
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-16 night",
+ "qrs_available": false
+}

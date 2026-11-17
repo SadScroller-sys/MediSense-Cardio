@@ -1,0 +1,25 @@
+{
+  "written_utc": "2026-11-07T08:00:47.935482Z",
+  "open_ecg_digitizer_commit": "97a15087d4abcda843da8c58ee74b1d8f47e6f9a",
+  "digitizer_weights": [
+    "lead_name_unet_weights_07072025.pt",
+    "unet_weights_07072025.pt"
+  ],
+  "competition_dir": "/kaggle/input/competitions/physionet-ecg-image-digitization",
+  "n_records": 100,
+  "part": 0,
+  "n_excluded_armC_recordings": 40,
+  "seed": 43,
+  "versions": {
+    "0001": "C0_kit_original",
+    "0003": "C1_print_scan_colour",
+    "0004": "C2_print_scan_bw",
+    "0005": "C3_phone_photo_print",
+    "0006": "C4_phone_photo_screen",
+    "0009": "C5_stained_soaked_photo",
+    "0010": "C6_extensive_damage_photo",
+    "0011": "C7_mold_scan_colour",
+    "0012": "C8_mold_scan_bw"
+  },
+  "device": "cuda"
+}

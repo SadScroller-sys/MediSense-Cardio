@@ -1,0 +1,65 @@
+{
+ "candidate": "axis_6_dominant",
+ "table": [
+  {
+   "cand": "axis_2_area",
+   "n": 991,
+   "share": 0.991,
+   "median_abs": 6.3567,
+   "p90_abs": 21.489,
+   "within": 0.9405,
+   "bias": 1.0617,
+   "cat": 0.9273
+  },
+  {
+   "cand": "axis_2_dominant",
+   "n": 991,
+   "share": 0.991,
+   "median_abs": 7.168,
+   "p90_abs": 24.4858,
+   "within": 0.9294,
+   "bias": -1.9676,
+   "cat": 0.9263
+  },
+  {
+   "cand": "axis_2_sum",
+   "n": 991,
+   "share": 0.991,
+   "median_abs": 4.583,
+   "p90_abs": 13.9905,
+   "within": 0.9627,
+   "bias": -0.883,
+   "cat": 0.9485
+  },
+  {
+   "cand": "axis_6_area",
+   "n": 993,
+   "share": 0.993,
+   "median_abs": 4.6943,
+   "p90_abs": 15.8811,
+   "within": 0.9587,
+   "bias": 2.8819,
+   "cat": 0.9436
+  },
+  {
+   "cand": "axis_6_dominant",
+   "n": 993,
+   "share": 0.993,
+   "median_abs": 3.6019,
+   "p90_abs": 12.7997,
+   "within": 0.9718,
+   "bias": 1.4519,
+   "cat": 0.9799
+  },
+  {
+   "cand": "axis_6_sum",
+   "n": 993,
+   "share": 0.993,
+   "median_abs": 2.4093,
+   "p90_abs": 8.2345,
+   "within": 0.9668,
+   "bias": 1.6306,
+   "cat": 0.9768
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+ecg_id,record,filename_lr,sex_lbl,age,group
+102,00102_lr,records100/00000/00102_lr,male,64.0,fails_in_sweep2
+8150,08150_lr,records100/08000/08150_lr,male,56.0,fails_in_sweep2
+13316,13316_lr,records100/13000/13316_lr,male,81.0,fails_in_sweep2
+53,00053_lr,records100/00000/00053_lr,female,30.0,fails_in_sweep2
+18151,18151_lr,records100/18000/18151_lr,female,47.0,fails_in_sweep2
+19059,19059_lr,records100/19000/19059_lr,male,41.0,fails_in_sweep2
+1126,01126_lr,records100/01000/01126_lr,male,72.0,random_reliable
+9990,09990_lr,records100/09000/09990_lr,female,77.0,random_reliable
+13618,13618_lr,records100/13000/13618_lr,female,55.0,random_reliable
+15049,15049_lr,records100/15000/15049_lr,female,47.0,random_reliable
+17820,17820_lr,records100/17000/17820_lr,male,67.0,random_reliable
+20053,20053_lr,records100/20000/20053_lr,male,84.0,random_reliable

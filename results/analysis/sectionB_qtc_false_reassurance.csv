@@ -1,0 +1,7 @@
+formula,tolerance_ms,truly_prolonged_records,at_risk_records,at_risk_tests,events,records_with_events,rate,events_by_damage
+Fridericia (main),0,40,24,258,10,5,10/258 = 3.9% (2-7),"jpeg 4, rotate 3, brightness 2, resolution 1"
+Fridericia (main),10,40,24,258,9,5,9/258 = 3.5% (2-6),"rotate 3, jpeg 3, brightness 2, resolution 1"
+Fridericia (main),20,40,24,258,7,3,7/258 = 2.7% (1-5),"rotate 2, jpeg 2, brightness 2, resolution 1"
+Bazett (sensitivity),0,51,37,399,16,10,16/399 = 4.0% (2-6),"brightness 7, jpeg 4, rotate 4, resolution 1"
+Bazett (sensitivity),10,51,37,399,16,10,16/399 = 4.0% (2-6),"brightness 7, jpeg 4, rotate 4, resolution 1"
+Bazett (sensitivity),20,51,37,399,13,8,13/399 = 3.3% (2-5),"brightness 7, jpeg 3, rotate 2, resolution 1"

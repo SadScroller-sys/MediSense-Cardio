@@ -1,0 +1,7 @@
+quantity,n,spearman_rho,median_abs_diff_ms,bias_ms
+"QT, median of 12 leads",100,0.67,31.5,37.6
+"QTc Bazett, median of 12 leads",100,0.51,35.4,44.2
+"QTc Fridericia, median of 12 leads",100,0.41,32.9,41.6
+"QT, lead II only (used for B2)",81,0.52,37.0,50.5
+"QTc Bazett, lead II only",81,0.47,43.8,60.2
+"QTc Fridericia, lead II only",81,0.38,40.9,56.5

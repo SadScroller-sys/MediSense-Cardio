@@ -1,0 +1,28 @@
+{
+ "pairs": {
+  "B2:LBBB": {
+   "available": true,
+   "decision": true,
+   "sim_auroc": 0.8254769921436588,
+   "sim_sens": 0.691358024691358,
+   "sim_spec": 0.9242424242424242,
+   "sim_pos": 81,
+   "pages_auroc": 0.9712140951671939,
+   "pages_sens": 0.9629629629629629,
+   "pages_spec": 0.9246231155778895,
+   "basis": "LBBB: passed the pre-set rule on set Q and again on set R. AF: missed on set Q (specificity 89.3), passed on set R (second test). Numbers shown are pooled over Q and R."
+  },
+  "B2:AF": {
+   "available": true,
+   "decision": true,
+   "sim_auroc": 0.835183066361556,
+   "sim_sens": 0.7473684210526316,
+   "sim_spec": 0.907608695652174,
+   "sim_pos": 95,
+   "pages_auroc": 0.982076813655761,
+   "pages_sens": 0.968421052631579,
+   "pages_spec": 0.8702702702702703,
+   "basis": "LBBB: passed the pre-set rule on set Q and again on set R. AF: missed on set Q (specificity 89.3), passed on set R (second test). Numbers shown are pooled over Q and R."
+  }
+ }
+}

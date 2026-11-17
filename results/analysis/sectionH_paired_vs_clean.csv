@@ -1,0 +1,17 @@
+population,capture,wrong5_worse_than_C0,wrong5_better,wrong5_p_exact,wrong5_p_holm,bad_worse_than_C0,bad_better,bad_p_exact,bad_p_holm
+new100,C1 print-scan colour,1,2,1.0,1.0,2,3,1.0,1.0
+new100,C2 print-scan black/white,5,1,0.2188,1.0,4,1,0.375,1.0
+new100,C3 phone photo of print,5,0,0.0625,0.5,4,0,0.125,0.875
+new100,C4 phone photo of screen,3,6,0.5078,1.0,37,2,0.0,0.0
+new100,C5 stained/soaked,2,1,1.0,1.0,1,1,1.0,1.0
+new100,C6 extensive damage,1,1,1.0,1.0,0,1,1.0,1.0
+new100,C7 mould scan colour,2,0,0.5,1.0,2,1,1.0,1.0
+new100,C8 mould scan b/w,4,2,0.6875,1.0,6,3,0.5078,1.0
+pooled140,C1 print-scan colour,3,2,1.0,1.0,4,3,1.0,1.0
+pooled140,C2 print-scan black/white,7,1,0.0703,0.5625,6,1,0.125,0.75
+pooled140,C3 phone photo of print,8,2,0.1094,0.7656,7,2,0.1797,0.8984
+pooled140,C4 phone photo of screen,4,8,0.3877,1.0,51,3,0.0,0.0
+pooled140,C5 stained/soaked,4,1,0.375,1.0,3,1,0.625,1.0
+pooled140,C6 extensive damage,4,1,0.375,1.0,3,1,0.625,1.0
+pooled140,C7 mould scan colour,3,0,0.25,1.0,3,1,0.625,1.0
+pooled140,C8 mould scan b/w,8,2,0.1094,0.7656,10,3,0.0923,0.646

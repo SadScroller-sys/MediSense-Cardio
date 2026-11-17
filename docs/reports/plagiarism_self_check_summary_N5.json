@@ -1,0 +1,20 @@
+{
+ "N": 5,
+ "sources": 66,
+ "summary": [
+  [
+   "Report (v4, body, tables and abstract; references excluded)",
+   12792,
+   120,
+   0.9380863039399625,
+   22
+  ],
+  [
+   "IEEE paper (main_v2.tex, body)",
+   5061,
+   56,
+   1.1065006915629323,
+   11
+  ]
+ ]
+}

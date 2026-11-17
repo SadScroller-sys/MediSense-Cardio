@@ -1,0 +1,16 @@
+{
+ "horizon_years": 1.0,
+ "auroc": 0.7133667004865267,
+ "auroc_lo95": 0.6529406086295514,
+ "cal_slope": 0.6202186346054077,
+ "ece": 0.005749357048488019,
+ "categories_monotone": true,
+ "high_over_low_ratio_ok": true,
+ "pass_discrimination": false,
+ "pass_calibration": false,
+ "pass_categories": true,
+ "transfer_pages_ok": true,
+ "transfer_photos_ok": false,
+ "real_photos_available": true,
+ "shown_in_app": false
+}

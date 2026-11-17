@@ -1,0 +1,89 @@
+{
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-16 late night + user decision (NDT dropped, post hoc)",
+ "patterns": {
+  "A:ASMI": {
+   "threshold": 0.3529741279851281,
+   "pages_set": "T2 drawn pages (300)",
+   "pages_positives": 34,
+   "pages_sens": 0.8235294117647058,
+   "pages_spec": 0.9398496240601504,
+   "sim_sens": null,
+   "sim_spec": null,
+   "sim_positives": null
+  },
+  "A:LVH": {
+   "threshold": 0.31924259599318355,
+   "pages_set": "set N drawn pages (120)",
+   "pages_positives": 24,
+   "pages_sens": 0.4583333333333333,
+   "pages_spec": 0.9479166666666666,
+   "sim_sens": 0.4583333333333333,
+   "sim_spec": 0.7291666666666666,
+   "sim_positives": 24
+  },
+  "A:LAFB": {
+   "threshold": 0.33211705362483246,
+   "pages_set": "set N drawn pages (120)",
+   "pages_positives": 35,
+   "pages_sens": 0.5714285714285714,
+   "pages_spec": 0.9764705882352941,
+   "sim_sens": 0.4,
+   "sim_spec": 0.9647058823529412,
+   "sim_positives": 35
+  },
+  "A:IRBBB": {
+   "threshold": 0.25008316662837576,
+   "pages_set": "T2 drawn pages (300)",
+   "pages_positives": 22,
+   "pages_sens": 0.5,
+   "pages_spec": 0.9712230215827338,
+   "sim_sens": null,
+   "sim_spec": null,
+   "sim_positives": null
+  },
+  "B:AF": {
+   "threshold": 0.059675128812152735,
+   "pages_set": "set N drawn pages (120)",
+   "pages_positives": 30,
+   "pages_sens": 0.8666666666666667,
+   "pages_spec": 0.8444444444444444,
+   "sim_sens": 0.7,
+   "sim_spec": 0.8555555555555555,
+   "sim_positives": 30
+  },
+  "B:LBBB": {
+   "threshold": 0.01761665609162016,
+   "pages_set": "set N drawn pages (120)",
+   "pages_positives": 22,
+   "pages_sens": 1.0,
+   "pages_spec": 0.826530612244898,
+   "sim_sens": 0.7727272727272727,
+   "sim_spec": 0.8571428571428571,
+   "sim_positives": 22
+  },
+  "B:1dAVb": {
+   "threshold": 0.10541052494351824,
+   "pages_set": "set N drawn pages (120)",
+   "pages_positives": 23,
+   "pages_sens": 0.6521739130434783,
+   "pages_spec": 0.8247422680412371,
+   "sim_sens": 0.6956521739130435,
+   "sim_spec": 0.8144329896907216,
+   "sim_positives": 23
+  }
+ },
+ "clean_flagged_pct": {
+  "drawn_pages": 17.525773195876287,
+  "screen_photos": 25.53191489361702
+ },
+ "clean_flagged": {
+  "drawn_pages": [
+   34,
+   194
+  ],
+  "screen_photos": [
+   24,
+   94
+  ]
+ }
+}

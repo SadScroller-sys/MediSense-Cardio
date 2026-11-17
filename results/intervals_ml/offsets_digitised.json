@@ -1,0 +1,8 @@
+{
+ "offset_digitised": [
+  4.959773461723179,
+  8.658499575358926
+ ],
+ "n_dev_pages": 200,
+ "note": "fitted once on the clean digitised development pages (new 100 and fresh F); subtract from the model output"
+}

@@ -1,0 +1,39 @@
+{
+ "seed": 42,
+ "best_epoch": 13,
+ "targets": [
+  "QRS_Dur_Global",
+  "QT_Int_Global"
+ ],
+ "mu": [
+  97.58356475830078,
+  395.71771240234375
+ ],
+ "sd": [
+  19.838794708251953,
+  39.28826904296875
+ ],
+ "n_train": 17040,
+ "n_fold9": 2125,
+ "fold9_original": {
+  "bias": [
+   -1.5940920114517212,
+   -2.2521698474884033
+  ],
+  "mae": [
+   4.887934684753418,
+   9.998658180236816
+  ]
+ },
+ "fold9_emulated": {
+  "bias": [
+   -0.19573289155960083,
+   -1.0269173383712769
+  ],
+  "mae": [
+   4.921510219573975,
+   9.986515045166016
+  ]
+ },
+ "note": "offsets_original = mean(pred - 12SL) on fold-9 original signals; subtract it. The extra digitised-input offset is fitted later on the development pages only."
+}

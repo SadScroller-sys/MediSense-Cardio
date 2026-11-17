@@ -1,0 +1,63 @@
+{
+ "candidate": "B_tangent",
+ "offset_ms": -40.498566069711416,
+ "development_recordings": 50,
+ "table": [
+  {
+   "cand": "A_tangent",
+   "share": 1.0,
+   "n": 50,
+   "bias_before": -23.648,
+   "offset": -26.783,
+   "median_abs_after": 14.197,
+   "rho": 0.456
+  },
+  {
+   "cand": "A_threshold",
+   "share": 0.74,
+   "n": 37,
+   "bias_before": -9.568,
+   "offset": -14.0,
+   "median_abs_after": 18.0,
+   "rho": 0.38
+  },
+  {
+   "cand": "B_tangent",
+   "share": 1.0,
+   "n": 50,
+   "bias_before": -50.466,
+   "offset": -40.499,
+   "median_abs_after": 10.926,
+   "rho": 0.54
+  },
+  {
+   "cand": "B_threshold",
+   "share": 1.0,
+   "n": 50,
+   "bias_before": -42.22,
+   "offset": -37.5,
+   "median_abs_after": 13.5,
+   "rho": 0.533
+  },
+  {
+   "cand": "C_tangent",
+   "share": 1.0,
+   "n": 50,
+   "bias_before": 3.24,
+   "offset": -5.019,
+   "median_abs_after": 22.386,
+   "rho": 0.353
+  },
+  {
+   "cand": "C_threshold",
+   "share": 1.0,
+   "n": 50,
+   "bias_before": 24.72,
+   "offset": -4.8,
+   "median_abs_after": 25.3,
+   "rho": 0.363
+  }
+ ],
+ "rule": "highest share>=0.9, then smallest median abs diff after the offset, ties by rho",
+ "written": "2026-11-14 00:07"
+}

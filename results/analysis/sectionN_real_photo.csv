@@ -1,0 +1,6 @@
+target,images,events,photo_scores,oracle_capture_type
+T1 no output (all 900 images),900,43,0.937 (0.88 to 0.99),0.887 (0.81 to 0.94)
+T2 wrong HR among images with output,857,30,0.542 (0.46 to 0.66),0.395 (0.33 to 0.50)
+T3 no output or wrong HR (all 900),900,73,0.774 (0.70 to 0.86),0.736 (0.65 to 0.83)
+T1 inside screen photos only (C4),100,39,0.862 (0.79 to 0.93),n/a (one type)
+T3 without screen photos,800,31,0.555 (0.50 to 0.62),0.491 (0.40 to 0.62)

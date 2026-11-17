@@ -1,0 +1,4 @@
+variant,bad_original,bad_variant,newly_bad,newly_good,p_exact,verdict
+V2_straighten (PRIMARY),14,2,0,12,0.0005,confirmed
+V1_enlarge,14,13,0,1,1.0,"secondary, descriptive"
+V3_straighten_big,14,3,1,12,0.0034,"secondary, descriptive"

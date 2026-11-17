@@ -1,0 +1,13 @@
+subset,score,images,wrong_cleaned,auc
+"new 100, all 9 types",p_out_c,857,30,0.895 (0.81 to 0.96)
+"new 100, real C1-C8",p_out_c,758,26,0.877 (0.78 to 0.95)
+first 40,p_out_c,344,16,0.982 (0.93 to 1.00)
+"pooled 140, all",p_out_c,1201,46,0.923 (0.86 to 0.97)
+"pooled 140, real C1-C8",p_out_c,1062,40,0.915 (0.84 to 0.97)
+"new 100, all 9 types",p_out_o,857,30,0.946 (0.87 to 0.99)
+"new 100, real C1-C8",p_out_o,758,26,0.937 (0.85 to 0.99)
+first 40,p_out_o,344,16,0.966 (0.88 to 1.00)
+"pooled 140, all",p_out_o,1201,46,0.953 (0.90 to 0.99)
+"pooled 140, real C1-C8",p_out_o,1062,40,0.955 (0.89 to 0.99)
+"new 100, all 9 types",p_ph_c,602,23,0.516 (0.39 to 0.65)
+"new 100, real C1-C8",p_ph_c,503,19,0.515 (0.37 to 0.65)

@@ -1,0 +1,9 @@
+variant,group,photos,no_usable_hr,wrong,bad
+V0_original,angled + small (15),15,4,9,13
+V0_original,other photos (45),45,2,5,7
+V1_enlarge,angled + small (15),15,2,6,8
+V1_enlarge,other photos (45),45,1,3,4
+V2_straighten,angled + small (15),15,0,1,1
+V2_straighten,other photos (45),45,0,1,1
+V3_straighten_big,angled + small (15),15,1,1,2
+V3_straighten_big,other photos (45),45,0,4,4

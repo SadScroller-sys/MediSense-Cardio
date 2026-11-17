@@ -1,0 +1,3 @@
+group,recordings,images_with_right_reading,right_readings_flagged_at_20pct,median_rr_cv_clean_pages
+atrial fibrillation / flutter recordings,6,67,45/67 = 67%,0.219
+all other recordings,93,1112,141/1112 = 13%,0.026

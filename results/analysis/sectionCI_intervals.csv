@@ -1,0 +1,73 @@
+measure,condition,clusters,statistic,value,lo95,hi95
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",clean page,148,bias,-0.027,-0.295,0.237
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",clean page,148,lower limit,-3.159,-4.637,-1.36
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",clean page,148,upper limit,3.105,1.316,4.439
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",clean page,148,median abs error,0.1,0.1,0.1
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",clean page,148,n images,148.0,148.0,148.0
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",resolution level 5,148,bias,0.536,-1.434,2.533
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",resolution level 5,148,lower limit,-24.857,-30.195,-19.211
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",resolution level 5,148,upper limit,25.93,21.473,29.711
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",resolution level 5,148,median abs error,3.8,1.899,6.001
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",resolution level 5,148,n images,148.0,148.0,148.0
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",blur level 5,146,bias,-1.259,-2.589,-0.067
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",blur level 5,146,lower limit,-17.512,-24.603,-10.174
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",blur level 5,146,upper limit,14.995,8.626,20.154
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",blur level 5,146,median abs error,1.55,1.2,1.9
+"Heart rate (bpm), simulated, all 150 minus 2 unreliable",blur level 5,146,n images,146.0,146.0,146.0
+"Heart rate (bpm), CLEANED measure, new 100 only",clean page,99,bias,-0.332,-0.896,0.065
+"Heart rate (bpm), CLEANED measure, new 100 only",clean page,99,lower limit,-5.454,-9.324,-1.178
+"Heart rate (bpm), CLEANED measure, new 100 only",clean page,99,upper limit,4.79,1.048,7.65
+"Heart rate (bpm), CLEANED measure, new 100 only",clean page,99,median abs error,0.078,0.061,0.093
+"Heart rate (bpm), CLEANED measure, new 100 only",clean page,99,n images,99.0,99.0,99.0
+"Heart rate (bpm), CLEANED measure, new 100 only",resolution level 5,98,bias,-0.621,-3.508,2.254
+"Heart rate (bpm), CLEANED measure, new 100 only",resolution level 5,98,lower limit,-29.572,-38.188,-20.085
+"Heart rate (bpm), CLEANED measure, new 100 only",resolution level 5,98,upper limit,28.33,21.627,33.981
+"Heart rate (bpm), CLEANED measure, new 100 only",resolution level 5,98,median abs error,5.148,2.017,6.657
+"Heart rate (bpm), CLEANED measure, new 100 only",resolution level 5,98,n images,98.0,98.0,98.0
+"Heart rate (bpm), CLEANED measure, new 100 only",blur level 5,97,bias,-1.425,-3.237,0.097
+"Heart rate (bpm), CLEANED measure, new 100 only",blur level 5,97,lower limit,-17.896,-26.184,-9.682
+"Heart rate (bpm), CLEANED measure, new 100 only",blur level 5,97,upper limit,15.046,7.981,20.949
+"Heart rate (bpm), CLEANED measure, new 100 only",blur level 5,97,median abs error,1.52,1.176,1.869
+"Heart rate (bpm), CLEANED measure, new 100 only",blur level 5,97,n images,97.0,97.0,97.0
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,bias (ms),3.089,-0.238,6.741
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,lower limit (ms),-30.068,-37.621,-21.841
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,upper limit (ms),36.246,24.723,48.251
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,median abs error (ms),7.33,5.521,9.449
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,within 40 ms (%),96.739,92.391,100.0
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,n,92.0,92.0,92.0
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,2.5th percentile of the differences (ms),-27.675,-32.292,-14.446
+PR interval vs 12SL,"digitised clean pages, held-out new 100",92,97.5th percentile of the differences (ms),49.077,21.899,75.961
+PR interval vs 12SL,straightened phone photos (100 photos),43,bias (ms),5.153,-0.756,11.125
+PR interval vs 12SL,straightened phone photos (100 photos),43,lower limit (ms),-38.629,-52.452,-24.025
+PR interval vs 12SL,straightened phone photos (100 photos),43,upper limit (ms),48.936,31.841,67.338
+PR interval vs 12SL,straightened phone photos (100 photos),43,median abs error (ms),12.029,7.501,16.138
+PR interval vs 12SL,straightened phone photos (100 photos),43,within 40 ms (%),95.238,89.157,100.0
+PR interval vs 12SL,straightened phone photos (100 photos),43,n,84.0,81.0,86.0
+PR interval vs 12SL,straightened phone photos (100 photos),43,2.5th percentile of the differences (ms),-34.526,-48.582,-18.932
+PR interval vs 12SL,straightened phone photos (100 photos),43,97.5th percentile of the differences (ms),50.345,25.941,113.65
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,mean error (deg),0.572,-0.869,2.184
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,lower limit (deg),-14.415,-17.991,-10.691
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,upper limit (deg),15.558,10.672,20.583
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,median abs error (deg),3.758,2.412,5.33
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,within 30 deg (%),98.99,96.97,100.0
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,n,99.0,99.0,99.0
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,2.5th percentile of the differences (deg),-9.998,-17.279,-8.548
+Frontal QRS axis vs 12SL,"100 fresh pages, digitised",99,97.5th percentile of the differences (deg),15.7,9.392,32.641
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,mean error (deg),0.102,-5.24,6.429
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,lower limit (deg),-41.866,-60.972,-15.715
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,upper limit (deg),42.069,13.659,69.366
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,median abs error (deg),4.407,3.374,5.705
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,within 30 deg (%),95.0,89.0,100.0
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,n,100.0,100.0,100.0
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,2.5th percentile of the differences (deg),-22.438,-69.231,-12.611
+Frontal QRS axis vs 12SL,straightened phone photos (100 photos),50,97.5th percentile of the differences (deg),28.756,8.682,119.09
+"Bad readings, original vs straightened",40 confirmation photos (Section Q2),20,original bad (%),35.0,20.0,50.0
+"Bad readings, original vs straightened",40 confirmation photos (Section Q2),20,straightened bad (%),5.0,0.0,15.0
+"Bad readings, original vs straightened",40 confirmation photos (Section Q2),20,drop (percentage points),30.0,17.5,45.0
+"Bad readings, original vs straightened",120 simulated photos (Section Z),60,original bad (%),53.333,47.5,60.0
+"Bad readings, original vs straightened",120 simulated photos (Section Z),60,straightened bad (%),17.5,10.833,24.167
+"Bad readings, original vs straightened",120 simulated photos (Section Z),60,drop (percentage points),35.833,26.667,45.0
+"Traffic light, competition captures with an output",wrong heart rate by light,140,GREEN wrong (%),0.218,0.0,0.563
+"Traffic light, competition captures with an output",wrong heart rate by light,140,AMBER wrong (%),6.863,1.288,14.488
+"Traffic light, competition captures with an output",wrong heart rate by light,140,RED wrong (%),36.585,20.289,56.823
+"Traffic light, competition captures with an output",wrong heart rate by light,140,GREEN share of readings (%),76.226,69.932,82.227

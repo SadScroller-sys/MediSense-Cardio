@@ -1,0 +1,12 @@
+\begin{abstract}
+\noindent\textbf{Objective.} To quantify how deliberate image degradation of a photographed paper ECG propagates through an open-source digitisation pipeline into heart-rate and interval measurements, to test whether it produces falsely reassuring results, and to document the workflow reproducibly.
+
+\noindent\textbf{Approach.} Fifty PTB-XL records (25 normal, 25 abnormal) were rendered as printed ECG pages, degraded along six axes (blur, tilt, JPEG compression, resolution, uneven lighting, grid contrast) at five levels each, digitised with Open-ECG-Digitizer, and compared with ground truth: 1{,}550 tests per sweep, in two sweeps five days apart. We measured heart rate, PR, QRS, QT and QTc, with paired tests (Holm correction) and Bland--Altman analysis.
+
+\noindent\textbf{Main results.} On clean images the heart-rate bias was $+0.26$\bpm\ (95\% limits $-3.1$ to $+3.6$). Only blur and low resolution produced large error growth: the median QTc error rose from 17\ms\ to 91\ms\ (blur) and 73\ms\ (resolution) at level~5, and the median heart-rate error from 0.13 to 1.7 and 2.5\bpm. Falsely reassuring heart-rate readings occurred only at level~5 of these two axes, and were identical in a repeat sweep (a computational repeat, not an independent replication). Tilt caused unreadable pictures rather than wrong values. Interval measurement had a clean-image error floor of 11--22\ms, partly due to a 100\,Hz ground truth; a QTc analogue of false reassurance was weak and not concentrated. The digitiser was not version-pinned, and seven records changed readability between sweeps.
+
+\noindent\textbf{Significance.} Quality safeguards for photographed-ECG tools can target blur and low resolution. The workflow, including negative and corrected findings, is documented for reproduction.
+
+\medskip
+\noindent\textbf{Keywords:} electrocardiogram; ECG digitisation; image degradation; signal quality; false reassurance; reproducibility
+\end{abstract}

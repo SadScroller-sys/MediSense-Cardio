@@ -1,0 +1,70 @@
+<html><body style="font-family:Arial;max-width:760px;margin:16px;background:#fff;color:#000"><div style='padding:14px;border:1px solid #ccc;border-radius:10px'><div><span style='display:inline-block;width:46px;height:46px;border-radius:50%;margin-right:10px;background:#d0d0d0;opacity:0.35;border:2px solid #888'></span><span style='display:inline-block;width:46px;height:46px;border-radius:50%;margin-right:10px;background:#d0d0d0;opacity:0.35;border:2px solid #888'></span><span style='display:inline-block;width:46px;height:46px;border-radius:50%;margin-right:10px;background:#1a9850;opacity:1;border:2px solid #888'></span></div><div style='font-size:30px;font-weight:700;color:#1a9850;margin-top:8px'>GREEN</div><div style='font-size:22px;margin-top:2px'>Heart rate read from the photo: <b>57 bpm</b></div><div style='font-size:16px;margin-top:6px'>No warning from our checks. This is not a guarantee that the heart rate is right.</div></div><hr>**Reasons given by the traffic light (information only):**
+- minor note (did not change the light): one beat gap is much shorter than the others (an extra beat?)
+- minor note (did not change the light): five beat detectors disagree about the heart rate by 33 bpm<br>Done in 39 seconds on CUDA. Page found: yes. QRS axis computed by the research method: 19 degrees (shown to the user only under the rules in docs/plan/EXPLANATION_WORDING.md). PR interval computed by the research method: 172 ms (shown to the user only under the rules in docs/plan/EXPLANATION_WORDING.md).<br>### About this photo (what the tool recognised)
+
+**The photo you gave:** 1440 x 1080 pixels, JPG file, colour, 3 channels (red, green, blue), 8 bits each.
+
+**The page:** the bright page was found in the photo and straightened to a flat 2200 x 1700 picture, which is the size the digitiser was built for. Tilt is corrected here, so the grid squares become equal again.
+
+**What the digitiser recognised:** layout 3x4+1R, a standard 12-lead page: 3 rows of 4 leads plus a long lead II strip at the bottom. The layout match cost is 0.20 (lower means a closer match to a known layout).
+
+**What it read:** 12 of 12 leads were read for the expected length of time. In this layout each lead except II is printed for 2.5 s (a quarter of the page), and lead II also runs the full 10 s on the long strip.
+
+**Lead II:** 10.0 of 10 seconds read, 9 beats found, heart rate 57 bpm. The heart rate is the mean of 60 divided by the gap between neighbouring beats.
+
+**Do five different beat finders agree?** They differ by 33 bpm. A small number means the beats are easy to find; a large number means the signal is ambiguous.
+
+**What the light means for this photo:** The checks found no sign of a failed read, so this heart rate is probably reliable. It is still not a guarantee.
+
+### For the presenter: the known condition of this test sample
+
+The recording this picture was drawn from is labelled in the public PTB-XL dataset as: normal ECG.
+
+*These are facts about this one photo. They are not a medical reading or a diagnosis.*<br>### Your ECG photo, in plain words
+
+**What we read**
+
+- **Heart rate:** **57 beats per minute**: slow (below 60); this can be usual in fit people and during sleep.
+- **Heart rhythm:** Some beats were closer together than others. This can be harmless or a rhythm problem, and this tool cannot tell which.
+- **PR interval:** about **172 ms**. This is a rough estimate by our method; in our tests it differed from hospital software by about 12 ms on a typical photo. Please ask your doctor what it means.
+- **QRS axis:** about **19 degrees**. This is a rough estimate by our method; in our tests it was typically within about 5 degrees of hospital software, and within 30 degrees for about 95 in 100 photos. Please ask your doctor what it means.
+
+**How sure we are**
+
+The photo was clear enough for the tool to read the page, and its checks found no sign of a failed read. So the heart rate is probably right. This is not a guarantee.
+
+**What we did not check**
+
+This tool did not measure the P wave, QRS complex, QT interval, ST segment or T wave, and it did not look for any heart condition. Those measurements are not available yet, because they have not passed our own accuracy checks. **A normal heart rate does not mean a normal ECG or a healthy heart.**
+
+**What to do next**
+
+Please show your original ECG to a doctor. Get medical help straight away for chest pain, fainting, breathlessness or a racing heartbeat.
+
+*Open "What an ECG shows (general information)" below to learn what each ECG measurement means.*
+
+*Research prototype. Not a medical device. It cannot diagnose anything.*<br>#### The nine ECG parameters
+
+| Parameter | What it tells doctors | From your photo |
+|---|---|---|
+| **Heart rate** | Number of heartbeats per minute | **57 beats per minute**: slow (below 60); this can be usual in fit people and during sleep |
+| **Heart rhythm** | Whether the heartbeat is regular or irregular | Some beats were closer together than others. This can be harmless or a rhythm problem, and this tool cannot tell which |
+| **P wave** | Electrical activity of the upper chambers (atria) | Not measured by this tool |
+| **PR interval** | Time for the signal to travel from the upper chambers to the lower chambers | About **172 ms** (rough estimate; typical difference from hospital software about 12 ms in our tests) |
+| **QRS complex** | Electrical activity of the lower chambers (ventricles) | Not measured by this tool |
+| **QT interval** | Time for the lower chambers to activate and then recover | Not measured by this tool |
+| **ST segment** | Changes that may point to reduced blood supply or injury of the heart muscle | Not measured by this tool |
+| **T wave** | Recovery of the lower chambers | Not measured by this tool |
+| **Axis** | Overall direction of the heart's electrical activity | About **19 degrees** (rough estimate; within 30 degrees for about 95 in 100 photos in our tests) |
+
+#### What an ECG can help doctors find (general information, not a result for you)
+
+- **Irregular heartbeat** (arrhythmia)
+- **Signs of a heart attack** (patterns in the ST segment and T wave)
+- **Reduced blood supply to the heart** (ischemia)
+- **Heart blocks** (problems with the electrical signal moving through the heart)
+- **A fast heartbeat** (tachycardia) or **a slow heartbeat** (bradycardia)
+- **Thickened or enlarged heart chambers** (ventricular hypertrophy)
+- **Changes linked to potassium or calcium levels** in the blood
+
+This tool did not look for any of these. An ECG alone cannot confirm a condition: doctors also use your history, an examination, blood tests and sometimes scans. **A normal heart rate does not mean a normal ECG or a healthy heart.**</body></html>

@@ -1,0 +1,9 @@
+variant,shot,photos,no_usable_hr,wrong,bad
+V0_original,A_straight,20,2,2,4
+V0_original,B_angled,20,2,8,10
+V1_enlarge,A_straight,20,1,2,3
+V1_enlarge,B_angled,20,6,4,10
+V2_straighten,A_straight,20,0,1,1
+V2_straighten,B_angled,20,0,1,1
+V3_straighten_big,A_straight,20,0,1,1
+V3_straighten_big,B_angled,20,0,2,2

@@ -1,0 +1,6 @@
+score,auc_train_first50,direction,auc_test_new100
+blur_log,0.685,lower=worse,0.814
+contrast_score,0.685,lower=worse,0.758
+blockiness_score,0.648,higher=worse,0.841
+resolution_score,0.641,lower=worse,0.735
+skew_deg,0.536,lower=worse,0.57

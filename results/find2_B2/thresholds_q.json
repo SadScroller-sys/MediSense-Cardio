@@ -1,0 +1,35 @@
+{
+ "rule": "docs/plan/analysis_plan_changes.md 2026-11-17 set Q; thresholds from DAMAGED validation data only",
+ "thresholds": {
+  "B2:1dAVb": {
+   "s97": 0.09709648673622868,
+   "validation_negatives": 13056,
+   "validation_positives": 257
+  },
+  "B2:RBBB": {
+   "s97": 0.04116835752363158,
+   "validation_negatives": 12983,
+   "validation_positives": 330
+  },
+  "B2:LBBB": {
+   "s97": 0.01811498987329679,
+   "validation_negatives": 13094,
+   "validation_positives": 219
+  },
+  "B2:SB": {
+   "s97": 0.041341522486514286,
+   "validation_negatives": 13086,
+   "validation_positives": 227
+  },
+  "B2:ST": {
+   "s97": 0.026761678724218085,
+   "validation_negatives": 13045,
+   "validation_positives": 268
+  },
+  "B2:AF": {
+   "s97": 0.059110518972242565,
+   "validation_negatives": 13038,
+   "validation_positives": 275
+  }
+ }
+}

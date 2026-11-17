@@ -1,0 +1,10 @@
+{
+  "written_utc": "2026-11-10T09:01:55.994085Z",
+  "open_ecg_digitizer_commit": "97a15087d4abcda843da8c58ee74b1d8f47e6f9a",
+  "device": "cuda",
+  "n_photos": 60,
+  "weights": [
+    "lead_name_unet_weights_07072025.pt",
+    "unet_weights_07072025.pt"
+  ]
+}

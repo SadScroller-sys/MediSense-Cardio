@@ -1,0 +1,4 @@
+light,readings,wrong,wrong_rate,share_of_all_wrong,share_of_all_right
+GREEN,7,0,0.0% (0.0-35.4),0%,47%
+AMBER,6,0,0.0% (0.0-39.0),0%,40%
+RED,17,15,88.2% (65.7-96.7),100%,13%

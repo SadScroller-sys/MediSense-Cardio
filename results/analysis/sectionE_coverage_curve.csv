@@ -1,0 +1,21 @@
+setting,flag_top_pct,caught_pct,good_flagged_pct,kept_wrong_pct
+held-out new 100,5,34.9,2.9,4.66
+held-out new 100,10,60.5,6.4,2.99
+held-out new 100,15,73.3,10.8,2.14
+held-out new 100,20,75.6,15.9,2.08
+held-out new 100,25,77.9,21.2,2.0
+held-out new 100,30,80.2,26.4,1.92
+held-out new 100,35,82.6,31.6,1.82
+held-out new 100,40,83.7,36.8,1.84
+held-out new 100,45,86.0,42.1,1.73
+held-out new 100,50,87.2,47.3,1.74
+grouped CV all 150,5,33.1,2.8,5.06
+grouped CV all 150,10,52.9,6.7,3.75
+grouped CV all 150,15,66.2,11.1,2.86
+grouped CV all 150,20,68.4,16.3,2.84
+grouped CV all 150,25,72.8,21.3,2.6
+grouped CV all 150,30,72.8,26.7,2.79
+grouped CV all 150,35,76.5,31.8,2.6
+grouped CV all 150,40,76.5,37.2,2.81
+grouped CV all 150,45,76.5,42.6,3.07
+grouped CV all 150,50,77.2,47.9,3.27

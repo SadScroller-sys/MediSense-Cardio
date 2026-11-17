@@ -1,0 +1,16 @@
+population,axis,level,n,wrong5_k,wrong5_pct,wrong5_lo,wrong5_hi,none_k,none_pct,bad_pct,limit_pct,consistent
+new100_unflagged,clean,0,69,2,2.9,0.8,10.0,0,0.0,2.9,5.0,True
+new100_unflagged,rotate,5,69,0,0.0,0.0,5.3,14,20.3,20.3,10.0,True
+new100_unflagged,jpeg,5,69,0,0.0,0.0,5.3,0,0.0,0.0,5.0,True
+new100_unflagged,brightness,5,69,1,1.4,0.3,7.8,0,0.0,1.4,5.0,True
+new100_unflagged,gridcontrast,5,69,2,2.9,0.8,10.0,0,0.0,2.9,5.0,True
+new100_unflagged_refcertain,clean,0,59,2,3.4,0.9,11.5,0,0.0,3.4,5.0,True
+new100_unflagged_refcertain,rotate,5,59,0,0.0,0.0,6.1,13,22.0,22.0,10.0,True
+new100_unflagged_refcertain,jpeg,5,59,0,0.0,0.0,6.1,0,0.0,0.0,5.0,True
+new100_unflagged_refcertain,brightness,5,59,1,1.7,0.3,9.0,0,0.0,1.7,5.0,True
+new100_unflagged_refcertain,gridcontrast,5,59,2,3.4,0.9,11.5,0,0.0,3.4,5.0,True
+all150_unflagged_shared,clean,0,104,2,1.9,0.5,6.7,0,0.0,1.9,5.0,True
+all150_unflagged_shared,rotate,5,104,0,0.0,0.0,3.6,16,15.4,15.4,10.0,True
+all150_unflagged_shared,jpeg,5,104,1,1.0,0.2,5.2,0,0.0,1.0,5.0,True
+all150_unflagged_shared,brightness,5,104,1,1.0,0.2,5.2,0,0.0,1.0,5.0,True
+all150_unflagged_shared,gridcontrast,5,104,2,1.9,0.5,6.7,0,0.0,1.9,5.0,True
