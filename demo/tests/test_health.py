@@ -195,7 +195,7 @@ def test_white_boxes_force_dark_text_so_a_dark_browser_theme_cannot_hide_them():
 def test_the_missed_and_false_alarm_numbers_match_the_two_patterns_shown_on_photos():
     a = A.assess(fake_leads(), "GREEN", [], True, 70.0, 12, 0.05, 160.0, 30.0, no_output=False)
     panel = DB.results_panel(a)
-    assert "wrongly flagged 16 to 20 in 100 photos" in panel and "16 to 24" not in panel
+    assert "wrongly flagged about 34 and 29 in 100 photos" in panel and "16 to 20" not in panel
 
 
 def test_promote_validated_moves_passed_pattern():
@@ -270,9 +270,10 @@ def test_reliability_bars_compare_each_check_with_the_traffic_light_limit():
     feat = dict(rr_cv=0.05, einthoven=0.10, goldberger=0.20, xlead_count_absdiff=0.0, n_unreadable_leads=0)
     f = DB.reliability_bars(dict(features=feat, detector_spread=3.0), dict(light="GREEN"))
     assert f.data and len(f.data[0].y) == 6
-    assert all(v <= 1.0 for v in f.data[0].x)                      # all inside the limit
+    assert f.data[0].orientation in (None, "v")                      # vertical bars
+    assert all(v <= 1.0 for v in f.data[0].y)                      # all inside the limit
     bad = DB.reliability_bars(dict(features=dict(feat, einthoven=0.9), detector_spread=3.0), dict(light="AMBER"))
-    assert max(bad.data[0].x) > 1.0
+    assert max(bad.data[0].y) > 1.0
     assert not DB.reliability_bars(dict(features=None), dict(light="RED")).data
 
 
@@ -355,7 +356,7 @@ def test_pattern_donut_shows_the_score_and_the_measured_detection_rates_but_no_p
     d = DB.pattern_donut(a)
     txt = " ".join(x.text for x in d.layout.annotations)
     assert "%" not in txt and "model score 73 in 100" in txt and "a score, not a chance" in txt
-    assert "found 79 in 100 true patterns" in txt and "wrongly flagged 20 in 100" in txt
+    assert "found 79 in 100 true patterns" in txt and "wrongly flagged 20 in 100" in txt and "On photos it found" in txt
     assert abs(d.data[0].values[0] - 0.73) < 1e-6                      # the ring is filled by the score
 
 
@@ -380,6 +381,83 @@ def test_heart_attack_percentage_only_when_the_calibration_passed_and_only_as_a_
     a["findings"] = [dict(f) for f in fl]                                    # no p_cal: a note, no number
     assert "No percentage for this photo" in DB.mi_percent_box(a)
     A._MI_CAL.clear()
+
+
+def test_vertical_bar_graphs_for_the_risk_rate_and_the_heart_disease_patterns():
+    a = _chamber_assessment()
+    a["findings"][1]["p_cal"] = 0.30                                              # heart-attack pattern with a calibrated percentage
+    f = DB.risk_rate_bars(a)
+    assert f.data[0].type == "bar" and f.data[0].orientation in (None, "v") and len(f.data[0].y) == 4
+    assert abs(f.data[0].y[1] - 35.0) < 1e-6 and abs(f.data[0].y[0] - 25.0) < 1e-6 and abs(f.data[0].y[2] - 45.0) < 1e-6
+    assert "not validated" in f.layout.title.text
+    a["risk_exp"] = dict(state="blocked", reason="x")
+    assert not DB.risk_rate_bars(a).data
+    g = DB.disease_bars(a)
+    assert g.data[0].type == "bar" and g.data[0].orientation in (None, "v")
+    labels = list(g.data[0].text)
+    assert any("30 in 100" in x and "FOUND" in x for x in labels)                  # the calibrated chance, a pattern found
+    assert any("score" in x for x in labels) or len(labels) == 2                  # a pattern without a calibration is a score, never a percentage
+    assert "not diagnoses" in g.layout.title.text
+    assert not DB.disease_bars(dict(findings=[])).data
+
+
+def test_all_bar_charts_of_the_heart_health_tab_are_vertical():
+    a = dict(light="GREEN", params=A.parameters("GREEN", 70.0, 0.05, 160.0, 30.0, True, [], False))
+    a["findings"] = [sup("MI", True, 0.8), sup("CD", False, 0.2)]
+    pc = DB.parameter_chart(a)
+    bars = [d for d in pc.data if d.type == "bar"]
+    assert bars and all(d.orientation in (None, "v") for d in bars)           # one vertical bar per measured parameter
+    assert len(bars) == len([p for p in a["params"] if p["value"] is not None and p["ref"]])
+    fc = DB.findings_chart(a)
+    assert fc.data[0].orientation in (None, "v") and list(fc.data[0].y) == [0.8, 0.2]
+    assert "<br>FOUND" in fc.data[0].x[0] and "<br>not found" in fc.data[1 - 1].x[1]
+
+
+def _beats_signal(n=10000, period=800, shift=0):
+    """A spiky ECG-like test signal: one narrow beat every `period` ms, plus a small slow wave, in microvolts."""
+    x = np.zeros(n)
+    for k in range(200 + shift, n, period):
+        x[k - 6:k + 7] += 1000 * np.hanning(13)
+    x += 80 * np.sin(2 * np.pi * np.arange(n) / 1000.0 * 0.3)
+    return x
+
+
+def test_original_against_reconstructed_line_graph_aligns_a_known_shift_and_needs_a_dataset_picture():
+    t100 = np.arange(1000) / 100.0
+    sig_mv = _beats_signal() / 1000.0
+    clean = np.stack([np.interp(t100, np.arange(10000) / 1000.0, sig_mv)] * 12)              # the true recording, 100 Hz, mV
+    leads = {L: np.concatenate([np.full(140, np.nan), _beats_signal()[:-140]]) for L in ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"]}   # read from the picture: 140 ms later
+    lag, sig = DB._align(clean, leads)
+    assert abs(lag - 140) <= 8, lag
+    f = DB.original_vs_reconstructed(leads, clean)
+    assert len(f.data) == 24 and all(d.type == "scattergl" for d in f.data)
+    assert "correlation r =" in f.layout.title.text and f.layout.xaxis.title.text == "Time (seconds)"
+    assert not DB.original_vs_reconstructed(leads, None).data                               # a person's own photo has no original recording
+
+
+def test_beat_to_beat_heart_rate_line_graph_only_for_a_usable_photo():
+    leads = {"II": _beats_signal(period=800)}                                                # a beat every 0.8 s = 75 bpm
+    f = DB.beat_rate_chart(leads, dict(usable=True))
+    assert f.data and f.data[0].mode == "lines+markers" and len(f.data[0].y) >= 8
+    assert abs(float(np.mean(f.data[0].y)) - 75.0) < 4.0
+    assert not DB.beat_rate_chart(leads, dict(usable=False)).data                            # same rule as the heart-rate number: RED shows no rate
+    assert not DB.beat_rate_chart(None, dict(usable=True)).data
+
+
+def test_risk_against_age_line_and_the_rr_interval_on_the_beat_graph():
+    leads = fake_leads()
+    a = dict(risk_exp=A.risk_exploratory(leads, "GREEN", True, 60, True))
+    f = DB.risk_vs_age_line(leads, a)
+    tr = [d for d in f.data if d.name == "this ECG at each age"]
+    assert tr and tr[0].mode == "lines" and f.layout.xaxis.title.text == "Age (years)" and "chance of death" in f.layout.yaxis.title.text
+    y = list(tr[0].y)
+    assert len(y) == 36 and all(0 <= v <= 100 for v in y)
+    assert y[-1] > y[0]                                                           # the same ECG gets a higher chance at 90 than at 20: the number follows age
+    assert any(d.mode == "markers+text" for d in f.data)                          # the age used is marked
+    assert not DB.risk_vs_age_line(leads, dict(risk_exp=dict(state="blocked", reason="x"))).data
+    g = DB.beat_rate_chart({"II": _beats_signal(period=800)}, dict(usable=True))
+    assert len(g.data) == 2 and g.data[1].yaxis == "y2" and abs(float(np.mean(g.data[1].y)) - 800.0) < 40.0     # RR interval in milliseconds on the second axis
+    assert "RR interval" in g.layout.yaxis2.title.text
 
 
 if __name__ == "__main__":

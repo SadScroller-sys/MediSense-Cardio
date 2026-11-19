@@ -1,6 +1,6 @@
 # MediSense-Cardio: submission folder
 
-Built 18 Nov 2026 22:55 by `scripts/tools/make_submission_folder.py` (copies; the originals stay where the scripts expect them).
+Built 19 Nov 2026 22:26 by `scripts/tools/make_submission_folder.py` (copies; the originals stay where the scripts expect them).
 Research prototype for a university project. Not a medical device.
 
 ## What is where

@@ -1,0 +1,21 @@
+{
+ "source": "results/health/roc_photos.csv, set S (300 random simulated phone photos of fold-10 recordings, tested at the app thresholds)",
+ "classes": {
+  "MI": {
+   "threshold": 0.27857008133628836,
+   "n": 300,
+   "positives": 66,
+   "sens": 0.7575757575757576,
+   "spec": 0.6581196581196581,
+   "auroc": 0.7731157731157731
+  },
+  "STTC": {
+   "threshold": 0.32360671994551604,
+   "n": 300,
+   "positives": 69,
+   "sens": 0.6956521739130435,
+   "spec": 0.7142857142857143,
+   "auroc": 0.7335466465901248
+  }
+ }
+}

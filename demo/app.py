@@ -290,9 +290,9 @@ def check(path, compare, progress=gr.Progress()):
 
 def health_update(age=None):
     """Fills the heart health tab from the result of the check that just ran (see demo/health/)."""
-    empty = ("<div style='padding:10px'>Press <b>Check this photo</b> first. This tab shows the heart health assessment of that photo (research module).</div>", None, None, None, None, None, None, None, None, None, "")
+    empty = ("<div style='padding:10px'>Press <b>Check this photo</b> first. This tab shows the heart health assessment of that photo (research module).</div>", None, None, None, None, None, None, None, None, None, None, None, None, None, None, "")
     if HA is None:
-        return ("<div style='padding:10px'>The heart health module is not available (install plotly in the demo environment).</div>", None, None, None, None, None, None, None, None, None, "")
+        return ("<div style='padding:10px'>The heart health module is not available (install plotly in the demo environment).</div>", None, None, None, None, None, None, None, None, None, None, None, None, None, None, "")
     if not HEALTH:
         return empty
     try:
@@ -308,10 +308,10 @@ def health_update(age=None):
                 use_age, age_src = _da, "the dataset record"
         a = HA.assess(r.get("leads"), r.get("light", "RED"), r.get("reasons"), r.get("page_found", False), r.get("hr", float("nan")), r.get("n_beats", 0),
                       HEALTH.get("rr_cv"), HEALTH.get("pr_ms", float("nan")), HEALTH.get("axis_deg", float("nan")), no_output=bool(r.get("error")), age=use_age, age_source=age_src)
-        return (HD.risk_box(a), HD.waveform(r.get("leads")), HD.parameter_chart(a), HD.findings_chart(a), HD.hr_gauge(a), HD.pattern_donut(a), HD.risk_rate_chart(a), HD.reliability_bars(r, a), HD.heart_diagram(a), HD.chamber_html(a),
+        return (HD.risk_box(a), HD.waveform(r.get("leads")), HD.parameter_chart(a), HD.findings_chart(a), HD.hr_gauge(a), HD.pattern_donut(a), HD.risk_rate_chart(a), HD.reliability_bars(r, a), HD.risk_rate_bars(a), HD.disease_bars(a), HD.original_vs_reconstructed(r.get("leads"), GAL.dataset_clean(HEALTH.get("name"))), HD.beat_rate_chart(r.get("leads"), a), HD.risk_vs_age_line(r.get("leads"), a), HD.heart_diagram(a), HD.chamber_html(a),
                 GAL.truth_box(HEALTH.get("name"), a) + HD.results_panel(a))
     except Exception:
-        return (f"<b>The heart health tab hit a problem.</b><pre>{traceback.format_exc()[-900:]}</pre>", None, None, None, None, None, None, None, None, None, "")
+        return (f"<b>The heart health tab hit a problem.</b><pre>{traceback.format_exc()[-900:]}</pre>", None, None, None, None, None, None, None, None, None, None, None, None, None, None, "")
 
 
 def build():
@@ -349,6 +349,13 @@ def build():
                     out_hrate = gr.Plot(label="I. Heart risk rate (research only, not validated)")
                 out_hrel = gr.Plot(label="G. Is the waveform reliable? Each check against the limit the traffic light uses")
                 with gr.Row():
+                    out_hbars = gr.Plot(label="J. Heart risk rate, vertical bars (research only, not validated)")
+                    out_hdbars = gr.Plot(label="K. Heart disease patterns, vertical bars (not diagnoses)")
+                with gr.Row():
+                    out_hline1 = gr.Plot(label="L. Original against read from the picture (line graph, dataset pictures only)")
+                    out_hline2 = gr.Plot(label="M. Beat-to-beat heart rate (line graph)")
+                out_hageline = gr.Plot(label="N. Heart risk rate against age (line graph, research only)")
+                with gr.Row():
                     out_hheart = gr.Plot(label="H. Which part of the heart (patterns found, not a diagnosis)")
                     out_hchamber = gr.HTML()
                 with gr.Row():
@@ -359,6 +366,21 @@ def build():
                 gr.Markdown("**What we found, and what we refuse to show.** Every rule was written before its result was seen, and negative results are reported as measured. "
                             "Numbers come from the project's frozen results file; the pass rules are the team's proposal and are not approved by the guide yet.")
                 gr.Image(value=os.path.join(HERE, "assets", "fig_results_at_a_glance.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=640)
+                with gr.Accordion("Calibration of the two percentages (line graphs: predicted against observed; the dashed diagonal is perfect)", open=True):
+                    gr.Markdown("**Left: the heart risk rate** (internal validation, cross-validated on 19,048 patients of one cohort: the observed 5-year rate is within 5 points of the predicted rate in all 10 deciles; the top decile is overestimated). "
+                                "Right in the same picture: the decision curve. **Right image: the heart attack pattern percentage** on the fresh set S of 300 simulated photos (second attempt; slope 1.15, error 0.040). "
+                                "Neither is an external validation, and neither was tested on real phone photos.")
+                    with gr.Row():
+                        gr.Image(value=os.path.join(HERE, "assets", "fig_risk_internal_validation.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=420)
+                        gr.Image(value=os.path.join(HERE, "assets", "fig_MI_photocal2.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=420)
+                with gr.Accordion("ROC lines of the two patterns the app shows, on 966 simulated phone photos (found against wrongly flagged)", open=True):
+                    with gr.Row():
+                        gr.Image(value=os.path.join(HERE, "assets", "fig_roc_photos.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=460)
+                        gr.Markdown("**How to read it.** The x axis is how many photos *without* the pattern were wrongly flagged (out of 100), the y axis how many photos *with* the pattern were found (out of 100). "
+                                    "A line far above the dashed 'guessing' diagonal is a good score. The dots are the app's thresholds. "
+                                    "**Be careful:** on this larger pool (sets N, P, Q, R and S together, enriched in abnormal ECGs) the AUROC is about 0.75 and the app's thresholds found about 76 in 100 true heart-attack patterns "
+                                    "while wrongly flagging about 41 in 100 photos without it. An earlier, smaller photo test had given more favourable numbers (found 79, flagged 20); the findings table now quotes the fresh random set S instead (heart attack: found 76, flagged 34 in 100; ST/T: found 70, flagged 29). "
+                                    "Simulated photos of dataset recordings only; not real phone photos.")
                 with gr.Accordion("Public-data networks A and B on their held-out benchmarks (ROC and calibration)", open=False):
                     gr.Image(value=os.path.join(HERE, "assets", "fig_find2_roc_calibration.png"), show_label=False, interactive=False, buttons=["download", "fullscreen"], height=620)
                     gr.Markdown("Benchmarks are clean recordings, not phone photos. On our photos these networks could not be tested (too few positive photos), so their findings appear only in the research-only block of the heart health tab.")
@@ -388,9 +410,9 @@ def build():
         gr.HTML("<div class='foot'>" + DISCLAIMER.replace("**", "") + "</div>")
         ev = btn.click(check, inputs=[img, compare], outputs=[out_html, out_img, out_plot, out_txt, out_info, out_about, out_patient, out_general], concurrency_limit=1,
                        show_progress="full", show_progress_on=[out_html])   # one loading bar (on the result box), not one on every output
-        ev.then(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
+        ev.then(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hbars, out_hdbars, out_hline1, out_hline2, out_hageline, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
         for _trig in (out_age.submit, out_age.blur):
-            _trig(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
+            _trig(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hbars, out_hdbars, out_hline1, out_hline2, out_hageline, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
     return demo
 
 

@@ -21,7 +21,7 @@ ROWS = [
     ("FIX", "Straightening: printed paper, 22 straight full-size photos", "3 to 2 bad (p = 1.0)", "NOT CONFIRMED", FAIL),
     ("MEASURES", "Heart rate, PR interval, QRS axis (straightened photos)", "12 ms and 4 to 6 degrees typical error", "SHOWN", PASS),
     ("MEASURES", "QT, QRS duration (second try on doctor marks)", "QT 12 ms on signals; 66 ms on pictures", "NOT SHOWN", FAIL),
-    ("FINDINGS", "Heart-attack pattern, ST/T change (photos)", "AUROC 0.81 and 0.84 on new photos", "SHOWN", PASS),
+    ("FINDINGS", "Heart-attack pattern, ST/T change (photos)", "AUROC 0.81/0.84, then 0.77/0.73 (set S)", "SHOWN", PASS),
     ("FINDINGS", "Conduction disturbance (printed paper)", "AUROC 0.42 on 22 photos (5 positives)", "NOT SHOWN", FAIL),
     ("FINDINGS", "Hypertrophy (first model, drawn pages and photos)", "0.75 on new drawn pages", "NOT SHOWN", FAIL),
     ("FINDINGS", "Left bundle branch block (2 fresh sets, 280 pictures)", "photos: AUROC 0.83, sens 69%, spec 92%", "DATASET ONLY", PASS),
@@ -52,7 +52,7 @@ for g, claim, num, verdict, col in ROWS:
     ax.add_patch(FancyBboxPatch((83.5, y - 0.27), 16, 0.54, boxstyle="round,pad=0,rounding_size=0.25", fc=col, ec=col))
     ax.text(91.5, y, verdict, fontsize=10, fontweight="bold", va="center", ha="center", color="white")
     y -= 1.0
-ax.text(0, y + 0.1, "Numbers: results/FINAL_NUMBERS.md (sections 10.1 to 10.39). Pass rules are the team's proposal and have not been approved by the guide.", fontsize=9, color="#6b7280", va="center")
+ax.text(0, y + 0.1, "Numbers: results/FINAL_NUMBERS.md (sections 10.1 to 10.40). Pass rules are the team's proposal and have not been approved by the guide.", fontsize=9, color="#6b7280", va="center")
 for ext in ("png", "pdf"):
     fig.savefig(OUT + "fig_results_at_a_glance." + ext, bbox_inches="tight", facecolor="white")
 fig.savefig(OUT + "fig_results_at_a_glance_hires.png", dpi=300, bbox_inches="tight", facecolor="white")      # for the A0 poster (print resolution)

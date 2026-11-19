@@ -93,49 +93,49 @@ def waveform(leads):
 
 
 def parameter_chart(a):
-    """C. One small chart per measured parameter: the value against its reference range. Unmeasured parameters are listed in the table, not drawn."""
+    """C. Measured parameters as VERTICAL bars: one small bar chart per measured parameter, the value against its reference range (green band). Unmeasured parameters are listed in the table, not drawn."""
     meas = [p for p in a["params"] if p["value"] is not None and p["ref"]]
-    fig = make_subplots(rows=max(len(meas), 1), cols=1, vertical_spacing=0.16, subplot_titles=[f"{SHORT.get(p['key'], p['name'])} ({p['unit']}), reference {p['ref'][0]} to {p['ref'][1]}" for p in meas] or [""])
+    fig = make_subplots(rows=1, cols=max(len(meas), 1), horizontal_spacing=0.10, subplot_titles=[f"{SHORT.get(p['key'], p['name'])} ({p['unit']})<br>reference {p['ref'][0]} to {p['ref'][1]}" for p in meas] or [""])
     if not meas:
         fig.add_annotation(text="No parameter could be measured reliably from this photo", showarrow=False)
-        fig.update_layout(height=200, xaxis_visible=False, yaxis_visible=False)
+        fig.update_layout(height=260, xaxis_visible=False, yaxis_visible=False)
         return fig
     for i, p in enumerate(meas, start=1):
         lo, hi = p["ref"]
         span = hi - lo
-        xmin, xmax = min(lo - span * 0.6, p["value"] - span * 0.2), max(hi + span * 0.6, p["value"] + span * 0.2)
-        fig.add_shape(type="rect", x0=lo, x1=hi, y0=0, y1=1, fillcolor=GREEN_BAND, line=dict(width=0), row=i, col=1)
-        inside = lo <= p["value"] <= hi
-        fig.add_trace(go.Scatter(x=[p["value"]], y=[0.5], mode="markers+text", marker=dict(size=16, color=BLUE if inside else ORANGE, line=dict(width=2, color="white"), symbol="diamond"),
-                                 text=[f"{p['value']:.0f}" + (" (outside the reference range)" if not inside else "")], textposition="top center", showlegend=False,
-                                 hovertemplate=f"{p['name']}: %{{x:.0f}} {p['unit']}<extra></extra>"), row=i, col=1)
-        fig.update_xaxes(range=[xmin, xmax], row=i, col=1, showgrid=False)
-        fig.update_yaxes(visible=False, range=[0, 1], row=i, col=1)
+        v = float(p["value"])
+        ymin, ymax = min(0.0, lo - span * 0.3, v - span * 0.2), max(hi + span * 0.6, v + span * 0.25)
+        fig.add_hrect(y0=lo, y1=hi, fillcolor=GREEN_BAND, line_width=0, layer="below", row=1, col=i)
+        inside = lo <= v <= hi
+        fig.add_trace(go.Bar(x=[SHORT.get(p["key"], p["name"])], y=[v], marker_color=BLUE if inside else ORANGE, text=[f"{v:.0f}" + ("" if inside else "<br>outside range")], textposition="outside",
+                             cliponaxis=False, showlegend=False, width=0.5, hovertemplate=f"{p['name']}: %{{y:.0f}} {p['unit']}<extra></extra>"), row=1, col=i)
+        fig.update_yaxes(range=[ymin, ymax], row=1, col=i, gridcolor="#e6e5e1")
+        fig.update_xaxes(showticklabels=False, row=1, col=i)
     fig.update_annotations(font_size=12)
-    fig.update_layout(height=140 * len(meas) + 60, margin=dict(l=20, r=20, t=50, b=20), plot_bgcolor="white", font=dict(color=INK))
+    fig.update_layout(height=380, margin=dict(l=50, r=20, t=80, b=30), plot_bgcolor="white", font=dict(color=INK))
     return fig
 
 
 def findings_chart(a):
-    """D. How likely is each supported ECG PATTERN (not cardiac risk). Bands: unlikely, possible, likely. Percentages only when the finding's calibration passed our fresh-photo test;
-    otherwise the bar is a model score without a number. Abnormal patterns that are found are orange."""
+    """D. Supported findings as VERTICAL bars: how likely is each supported ECG PATTERN (not cardiac risk). Bands: unlikely, possible, likely. Percentages only when the finding's calibration passed our
+    fresh-photo test; otherwise the bar is a model score without a number. Abnormal patterns that are found are orange."""
     sup = [f for f in a["findings"] if f["state"] == "supported"]
     fig = go.Figure()
     if not sup:
         fig.add_annotation(text="No ECG-pattern finding is available for this photo", showarrow=False)
-        fig.update_layout(height=200, xaxis_visible=False, yaxis_visible=False)
+        fig.update_layout(height=260, xaxis_visible=False, yaxis_visible=False)
         return fig
     pct = all(f["p"] is not None for f in sup)
-    names = [f"{SHORT_F.get(f['cls'], f['name'][:40])}: " + ("FOUND" if f["detected"] else "not found") for f in sup]
+    names = [f"{SHORT_F.get(f['cls'], f['name'][:40])}<br>" + ("FOUND" if f["detected"] else "not found") for f in sup]
     vals = [f["p_internal"] for f in sup]
     cols = [(ORANGE if (f["detected"] and f["cls"] != "NORM") else (BLUE if f["cls"] != "NORM" else GRAY)) for f in sup]
-    for x0, x1, c, lab in ((0, 0.3, "rgba(120,120,120,0.10)", "unlikely"), (0.3, 0.7, "rgba(240,160,0,0.14)", "possible"), (0.7, 1.0, "rgba(235,104,52,0.16)", "likely")):
-        fig.add_vrect(x0=x0, x1=x1, fillcolor=c, line_width=0, annotation_text=lab, annotation_position="top", annotation_font_size=10)
-    fig.add_trace(go.Bar(x=vals, y=names, orientation="h", marker_color=cols, text=[f"{v * 100:.0f}%" if pct else "" for v in vals], textposition="outside", cliponaxis=False,
-                         hovertemplate="%{y}<extra></extra>"))
+    for y0, y1, c, lab in ((0, 0.3, "rgba(120,120,120,0.10)", "unlikely"), (0.3, 0.7, "rgba(240,160,0,0.14)", "possible"), (0.7, 1.0, "rgba(235,104,52,0.16)", "likely")):
+        fig.add_hrect(y0=y0, y1=y1, fillcolor=c, line_width=0, annotation_text=lab, annotation_position="top right", annotation_font_size=10)
+    fig.add_trace(go.Bar(x=names, y=vals, marker_color=cols, text=[f"{v * 100:.0f}%" if pct else "" for v in vals], textposition="outside", cliponaxis=False,
+                         hovertemplate="%{x}<extra></extra>"))
     ttl = "How likely is each ECG pattern (model estimate, not cardiac risk)" if pct else "ECG-pattern model score (no percentage: not validated for photos; not cardiac risk)"
-    fig.update_layout(title=dict(text=ttl, font=dict(size=13)), height=62 * len(sup) + 130, margin=dict(l=20, r=40, t=70, b=40), xaxis=dict(range=[0, 1.08], title="Estimated probability that the ECG shows the pattern" if pct else "Model score (not a probability)"),
-                      plot_bgcolor="white", font=dict(color=INK))
+    fig.update_layout(title=dict(text=ttl, font=dict(size=13)), height=420, margin=dict(l=60, r=30, t=70, b=90), yaxis=dict(range=[0, 1.12], title="Estimated probability that the ECG shows the pattern" if pct else "Model score (not a probability)",
+                                                                                                                           gridcolor="#e6e5e1"), xaxis=dict(tickfont=dict(size=11)), plot_bgcolor="white", font=dict(color=INK), bargap=0.35)
     return fig
 
 
@@ -183,7 +183,7 @@ def pattern_donut(a):
         centre, sub = band, f"model score {pi * 100:.0f} in 100: a score, not a chance"
     if f.get("sens") is not None and f.get("spec") is not None:       # A: the measured detection rates on photos
         fig.add_annotation(x=0.5, y=-0.02, showarrow=False, font=dict(size=11, color="#374151"),
-                           text=f"On photos it found {f['sens'] * 100:.0f} in 100 true patterns and<br>wrongly flagged {(1 - f['spec']) * 100:.0f} in 100 photos without the pattern")
+                           text=f"On {f.get('rates_note') or 'photos'} it found {f['sens'] * 100:.0f} in 100 true patterns and<br>wrongly flagged {(1 - f['spec']) * 100:.0f} in 100 photos without the pattern")
     fig.add_annotation(text=f"<b>{_e(centre)}</b>", x=0.5, y=0.54, showarrow=False, font=dict(size=30, color=INK))
     fig.add_annotation(text=_e(sub), x=0.5, y=0.40, showarrow=False, font=dict(size=11, color="#374151"))
     fig.update_layout(title=dict(text=f"{_e(name)}<br><span style='font-size:11px'>strongest ECG pattern; not heart risk</span>", font=dict(size=13)), height=300, showlegend=False, margin=dict(l=20, r=20, t=60, b=50), paper_bgcolor="white", font=dict(color=INK))
@@ -203,7 +203,7 @@ def _p90():
 
 
 def reliability_bars(r, a):
-    """G. Is the waveform reliable? One bar per check the traffic light makes, as a share of the limit it uses: inside the green zone (up to 100%) is fine, beyond it the light is warned.
+    """G. Is the waveform reliable? VERTICAL bars, one per check the traffic light makes, as a share of the limit it uses: inside the green zone (up to 100%) is fine, beyond it the light is warned.
     Display of numbers already computed in the safeguard; nothing is trained or tuned here."""
     feat = (r or {}).get("features")
     m = _p90()
@@ -211,28 +211,29 @@ def reliability_bars(r, a):
     if not feat or not lim:
         return _blank("No reliability checks could be computed for this photo")
     rows = []
-    for key, label in (("rr_cv", "Beat spacing is regular"), ("einthoven", "Leads I, II, III agree"), ("goldberger", "aVR, aVL, aVF agree"), ("xlead_count_absdiff", "All leads count the same beats")):
+    for key, label in (("rr_cv", "Beat spacing<br>is regular"), ("einthoven", "Leads I, II, III<br>agree"), ("goldberger", "aVR, aVL, aVF<br>agree"), ("xlead_count_absdiff", "All leads count<br>the same beats")):
         v = feat.get(key)
         if v is not None and np.isfinite(v) and lim.get(key):
             rows.append((label, float(v) / lim[key]))
     nu = feat.get("n_unreadable_leads")
     if nu is not None and np.isfinite(nu):
-        rows.append((f"Leads readable ({12 - int(nu)} of 12)", 0.0 if int(nu) == 0 else 1.5))
+        rows.append((f"Leads readable<br>({12 - int(nu)} of 12)", 0.0 if int(nu) == 0 else 1.5))
     sp = (r or {}).get("detector_spread")
     if sp is not None and np.isfinite(sp):
-        rows.append(("Beat detectors agree", float(sp) / float(m.get("detector_spread_note_bpm", 15.0))))
+        rows.append(("Beat detectors<br>agree", float(sp) / float(m.get("detector_spread_note_bpm", 15.0))))
     if not rows:
         return _blank("No reliability checks could be computed for this photo")
-    labels = [x[0] for x in rows][::-1]
-    vals = [min(x[1], 2.0) for x in rows][::-1]
+    labels = [x[0] for x in rows]
+    vals = [min(x[1], 2.0) for x in rows]
     cols = [BLUE if v <= 1.0 else ORANGE for v in vals]
-    fig = go.Figure(go.Bar(x=vals, y=labels, orientation="h", marker_color=cols, text=[("OK" if v <= 1.0 else "over the limit") for v in vals], textposition="outside", cliponaxis=False,
-                           hovertemplate="%{y}: %{x:.0%} of the limit<extra></extra>"))
-    fig.add_vrect(x0=0, x1=1.0, fillcolor=GREEN_BAND, line_width=0)
-    fig.add_vline(x=1.0, line_dash="dash", line_color=GRAY, annotation_text="limit", annotation_position="top")
+    fig = go.Figure(go.Bar(x=labels, y=vals, marker_color=cols, text=[("OK" if v <= 1.0 else "over the limit") for v in vals], textposition="outside", cliponaxis=False,
+                           hovertemplate="%{x}: %{y:.0%} of the limit<extra></extra>"))
+    fig.add_hrect(y0=0, y1=1.0, fillcolor=GREEN_BAND, line_width=0, layer="below")
+    fig.add_hline(y=1.0, line_dash="dash", line_color=GRAY, annotation_text="limit", annotation_position="top right")
     light = a.get("light", "")
-    fig.update_layout(title=dict(text=f"Is the waveform reliable? Traffic light: {light} (green is not a guarantee)", font=dict(size=13)), height=60 * len(rows) + 120, margin=dict(l=20, r=80, t=70, b=40),
-                      xaxis=dict(range=[0, 2.3], tickvals=[0, 0.5, 1.0, 1.5, 2.0], tickformat=".0%", title="Share of the limit used by the traffic light (lower is better)"), plot_bgcolor="white", font=dict(color=INK))
+    fig.update_layout(title=dict(text=f"Is the waveform reliable? Traffic light: {light} (green is not a guarantee)", font=dict(size=13)), height=420, margin=dict(l=60, r=30, t=70, b=90),
+                      yaxis=dict(range=[0, 2.3], tickvals=[0, 0.5, 1.0, 1.5, 2.0], tickformat=".0%", title="Share of the limit used by the traffic light (lower is better)", gridcolor="#e6e5e1"),
+                      plot_bgcolor="white", font=dict(color=INK), bargap=0.35)
     return fig
 
 
@@ -251,6 +252,200 @@ def risk_rate_chart(a):
                           dict(range=[lo, hi], color="rgba(245,158,11,0.75)")])))
     fig.add_annotation(x=0.5, y=-0.12, showarrow=False, text=f"about {int(round(lo / 5) * 5)} to {int(round(hi / 5) * 5)} in 100 (rough group: {_e(r['group'])})", font=dict(size=12, color="#374151"))
     fig.update_layout(height=300, margin=dict(l=20, r=20, t=90, b=40), font=dict(color=INK), paper_bgcolor="white")
+    return fig
+
+
+def risk_rate_bars(a):
+    """J. Heart risk rate as VERTICAL bars (research only): low end of the range, middle value, high end of the range, and for comparison the average 5-year death rate in our research data (15.6 in 100).
+    Same numbers as box A2 and dial I; shown only when box A2 has an estimate."""
+    r = a.get("risk_exp") or {}
+    if r.get("state") != "shown":
+        return _blank("No heart risk rate yet: " + str(r.get("reason", "not available")), h=340)
+    lo, p, hi = r["low"] * 100, r["p"] * 100, r["high"] * 100
+    names = ["Low end of range", "Middle value", "High end of range", "Average in our research data"]
+    vals = [lo, p, hi, 15.6]
+    cols = ["#fbbf24", "#92400e", "#fbbf24", "#9ca3af"]
+    fig = go.Figure(go.Bar(x=names, y=vals, marker_color=cols, text=[f"{v:.0f} in 100" for v in vals], textposition="outside", cliponaxis=False,
+                           hovertemplate="%{x}: %{y:.0f} in 100<extra></extra>"))
+    fig.update_layout(title=dict(text="Heart risk rate, 5 years (research only, not validated)<br><span style='font-size:11px'>chance of death in our research data for people like this; rough group: " + _e(r["group"]) + "</span>", font=dict(size=13)),
+                      height=380, margin=dict(l=50, r=20, t=90, b=60), yaxis=dict(title="in 100 people", range=[0, 105], gridcolor="#e6e5e1"), xaxis=dict(tickfont=dict(size=11)),
+                      plot_bgcolor="white", font=dict(color=INK), bargap=0.35)
+    return fig
+
+
+def disease_bars(a):
+    """K. Heart disease PATTERNS as VERTICAL bars (not diagnoses). One bar per pattern the tool could check for this photo. Height = the calibrated chance that the ECG shows the pattern where that passed our rules
+    (heart-attack pattern), otherwise the model SCORE (not a chance, drawn with a pale hatch). Orange = pattern found, blue = not found."""
+    rows = []
+    for f in a.get("findings", []):
+        if f["state"] != "supported" or f["cls"] == "NORM":
+            continue
+        if f.get("p_cal") is not None:
+            v, kind = float(f["p_cal"]), "chance"
+        elif f.get("p") is not None:
+            v, kind = float(f["p"]), "chance"
+        elif f.get("p_internal") is not None:
+            v, kind = float(f["p_internal"]), "score"
+        else:
+            continue
+        rows.append((SHORT_F.get(f["cls"], f["name"][:30]), v * 100, kind, bool(f["detected"])))
+    if not rows:
+        return _blank("No heart disease pattern could be checked for this photo", h=340)
+    names = [r[0] for r in rows]
+    vals = [r[1] for r in rows]
+    cols = [(ORANGE if r[3] else BLUE) for r in rows]
+    shapes = ["" if r[2] == "chance" else "/" for r in rows]
+    texts = [(f"{r[1]:.0f} in 100" if r[2] == "chance" else f"score {r[1]:.0f}") + ("<br>FOUND" if r[3] else "<br>not found") for r in rows]
+    fig = go.Figure(go.Bar(x=names, y=vals, marker=dict(color=cols, pattern=dict(shape=shapes, fgcolor="white", size=6)), text=texts, textposition="outside", cliponaxis=False,
+                           hovertemplate="%{x}: %{y:.0f}<extra></extra>"))
+    fig.update_layout(title=dict(text="Heart disease patterns (not diagnoses)<br><span style='font-size:11px'>solid bar = calibrated chance the ECG shows the pattern; hatched bar = model score, not a chance</span>", font=dict(size=13)),
+                      height=420, margin=dict(l=50, r=20, t=90, b=110), yaxis=dict(title="in 100 (chance) or score (0 to 100)", range=[0, 112], gridcolor="#e6e5e1"), xaxis=dict(tickangle=-25, tickfont=dict(size=11)),
+                      plot_bgcolor="white", font=dict(color=INK), bargap=0.3)
+    return fig
+
+
+def _align(clean12, leads):
+    """Aligns the true recording to the digitised one. The digitised lead II (1 kHz, microvolts) and the true lead II (100 Hz, millivolts, upsampled) are compared at 250 Hz; the lag with the best correlation
+    (within plus or minus 1 s) is used for every lead. Returns (lag in samples at 1 kHz, {lead: (true_up_aligned, digitised_mV)}) or None."""
+    from scipy.signal import resample_poly
+    out = {}
+    if clean12 is None or leads is None or leads.get("II") is None:
+        return None
+    t1k = np.arange(10000) / 1000.0
+    t100 = np.arange(clean12.shape[1]) / 100.0
+
+    def prep(k, L):
+        d = np.asarray(leads.get(L), float)[:10000] / 1000.0 if leads.get(L) is not None else np.full(10000, np.nan)
+        if len(d) < 10000:
+            d = np.concatenate([d, np.full(10000 - len(d), np.nan)])
+        o = np.interp(t1k, t100, clean12[k])
+        return o, d
+
+    o2, d2 = prep(D.LEADS.index("II"), "II")
+    m = np.isfinite(d2)
+    if m.sum() < 3000:
+        return None
+    a = np.where(m, d2 - np.nanmedian(d2), 0.0)[::4]
+    b = (o2 - np.median(o2))[::4]
+    best, lag = -2.0, 0
+    for L in range(-250, 251):
+        x, y = (a[L:], b[:len(b) - L]) if L >= 0 else (a[:L], b[-L:])
+        mm = (np.abs(x) > 0) | (np.abs(y) > 0)
+        if mm.sum() < 500:
+            continue
+        c = np.corrcoef(x[mm], y[mm])[0, 1]
+        if np.isfinite(c) and c > best:
+            best, lag = c, L
+    lag1k = lag * 4
+    for k, Ln in enumerate(D.LEADS):
+        o, d = prep(k, Ln)
+        o = o - np.median(o)
+        d = d - np.nanmedian(d) if np.isfinite(d).any() else d
+        if lag1k >= 0:                                  # digitised signal starts later than the true one by lag1k samples: shift the true one
+            o_al = np.concatenate([np.full(lag1k, np.nan), o[:10000 - lag1k]])
+        else:
+            o_al = np.concatenate([o[-lag1k:], np.full(-lag1k, np.nan)])
+        out[Ln] = (o_al, d)
+    return lag1k, out
+
+
+def original_vs_reconstructed(leads, clean12):
+    """L. LINE GRAPH: the true recording (dataset record) against the signal the tool read from the picture, lead II with a lead selector. Only for dataset pictures: a photo from a person has no
+    original recording. The correlation after aligning the two is shown for every lead."""
+    al = _align(clean12, leads)
+    if al is None:
+        return _blank("No original recording for this picture: the original exists only for dataset pictures", h=380)
+    lag, sig = al
+    t = np.arange(10000) / 1000.0
+    names, cors = [], {}
+    fig = go.Figure()
+    for Ln in D.LEADS:
+        o, d = sig[Ln]
+        m = np.isfinite(o) & np.isfinite(d)
+        cors[Ln] = float(np.corrcoef(o[m], d[m])[0, 1]) if m.sum() > 500 and np.std(d[m]) > 0 else float("nan")
+        vis = Ln == "II"
+        fig.add_trace(go.Scattergl(x=t, y=o, mode="lines", name="original (true recording)", line=dict(width=1.4, color="#6b7280"), visible=vis, legendgroup="o", showlegend=vis,
+                                   hovertemplate="%{x:.2f} s<br>%{y:.3f} mV<extra>original " + Ln + "</extra>"))
+        fig.add_trace(go.Scattergl(x=t, y=d, mode="lines", name="read from the picture", line=dict(width=1.2, color=ORANGE), visible=vis, legendgroup="d", showlegend=vis,
+                                   hovertemplate="%{x:.2f} s<br>%{y:.3f} mV<extra>picture " + Ln + "</extra>"))
+        names.append(Ln)
+    buttons = []
+    for i, Ln in enumerate(names):
+        vis = [False] * (2 * len(names))
+        vis[2 * i] = vis[2 * i + 1] = True
+        c = cors[Ln]
+        buttons.append(dict(label=f"{Ln} (r = {c:.2f})" if np.isfinite(c) else Ln, method="update", args=[{"visible": vis, "showlegend": vis}, {"title": f"Lead {Ln}: original against read from the picture, correlation r = {c:.2f}" if np.isfinite(c) else f"Lead {Ln}"}]))
+    c2 = cors.get("II", float("nan"))
+    fig.update_layout(title=dict(text=f"Original against read from the picture, correlation r = {c2:.2f} (choose a lead; drag to zoom)", font=dict(size=13), x=0.22, xanchor="left"), height=420, margin=dict(l=50, r=20, t=80, b=50),
+                      updatemenus=[dict(buttons=buttons, active=0 if "II" not in names else names.index("II"), direction="down", x=0.0, y=1.22, xanchor="left", yanchor="top")],
+                      xaxis=dict(title="Time (seconds)", gridcolor="#e6e5e1"), yaxis=dict(title="Amplitude (mV)", gridcolor="#e6e5e1"), plot_bgcolor="white", font=dict(color=INK),
+                      legend=dict(orientation="h", y=-0.2), annotations=[dict(x=1, y=-0.3, xref="paper", yref="paper", showarrow=False, xanchor="right", font=dict(size=11, color="#374151"),
+                                                                           text=f"time shift removed: {lag} ms; amplitudes are not rescaled")])
+    return fig
+
+
+def beat_rate_chart(leads, a):
+    """M. LINE GRAPH: the heart rate at each beat (60 / the gap to the previous beat) across the 10 seconds, with the average as a dashed line. Drawn only for a GREEN or AMBER straightened photo, the same
+    rule as the heart-rate number: a read that looks unreliable shows no rate. A jumping line means uneven beats (or a bad read); it is not a diagnosis."""
+    if leads is None or leads.get("II") is None or not a.get("usable"):
+        return _blank("No beat-to-beat heart rate: shown only for a GREEN or AMBER straightened photo", h=380)
+    try:
+        import neurokit2 as nk
+        ii = np.asarray(leads["II"], float)[:10000]
+        idx = np.flatnonzero(np.isfinite(ii))
+        if len(idx) < 3000:
+            return _blank("Too little signal in lead II to find the beats", h=380)
+        a0, a1 = idx[0], idx[-1] + 1
+        seg = ii[a0:a1]
+        seg = np.interp(np.arange(len(seg)), np.flatnonzero(np.isfinite(seg)), seg[np.isfinite(seg)])
+        cl = nk.ecg_clean(seg, sampling_rate=1000, method="neurokit")
+        pk = np.asarray(nk.ecg_peaks(cl, sampling_rate=1000)[1]["ECG_R_Peaks"])
+    except Exception:
+        return _blank("The beats could not be found in lead II", h=380)
+    if len(pk) < 3:
+        return _blank("Fewer than 3 beats found: no beat-to-beat heart rate", h=380)
+    rr = np.diff(pk) / 1000.0
+    hr = 60.0 / rr
+    tt = (a0 + pk[1:]) / 1000.0
+    mean = float(np.mean(hr))
+    fig = go.Figure()
+    fig.add_hrect(y0=60, y1=100, fillcolor=GREEN_BAND, line_width=0, layer="below")
+    fig.add_trace(go.Scatter(x=tt, y=hr, mode="lines+markers", line=dict(width=2, color=BLUE), marker=dict(size=8), name="heart rate at each beat",
+                             hovertemplate="beat at %{x:.2f} s: %{y:.0f} bpm<extra></extra>"))
+    fig.add_hline(y=mean, line_dash="dash", line_color=GRAY, annotation_text=f"average {mean:.0f} bpm", annotation_position="top left")
+    fig.add_trace(go.Scatter(x=tt, y=rr * 1000.0, mode="lines+markers", line=dict(width=2, color="#7c3aed", dash="dot"), marker=dict(size=6, symbol="diamond"), name="RR interval (gap between beats)", yaxis="y2",
+                             hovertemplate="beat at %{x:.2f} s: RR %{y:.0f} ms<extra></extra>"))
+    spread = float(np.max(hr) - np.min(hr))
+    fig.update_layout(title=dict(text=f"Beat-to-beat heart rate and RR interval ({len(hr)} beats; heart rate lowest to highest {spread:.0f} bpm; green band = resting adult range 60 to 100)", font=dict(size=13)), height=380,
+                      margin=dict(l=60, r=70, t=70, b=50), xaxis=dict(title="Time (seconds)", range=[0, 10], gridcolor="#e6e5e1"),
+                      yaxis=dict(title="Heart rate (beats per minute), blue", range=[max(0, min(hr.min(), 60) - 15), max(hr.max(), 100) + 15], gridcolor="#e6e5e1"),
+                      yaxis2=dict(title="RR interval (milliseconds), purple dotted", overlaying="y", side="right", showgrid=False, range=[max(0, rr.min() * 1000 - 150), rr.max() * 1000 + 150]),
+                      plot_bgcolor="white", font=dict(color=INK), showlegend=False)
+    return fig
+
+
+def risk_vs_age_line(leads, a):
+    """N. LINE GRAPH: the research 5-year chance of death of THIS ECG at every age from 20 to 90 (x = age, y = chance in 100 people), with the range of box A2 as a band around the line and a marker at the age used.
+    It shows plainly that the number mostly follows age. Drawn only when box A2 has an estimate (GREEN straightened photo). Research only, not validated, not a prediction for the person."""
+    r = a.get("risk_exp") or {}
+    if r.get("state") != "shown":
+        return _blank("No risk-against-age line: " + str(r.get("reason", "not available")), h=380)
+    from . import risk as RK
+    ages = np.arange(20, 91, 2)
+    p = RK.risk3_curve(leads, ages)
+    if p is None:
+        return _blank("The risk-against-age line could not be computed for this photo", h=380)
+    hw = RK.RANGE_HALF_WIDTH_EST if r.get("estimated_age") else RK.RANGE_HALF_WIDTH
+    y, lo, hi = p * 100, np.clip(p - hw, 0, 1) * 100, np.clip(p + hw, 0, 1) * 100
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=np.r_[ages, ages[::-1]], y=np.r_[hi, lo[::-1]], fill="toself", fillcolor="rgba(245,158,11,0.25)", line=dict(width=0), name="range shown", hoverinfo="skip"))
+    fig.add_trace(go.Scatter(x=ages, y=y, mode="lines", line=dict(width=3, color="#92400e"), name="this ECG at each age", hovertemplate="age %{x}: %{y:.0f} in 100<extra></extra>"))
+    fig.add_hline(y=15.6, line_dash="dash", line_color=GRAY, annotation_text="average in our research data (16 in 100)", annotation_position="bottom right")
+    fig.add_trace(go.Scatter(x=[r["age"]], y=[r["p"] * 100], mode="markers+text", marker=dict(size=13, color=ORANGE, line=dict(width=2, color="white")), text=[f"age {r['age']:.0f}: {r['p'] * 100:.0f} in 100"],
+                             textposition="top left", name="age used", hovertemplate="age %{x:.0f}: %{y:.0f} in 100<extra></extra>"))
+    fig.update_layout(title=dict(text="Heart risk rate against age for this ECG (research only, not validated)<br><span style='font-size:11px'>the number mostly follows age; band = range shown</span>", font=dict(size=13)),
+                      height=400, margin=dict(l=60, r=20, t=80, b=50), xaxis=dict(title="Age (years)", range=[20, 90], gridcolor="#e6e5e1"),
+                      yaxis=dict(title="5-year chance of death (in 100 people)", range=[0, 100], gridcolor="#e6e5e1"), plot_bgcolor="white", font=dict(color=INK), showlegend=False)
     return fig
 
 
@@ -368,7 +563,7 @@ def findings_table(a):
             if f.get("validated"):
                 parts.append(f"validated on dataset pictures (simulated phone photos; {f['positives']} pictures with the pattern): found {f['sens'] * 100:.0f} in 100 true patterns and wrongly flagged {(1 - f['spec']) * 100:.0f} in 100 pictures without it; not validated on real phone photos; no percentage is shown")
             elif "sens" in f:
-                parts.append(f"in our phone-photo tests this check found {f['sens'] * 100:.0f} in 100 true patterns and wrongly flagged {(1 - f['spec']) * 100:.0f} in 100 photos without the pattern")
+                parts.append(f"on {f.get('rates_note') or 'our phone-photo tests'} this check found {f['sens'] * 100:.0f} in 100 true patterns and wrongly flagged {(1 - f['spec']) * 100:.0f} in 100 photos without the pattern")
             if f.get("p_cal") is not None:
                 parts.append(f"about {f['p_cal'] * 100:.0f} in 100 (the chance this ECG shows the pattern, not of a heart attack; calibrated on simulated photos, second attempt; not validated on real phone photos)")
             if f.get("p") is None and not f.get("validated") and f.get("p_cal") is None:
@@ -430,7 +625,7 @@ def results_panel(a):
         + (f"<p><b>Exploratory estimate (research only):</b> {_e(a['risk_exp']['text'])}</p>" if (a.get('risk_exp') or {}).get('state') == 'shown' else ""),
         "<h4>7. Confidence and limitations</h4><ul><li>Each measurement above carries the error we measured for its method; the traffic light is the per-photo check.</li>"
         "<li>The findings model was trained on public hospital ECGs and tested on our drawn pages and phone photos; findings that did not pass the pre-set tests are not shown.</li>"
-        "<li>A 'not found' result misses some patterns: in our phone-photo tests the checks found about 79 in 100 infarction patterns and 72 in 100 ST/T patterns, and wrongly flagged 16 to 20 in 100 photos without the pattern.</li><li>Conduction patterns in general are not shown for real photos: they were found on photos of a screen but not on our printed-paper photos. Two exceptions passed our rules on fresh dataset pictures (drawn pages and simulated phone photos): left bundle branch block (found about 69 in 100 true patterns on simulated photos, 8 in 100 wrongly flagged) and atrial fibrillation (found about 75 in 100, 9 in 100 wrongly flagged; it passed on its second test). Neither is validated on real phone photos. The other conduction-type patterns (fascicular block, AV block) stay in the research-only block.</li><li>Model confidence is not heart risk.</li><li>Printed paper from one other phone was tested on very few positive photos (5 to 7 per pattern); other phones are not yet shown to work.</li></ul>",
+        "<li>A 'not found' result misses some patterns: on 300 fresh random simulated phone photos the checks found about 76 in 100 infarction patterns and 70 in 100 ST/T patterns, and wrongly flagged about 34 and 29 in 100 photos without the pattern.</li><li>Conduction patterns in general are not shown for real photos: they were found on photos of a screen but not on our printed-paper photos. Two exceptions passed our rules on fresh dataset pictures (drawn pages and simulated phone photos): left bundle branch block (found about 69 in 100 true patterns on simulated photos, 8 in 100 wrongly flagged) and atrial fibrillation (found about 75 in 100, 9 in 100 wrongly flagged; it passed on its second test). Neither is validated on real phone photos. The other conduction-type patterns (fascicular block, AV block) stay in the research-only block.</li><li>Model confidence is not heart risk.</li><li>Printed paper from one other phone was tested on very few positive photos (5 to 7 per pattern); other phones are not yet shown to work.</li></ul>",
         f"<h4>8. Recommended next steps</h4><p>{_e(a['next_steps'])}</p>",
         f"<div style='margin-top:10px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:12.5px'>{_e(a['disclaimer'])}</div>"]
     return "<div class='hh-light' style='font-size:14px;background:#fff;color:#111;padding:14px;border-radius:8px'>" + "".join(parts) + "</div>"

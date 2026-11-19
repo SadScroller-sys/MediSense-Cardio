@@ -428,6 +428,24 @@ def _mi_cal():
     return _MI_CAL["c"]
 
 
+_RATES_S = {}
+
+
+def photo_rates_S(fl):
+    """The detection rates quoted for the heart-attack and ST/T patterns are the ones measured on the fresh random set S (300 simulated photos), not the older, smaller test (results/health/photo_rates_S.json)."""
+    if "r" not in _RATES_S:
+        try:
+            with open(os.path.join(D.ROOT, "results", "health", "photo_rates_S.json"), encoding="utf-8") as fh:
+                _RATES_S["r"] = json.load(fh)["classes"]
+        except Exception:
+            _RATES_S["r"] = {}
+    for f in fl:
+        c = _RATES_S["r"].get(f["cls"])
+        if c and f["state"] == "supported":
+            f["sens"], f["spec"], f["rates_note"] = c["sens"], c["spec"], "300 fresh random simulated photos"
+    return fl
+
+
 def mi_photo_calibration(fl):
     """Adds p_cal (fraction) to the heart-attack-pattern row when its score exists and the calibration passed its rules. The row is otherwise unchanged."""
     c = _mi_cal()
@@ -448,6 +466,7 @@ def assess(leads, light, reasons, page_found, hr, n_beats, rr_cv, pr_ms, axis_de
         params = apply_qt(params, leads)
     fl, why = findings(leads if usable else None, light, page_found)
     fl = mi_photo_calibration(fl)
+    fl = photo_rates_S(fl)
     ov = overall(fl, usable)
     extra = extra_findings(leads if usable else None, light, page_found)
     fl, extra = promote_validated(fl, extra)

@@ -717,3 +717,6 @@ Rules: docs/plan/analysis_plan_changes.md (2026-11-18 night, late, 'SET S', writ
 
 ## 10.39 Risk range on the fresh pictures of set S (18 Nov 2026, descriptive)
 300 simulated photos. The displayed range (plus or minus 10 with a true age; plus or minus 12 with the age estimated from the picture) contained the clean-ECG estimate for 67% and 69% of pictures; mean change 9.9 and 10.3 points; target 80% not met; the range was not widened. Files: results/risk_pilot3/S_range.csv, SECTION_RISK3_S.md.
+
+## 10.40 Correction of the quoted detection rates of the heart-attack and ST/T patterns (19 Nov 2026)
+At the app thresholds, on the fresh random set S (300 simulated photos): heart-attack pattern found 76 and wrongly flagged 34 in 100 (AUROC 0.773, 0.709 to 0.835); ST/T-wave change found 70 and wrongly flagged 29 in 100 (AUROC 0.734, 0.676 to 0.788). Pooled over sets N, P, Q, R, S (966 photos): 76 / 41 and 72 / 31 (AUROC 0.748 and 0.741). The earlier, smaller test (79 / 20 and 72 / 16) was more favourable and is no longer quoted. Files: results/health/photo_rates_S.json, roc_photos.csv, fig_roc_photos.png.

@@ -110,3 +110,28 @@ def risk3_estimate(leads, age_years):
         return dict(p=p, low=max(0.0, p - hw), high=min(1.0, p + hw), age=age_years, estimated_age=est_age, group=("lower" if p < 0.05 else ("middle" if p < 0.15 else "higher")), n_models=len(ps))
     except Exception:
         return None
+
+
+def risk3_curve(leads, ages):
+    """The 5-year estimate (fraction) of the SAME ECG at each age in `ages` (years, 16 to 90), average of the five fold models after Platt scaling. None if it cannot be computed."""
+    import os
+
+    import numpy as np
+    if leads is None:
+        return None
+    try:
+        if risk3_estimate(leads, 60.0) is None:                     # loads the models and checks that the signal is usable
+            return None
+        dev = _RISK3["dev"]
+        x = I.digitised_to_input250(leads)[None]
+        ages = np.clip(np.asarray(ages, np.float32), 16, 90)
+        xt = torch.from_numpy(np.ascontiguousarray(np.repeat(x, len(ages), axis=0))).to(dev)
+        at = torch.from_numpy(age_in(ages).astype(np.float32)).to(dev)
+        ps = []
+        with torch.no_grad():
+            for net, a, b in _RISK3["nets"]:
+                lg = net(xt, at).squeeze(1).cpu().numpy()
+                ps.append(1.0 / (1.0 + np.exp(-(a * lg + b))))
+        return np.mean(ps, axis=0)
+    except Exception:
+        return None

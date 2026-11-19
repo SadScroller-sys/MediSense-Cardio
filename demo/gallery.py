@@ -118,6 +118,24 @@ def dataset_age(name):
         return None
 
 
+def dataset_clean(name):
+    """The TRUE recording (12 leads, 100 Hz, millivolts, shape (12, 1000)) of a dataset picture (file name starting with a set-N page id), read from PTB-XL; None for any other picture."""
+    d = data()
+    if d is None or not name:
+        return None
+    base = os.path.splitext(os.path.basename(str(name)))[0]
+    case = next((c for c in d["cases"] if c["page"] == base[:4]), None)
+    if case is None or not base[:4].startswith("N"):
+        return None
+    try:
+        import pandas as pd
+        from health import data as HD
+        db = pd.read_csv(HD.PT + "ptbxl_database.csv", usecols=["ecg_id", "filename_lr"]).set_index("ecg_id")
+        return HD._read_record(db.loc[int(case["ecg_id"]), "filename_lr"])
+    except Exception:
+        return None
+
+
 def truth_box(name, a):
     """For a dataset picture (file name starting with a set-N page id, e.g. N037_angled.jpg) the true answer next to what the tool said on THIS check; empty for any other picture."""
     d = data()
