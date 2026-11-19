@@ -34,7 +34,7 @@ def test_safe_sentences_pass():
 
 def test_risk_text_does_not_claim_there_is_no_outcome_data():
     t = W.RISK_UNAVAILABLE
-    assert "this project has none" not in t and "two attempts" in t and "open dataset" in t and "not available" in t.lower()
+    assert "this project has none" not in t and "three attempts" in t and "open dataset" in t and "not available" in t.lower()
     assert not W.check_wording(t)
 
 
@@ -241,6 +241,145 @@ def test_promote_q_moves_only_a_passed_pair():
     assert "validated on dataset pictures" in html and "not validated on real phone photos" in html and "wrongly flagged 8 in 100" in html
     A._QS["s"] = {}
     assert A.promote_q(fl, extra, {"II": 1}) == (fl, extra)
+
+
+def _assessment(light="GREEN", p=None):
+    a = dict(light=light, params=A.parameters(light, 72.0, 0.03, 160.0, 40.0, True, ["beats are regular and the leads agree"], False))
+    a["findings"] = [sup("NORM", False, 0.2), sup("MI", True, 0.85)]
+    a["findings"][1]["p"] = p
+    return a
+
+
+def test_hr_gauge_shows_number_only_when_the_reading_is_reliable():
+    g = DB.hr_gauge(_assessment("GREEN"))
+    assert g.data and g.data[0].type == "indicator" and abs(g.data[0].value - 72.0) < 1e-9
+    red = DB.hr_gauge(dict(light="RED", params=A.parameters("RED", 72.0, 0.03, 160.0, 40.0, True, ["x"], False)))
+    assert not red.data                       # no gauge and no number for a RED light
+
+
+def test_pattern_donut_has_no_percentage_unless_calibrated():
+    d = DB.pattern_donut(_assessment("GREEN", p=None))
+    txt = " ".join(x.text for x in d.layout.annotations)
+    assert "%" not in txt and "likely" in txt          # band word only, no number
+    d2 = DB.pattern_donut(_assessment("GREEN", p=0.40))
+    assert "40%" in " ".join(x.text for x in d2.layout.annotations)
+    assert "risk" in d.layout.title.text.lower() and "not heart risk" in d.layout.title.text.lower()
+
+
+def test_reliability_bars_compare_each_check_with_the_traffic_light_limit():
+    feat = dict(rr_cv=0.05, einthoven=0.10, goldberger=0.20, xlead_count_absdiff=0.0, n_unreadable_leads=0)
+    f = DB.reliability_bars(dict(features=feat, detector_spread=3.0), dict(light="GREEN"))
+    assert f.data and len(f.data[0].y) == 6
+    assert all(v <= 1.0 for v in f.data[0].x)                      # all inside the limit
+    bad = DB.reliability_bars(dict(features=dict(feat, einthoven=0.9), detector_spread=3.0), dict(light="AMBER"))
+    assert max(bad.data[0].x) > 1.0
+    assert not DB.reliability_bars(dict(features=None), dict(light="RED")).data
+
+
+def test_exploratory_risk_text_keeps_the_safety_boundary():
+    for g in ("lower", "middle", "higher"):
+        t = W.risk_exp_text(dict(low=0.0, high=0.12, p=0.02, group=g))
+        assert not W.check_wording(t), W.check_wording(t)
+        assert "not validated" in t and "mostly reflects age" in t
+
+
+def test_exploratory_risk_only_for_green_straightened_photo_with_an_age():
+    assert A.risk_exploratory(fake_leads(), "AMBER", True, 60, True)["state"] == "blocked"
+    assert A.risk_exploratory(fake_leads(), "GREEN", False, 60, False)["state"] == "blocked"
+    e = A.risk_exploratory(fake_leads(), "GREEN", True, None, True)          # no age typed: estimated from the ECG, wider range
+    assert e["state"] == "shown" and e["estimated_age"] and e["age_source"].startswith("estimated from the ECG") and 16 <= e["age"] <= 90
+    assert abs((e["high"] - e["low"]) - 0.24) < 1e-6 or e["low"] == 0.0 or e["high"] == 1.0
+    assert not W.check_wording(e["text"]) and "estimated from the ECG" in e["text"]
+    assert A.risk_exploratory(fake_leads(), "GREEN", True, 120, True)["state"] == "blocked"       # age outside 16 to 90
+    r = A.risk_exploratory(fake_leads(), "GREEN", True, 60, True)
+    assert r["state"] == "shown" and r["n_models"] == 5 and 0 <= r["low"] <= r["p"] <= r["high"] <= 1
+    assert not W.check_wording(r["text"])
+
+
+def test_risk_box_labels_the_exploratory_estimate_and_keeps_validated_risk_unavailable():
+    a = _assessment("GREEN", p=None)
+    a["overall"] = dict(colour="#6b7280", label="x", text="y", code="none")
+    a["risk"] = W.RISK_UNAVAILABLE
+    a["risk_exp"] = A.risk_exploratory(fake_leads(), "GREEN", True, 60, True)
+    h = DB.risk_box(a)
+    assert "Not available" in h and "EXPLORATORY 5-YEAR ESTIMATE" in h and "not validated" in h and " in 100" in h
+    a["risk_exp"] = dict(state="need_age", reason="enter the age to see the exploratory estimate")
+    assert "No estimate yet" in DB.risk_box(a)
+
+
+def _chamber_assessment():
+    a = _assessment("GREEN", p=None)
+    a["findings"] = [sup("NORM", False, 0.2), sup("MI", True, 0.85), dict(cls="B:AF", name="Atrial fibrillation pattern (irregular rhythm)", state="supported", reason="", p=None, detected=True, p_internal=0.9, validated=True),
+                     dict(cls="B:LBBB", name="Left bundle branch block pattern", state="supported", reason="", p=None, detected=False, p_internal=0.1, validated=True)]
+    a["extra"] = [dict(cls="IRBBB", src="A", name="Incomplete right bundle branch block pattern", detected=False), dict(cls="1dAVb", src="B", name="First-degree AV block pattern", detected=True)]
+    a["risk_exp"] = dict(state="shown", low=0.25, high=0.45, p=0.35, group="higher", age=70.0, age_source="typed")
+    return a
+
+
+def test_chamber_view_puts_each_pattern_in_its_part_of_the_heart():
+    st = DB.chamber_states(_chamber_assessment())
+    assert st["RA"]["state"] == "found" and st["LA"]["state"] == "found"          # atrial fibrillation sits in both atria
+    assert st["LV"]["state"] == "found" and any(k == "MI" for k, _ in st["LV"]["patterns"])
+    assert st["RV"]["state"] == "clear"                                            # IRBBB checked, none found
+    assert st["AV"]["state"] == "found"                                            # first-degree AV block
+    assert DB.chamber_states(dict(findings=[], extra=[]))["LV"]["state"] == "unchecked"   # nothing checked: grey, never 'normal'
+
+
+def test_chamber_view_text_is_not_a_diagnosis_and_keeps_the_wording_rules():
+    a = _chamber_assessment()
+    h = DB.chamber_html(a)
+    import re
+    text = re.sub(r"<[^>]+>", " ", h)
+    assert not W.check_wording(text), W.check_wording(text)
+    assert "not a prediction for you" in text and "not a separate number for the atria or the ventricles" in text and "linked to" in text
+    fig = DB.heart_diagram(a)
+    assert "not a diagnosis" in fig.layout.title.text and len(fig.layout.shapes) == 5
+    a["risk_exp"] = dict(state="blocked", reason="shown only for a GREEN light and a straightened photo")
+    assert "no estimate yet" in DB.chamber_html(a)
+
+
+def test_risk_rate_dial_only_when_the_exploratory_estimate_exists():
+    a = _chamber_assessment()
+    f = DB.risk_rate_chart(a)
+    assert f.data and f.data[0].type == "indicator" and abs(f.data[0].value - 35.0) < 1e-6
+    assert "not validated" in f.data[0].title.text and "research only" in f.data[0].title.text
+    rng = [s for s in f.data[0].gauge.steps if abs(s.range[0] - 25.0) < 1e-6 and abs(s.range[1] - 45.0) < 1e-6]
+    assert rng                                                               # the amber band is exactly the displayed range
+    a["risk_exp"] = dict(state="blocked", reason="shown only for a GREEN light and a straightened photo")
+    assert not DB.risk_rate_chart(a).data                                    # no dial, only a note
+
+
+def test_pattern_donut_shows_the_score_and_the_measured_detection_rates_but_no_percentage():
+    a = _assessment("GREEN", p=None)
+    a["findings"] = [dict(cls="MI", name=W.FINDING_NAMES["MI"], state="supported", reason="", p=None, detected=True, p_internal=0.73, sens=0.79, spec=0.80)]
+    d = DB.pattern_donut(a)
+    txt = " ".join(x.text for x in d.layout.annotations)
+    assert "%" not in txt and "model score 73 in 100" in txt and "a score, not a chance" in txt
+    assert "found 79 in 100 true patterns" in txt and "wrongly flagged 20 in 100" in txt
+    assert abs(d.data[0].values[0] - 0.73) < 1e-6                      # the ring is filled by the score
+
+
+def test_heart_attack_percentage_only_when_the_calibration_passed_and_only_as_a_pattern_chance():
+    fl = [dict(cls="MI", name=W.FINDING_NAMES["MI"], state="supported", reason="", p=None, detected=True, p_internal=0.60, sens=0.79, spec=0.80),
+          dict(cls="STTC", name=W.FINDING_NAMES["STTC"], state="supported", reason="", p=None, detected=False, p_internal=0.20)]
+    A._MI_CAL["c"] = {}                                                       # not passed: nothing is added
+    assert "p_cal" not in A.mi_photo_calibration([dict(f) for f in fl])[0]
+    A._MI_CAL["c"] = dict(a=0.337, b=-0.944, show_percentage=True)           # the frozen numbers of the second attempt
+    out = A.mi_photo_calibration([dict(f) for f in fl])
+    assert 0.0 < out[0]["p_cal"] < 1.0 and "p_cal" not in out[1]               # only the heart-attack pattern gets a percentage
+    a = _assessment("GREEN", p=None)
+    a["findings"] = out
+    a["overall"] = dict(colour="#6b7280", label="x", text="y", code="none")
+    a["risk"] = W.RISK_UNAVAILABLE
+    box = DB.mi_percent_box(a)
+    import re
+    text = re.sub(r"<[^>]+>", " ", box)
+    assert "in 100" in text and "not a chance of a heart attack" in text and "not a diagnosis" in text and "second" in text and "not tested on real phone photos" in text
+    assert not W.check_wording(text), W.check_wording(text)
+    assert "A3. HEART-ATTACK PATTERN" in DB.risk_box(a)
+    a["findings"] = [dict(f) for f in fl]                                    # no p_cal: a note, no number
+    assert "No percentage for this photo" in DB.mi_percent_box(a)
+    A._MI_CAL.clear()
 
 
 if __name__ == "__main__":

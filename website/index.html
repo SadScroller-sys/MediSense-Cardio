@@ -22,6 +22,8 @@
       <a href="#light">Traffic light</a>
       <a href="#fix">Straightening</a>
       <a href="#shown">What is shown</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#risk">Risk</a>
       <a href="#limits">Limits</a>
       <a href="#team">Team</a>
     </nav>
@@ -35,7 +37,7 @@
   <div class="wrap">
     <p class="eyebrow">Capstone project, VIT-AP University</p>
     <h1>When the ECG photo is bad, which numbers can you still trust?</h1>
-    <p class="lead">We damaged ECG pages in controlled ways, photographed them with a phone, and compared what an open-source digitizer reads back with the true recording. Then we checked each measurement on its own and kept only the ones that passed rules we wrote before the test.</p>
+    <p class="lead">We damaged ECG pages in controlled ways, photographed them with a phone, and compared what an open-source digitizer reads back with the true recording. Then we checked each measurement on its own and kept only the ones that passed rules we wrote before the test. Negative results are reported as measured. Updated 18 November 2026.</p>
 
     <div class="strip-panel" aria-labelledby="strip-title">
       <p class="eyebrow" id="strip-title">Try it: damage the page</p>
@@ -69,14 +71,19 @@
 <section id="findings">
   <div class="wrap">
     <p class="eyebrow">What we found</p>
-    <h2>Six findings, each with how sure we are</h2>
-    <p class="note">Pre-specified: the rule was written before the result. Exploratory: the idea came after earlier data. Confirmed: tested once on new photos with the rule fixed in advance.</p>
+    <h2>Eleven findings, each with how sure we are</h2>
+    <p class="note">Pre-specified: the rule was written before the result. Exploratory: the idea came after earlier data. Confirmed: tested once on new photos with the rule fixed in advance. Every pass rule is the team's proposal and has not been approved by the guide.</p>
     <div class="ledger" role="list">
       <div class="row" role="listitem"><div class="claim">Only very low resolution and heavy blur made the heart rate wrong often.<small>JPEG, brightness, faded grid and rotation did not.</small></div><div class="num">47/99 and 17/99 pages</div><span class="chip">Pre-specified</span></div>
       <div class="row" role="listitem"><div class="claim">Strong rotation made the digitizer give no answer instead of a wrong one.</div><div class="num">19/99 pages, 16 degrees</div><span class="chip">Pre-specified</span></div>
       <div class="row" role="listitem"><div class="claim">A score from the picture alone could not tell which damaged pages would fail.<small>Inside one damage level it was no better than guessing.</small></div><div class="num">AUC 0.52 and 0.48</div><span class="chip">Pre-specified, negative</span></div>
       <div class="row" role="listitem"><div class="claim">A check on the digitized signal can warn.<small>Beat regularity, agreement between leads, completeness.</small></div><div class="num">AUC 0.93</div><span class="chip">Exploratory</span></div>
       <div class="row" role="listitem"><div class="claim">Straightening the photographed page cut bad readings.</div><div class="num">14 to 2 of 40 photos, p = 0.0005</div><span class="chip conf">Confirmed</span></div>
+      <div class="row" role="listitem"><div class="claim">Printed paper photographed by another person: straightening helped for 66 recompressed photos but was not confirmed for 22 straight full-size photos.<small>On that paper, 2 of 19 GREEN readings were wrong, so GREEN is not a guarantee.</small></div><div class="num">31 to 15 (p = 0.0004); 3 to 2</div><span class="chip">Confirmed on one set, not on the other</span></div>
+      <div class="row" role="listitem"><div class="claim">Second try at QT and QRS duration, trained on doctor-marked public data: accurate on signals, not on our pictures.<small>QT error 12 ms on clean signals, 66 ms on the digitized dataset pictures.</small></div><div class="num">12 ms and 66 ms</div><span class="chip">Pre-specified, negative</span></div>
+      <div class="row" role="listitem"><div class="claim">Networks trained only on public data found heart-attack and ST/T patterns on new photos.<small>Fresh sets P, Q and R of dataset pictures were used for the rest (see Patterns).</small></div><div class="num">AUROC 0.81 and 0.84</div><span class="chip">Exploratory</span></div>
+      <div class="row" role="listitem"><div class="claim">Left bundle branch block and atrial fibrillation passed our rules on fresh dataset pictures only.<small>Not on real phone photos. Atrial fibrillation passed only on its second test.</small></div><div class="num">AUROC 0.83 and 0.84</div><span class="chip conf">Dataset pictures only</span></div>
+      <div class="row" role="listitem"><div class="claim">A death-risk estimate from the ECG was tried three times. None met all rules, so no validated risk is shown.<small>The third try beat age alone but missed the calibration rule (slope 0.76 against 0.8).</small></div><div class="num">AUROC 0.71, 0.83, 0.81</div><span class="chip">Pre-specified, negative</span></div>
       <div class="row" role="listitem"><div class="claim">Heart rate, PR interval and axis passed for straightened photos. QT, QRS duration and the P and T waves did not.</div><div class="num">see "What is shown"</div><span class="chip">Exploratory</span></div>
     </div>
   </div>
@@ -132,14 +139,55 @@
         <tr><td>Heart rate</td><td class="yes">Shown</td><td>With the traffic light. GREEN is not a guarantee.</td></tr>
         <tr><td>PR interval</td><td class="yes">Shown, with conditions</td><td>Typical error 12.0 ms on straightened photos. Only under GREEN, a straightened page and a steady rhythm.</td></tr>
         <tr><td>Frontal QRS axis</td><td class="yes">Shown, with conditions</td><td>Typical error 4.4 degrees; 95% within 30 degrees. Degrees only, no verdict word. Right axis not shown to work.</td></tr>
-        <tr><td>QT interval</td><td class="no">Not shown</td><td>Slope 0.68 to 0.69: short QT values were read too long, so they would look normal.</td></tr>
-        <tr><td>QRS duration</td><td class="no">Not shown</td><td>Bias +15.4 ms on photos, slope 0.74, after three attempts.</td></tr>
+        <tr><td>QT interval</td><td class="no">Not shown</td><td>Slope 0.68 to 0.69: short QT values were read too long, so they would look normal. A second try on doctor-marked data failed on our pictures (66 ms error).</td></tr>
+        <tr><td>QRS duration</td><td class="no">Not shown</td><td>Bias +15.4 ms on photos, slope 0.74, after three attempts; the doctor-marked retry also failed.</td></tr>
         <tr><td>P wave amplitude</td><td class="no">Not shown</td><td>Passed on drawn pages, failed on photos: slope 0.77 against 0.8.</td></tr>
         <tr><td>T wave amplitude</td><td class="no">Not shown</td><td>Stopped in development: best slope 0.68.</td></tr>
         <tr><td>ST segment, P and T duration</td><td class="no">Not attempted</td><td>The two commercial reference algorithms disagree, so no reference exists.</td></tr>
+        <tr><td>Heart-attack and ST/T patterns</td><td class="yes">Shown, as a pattern</td><td>Found about 79 and 72 in 100 true patterns on phone photos; 16 to 20 in 100 photos without the pattern were wrongly flagged. Never a diagnosis.</td></tr>
+        <tr><td>Left bundle branch block, atrial fibrillation</td><td class="mid">Dataset pictures only</td><td>Passed fresh-set rules on simulated phone photos of dataset recordings; not validated on real phone photos.</td></tr>
+        <tr><td>Other patterns (fascicular block, AV block, hypertrophy and others)</td><td class="mid">Research hint only</td><td>Did not meet our rules on simulated photos, so they are a hint to show a doctor.</td></tr>
+        <tr><td>Death risk from the ECG</td><td class="no">No validated risk</td><td>Three attempts missed our rules. See the Risk section for the labelled research-only range.</td></tr>
       </tbody>
     </table>
-    <figure class="fig"><img src="figures/demo_output.png" alt="Demonstration output for one GREEN sample: the straightened page, a green light, heart rate 57 beats per minute, PR about 172 ms, axis about 19 degrees, and a list of what was not checked"><figcaption>Demonstration output for one GREEN sample (texts as returned by the app). All sentences come from a fixed list checked by a wording checker and 19 tests.</figcaption></figure>
+    <figure class="fig"><img src="figures/demo_output.png" alt="Demonstration output for one GREEN sample: the straightened page, a green light, heart rate 57 beats per minute, PR about 172 ms, axis about 19 degrees, and a list of what was not checked"><figcaption>Demonstration output for one GREEN sample (texts as returned by the app). All sentences come from a fixed list checked by a wording checker and automated tests. This picture is from an earlier version; the demo now also has a heart rate gauge, a pattern chart, a reliability chart and a research-only range box (described below).</figcaption></figure>
+  </div>
+</section>
+
+<section id="patterns">
+  <div class="wrap">
+    <p class="eyebrow">Patterns and fresh tests</p>
+    <h2>What the networks trained on public data could and could not do</h2>
+    <p>Small networks were trained only on public recordings (PTB-XL and CODE-15%), never on our own photos. We tested them on fresh sets of dataset pictures: drawn pages and simulated phone photos made from recordings the networks had never seen. The rule for "shown": at least 20 positives, AUROC at least 0.80 on drawn pages and at least 0.75 on simulated photos, and sensitivity at least 0.60 with specificity at least 0.90 at a threshold frozen beforehand.</p>
+    <table>
+      <thead><tr><th>Pattern</th><th>Result</th><th>Numbers on simulated photos</th></tr></thead>
+      <tbody>
+        <tr><td>Left bundle branch block</td><td class="mid">Dataset pictures only</td><td>Passed on two fresh sets: AUROC 0.83, found 69 in 100, wrongly flagged 8 in 100 (81 positives).</td></tr>
+        <tr><td>Atrial fibrillation</td><td class="mid">Dataset pictures only</td><td>Failed set Q by a hair, passed set R: AUROC 0.84, found 75 in 100, wrongly flagged 9 in 100 (95 positives). A second-attempt pass.</td></tr>
+        <tr><td>Heart-attack pattern: percentage</td><td class="mid">Second attempt passed</td><td>A calibration fitted on 666 simulated photos passed all three rules on a fresh random set of 300 (slope 1.15, error 0.040). The demo shows the chance the ECG shows the pattern (not of a heart attack). The first attempt had missed (0.061 against 0.05). Not tested on real phone photos.</td></tr>
+        <tr><td>Fascicular block and four others</td><td class="no">Research hint only</td><td>AUROC 0.67 to 0.77 on photos; they did not meet the rules.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Limits: simulated phone photos of dataset recordings, one drawing program, one digitizer. Not validated on real phone photos. Photo AUROC is only 0.81 to 0.84.</p>
+    <figure class="fig"><img src="figures/fig_results_at_a_glance.png" alt="One-page list of every result with its verdict: shown, not shown, dataset only or research only"><figcaption>Results at a glance: every claim, its number and its verdict (numbers from results/FINAL_NUMBERS.md, sections 10.1 to 10.35).</figcaption></figure>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <p class="eyebrow">The risk question</p>
+    <h2>A risk percentage: tried three times, shown only as a labelled research range</h2>
+    <p>A patient-facing page invites the question "how large is my risk?". We trained the same kind of network on CODE-15% (patients with a 10-second ECG and a known outcome) and wrote the pass rules before each run.</p>
+    <table>
+      <thead><tr><th>Attempt</th><th>Result</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>1. One year, ECG only</td><td class="no">Failed</td><td>AUROC 0.71 against 0.80 for age alone; calibration slope 0.62.</td></tr>
+        <tr><td>2. Five years, ECG plus age, new sealed test</td><td class="no">Failed</td><td>AUROC 0.83, but age alone 0.82: the ECG added +0.013, not significant.</td></tr>
+        <tr><td>3. Five-fold cross-validation, 19,048 patients</td><td class="no">Failed one rule</td><td>AUROC 0.81 against 0.80 for age alone; the ECG now adds +0.013 (0.006 to 0.021). Calibration slope 0.76; the rule asks 0.8. Not a blind test.</td></tr>
+      </tbody>
+    </table>
+    <p>So no validated risk is shown. The demo has a separate box, clearly labelled research only, that shows a wide range for a GREEN straightened photo. The age is typed, taken from the dataset record, or estimated from the ECG (average error 9.3 years; the rules for using that were written before the run). It averages the five cross-validation models.</p>
+    <p class="note">How far to trust the range: it contained the value of the clean ECG for 88 to 97% of drawn pages but only 61 to 73% of photographs (target 80%, not met), so with a photo the real uncertainty is larger than shown. An internal check on the same patients (cross-validated, not external) found the displayed probability well calibrated (within 5 points in all 10 deciles of predicted risk, although the top decile was overestimated) and ECG plus age ahead of age plus sex in both sexes and every age band, by a small margin (AUROC 0.811 against 0.804). External validation on a fresh cohort is future work. The numbers also run higher than for people in general, because only people who died or were followed for five years are in the data. It is not a diagnosis and not medical advice.</p>
   </div>
 </section>
 
@@ -148,11 +196,12 @@
     <p class="eyebrow">What this does not show</p>
     <h2>Limits we state up front</h2>
     <ul class="plain">
-      <li>One digitizer, one phone and one laptop screen. Photos of a screen, not of printed paper.</li>
+      <li>One digitizer, two phones (ours and a friend's), mostly photos of a screen. Printed paper from one other phone was tested on few photos.</li>
       <li>Damage is simulated on computer-drawn pages, and the digitizer was trained on a similar generator.</li>
       <li>Real captures contain fewer than 100 wrong readings, so those numbers are descriptive.</li>
       <li>References are commercial algorithms, not expert readings. The pass thresholds are the team's proposal and are not yet approved by the guide.</li>
-      <li>Only the straightening fix was confirmed with a rule fixed in advance. Everything else is exploratory.</li>
+      <li>The straightening fix was confirmed with a rule fixed in advance on screen photos; left bundle branch block and atrial fibrillation passed fresh-set rules on dataset pictures only. Everything else is exploratory.</li>
+      <li>The research-only risk range is not validated: the model missed its calibration rule, it was not tested on real phone photos, and it mostly reflects age.</li>
       <li>We make no claim that the warning helps patients. This is a research prototype and not a medical device.</li>
     </ul>
   </div>
@@ -169,7 +218,7 @@
       <div><b>Thanush Naidu</b><div class="id">23BCE20244</div></div>
     </div>
     <p>Guide: Dr. Tarun Narayan Shankar. School of Computer Science and Engineering, VIT-AP University.</p>
-    <p>Every number on this page comes from <a href="../results/FINAL_NUMBERS.md">results/FINAL_NUMBERS.md</a>. Rules for each analysis are in <a href="../docs/plan/analysis_plan_changes.md">docs/plan/analysis_plan_changes.md</a>, written before the run. The demo runs locally: double-click <span class="mono">demo\run_demo.bat</span> and open <span class="mono">http://127.0.0.1:7860</span>.</p>
+    <p>Every number on this page comes from <a href="../results/FINAL_NUMBERS.md">results/FINAL_NUMBERS.md</a>. Rules for each analysis are in <a href="../docs/plan/analysis_plan_changes.md">docs/plan/analysis_plan_changes.md</a>, written before the run. The demo runs locally: double-click <span class="mono">demo\run_demo.bat</span> and open <span class="mono">http://127.0.0.1:7860</span>. Its heart health tab shows the waveform, a heart rate gauge, a pattern chart, a reliability chart and the research-only range box. The finished report, paper and poster are in <span class="mono">SUBMISSION/</span>.</p>
   </div>
 </section>
 

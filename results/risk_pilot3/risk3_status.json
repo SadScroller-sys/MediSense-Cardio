@@ -1,0 +1,36 @@
+{
+ "n": 19048,
+ "events": 2965,
+ "auroc": 0.8114737010862391,
+ "auroc_lo95": 0.803425272084032,
+ "auroc_hi95": 0.8196697868634452,
+ "auroc_age_alone": 0.7980249273923562,
+ "auroc_diff_vs_age": 0.013448773693882865,
+ "auroc_diff_lo95": 0.006028689285629168,
+ "auroc_diff_hi95": 0.021089264333764516,
+ "cal_slope": 0.7630100836646907,
+ "ece": 0.01466912013677487,
+ "category_rates": [
+  0.022464143770520133,
+  0.08340242082573371,
+  0.32254495159059476
+ ],
+ "category_counts": [
+  5787,
+  6031,
+  7230
+ ],
+ "per_fold_auroc": [
+  0.816653427805844,
+  0.8088028205473353,
+  0.8006486374806986,
+  0.8152984429681415,
+  0.8160333911296968
+ ],
+ "pass_discrimination": true,
+ "pass_ecg_adds_value": true,
+ "pass_calibration": false,
+ "pass_categories": true,
+ "stage1_pass": false,
+ "shown_in_app": false
+}

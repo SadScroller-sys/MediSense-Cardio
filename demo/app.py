@@ -288,20 +288,30 @@ def check(path, compare, progress=gr.Progress()):
         return f"<b>Something went wrong.</b><pre>{traceback.format_exc()[-1200:]}</pre>", None, None, "", "", "", "", ""
 
 
-def health_update():
+def health_update(age=None):
     """Fills the heart health tab from the result of the check that just ran (see demo/health/)."""
-    empty = ("<div style='padding:10px'>Press <b>Check this photo</b> first. This tab shows the heart health assessment of that photo (research module).</div>", None, None, None, "")
+    empty = ("<div style='padding:10px'>Press <b>Check this photo</b> first. This tab shows the heart health assessment of that photo (research module).</div>", None, None, None, None, None, None, None, None, None, "")
     if HA is None:
-        return ("<div style='padding:10px'>The heart health module is not available (install plotly in the demo environment).</div>", None, None, None, "")
+        return ("<div style='padding:10px'>The heart health module is not available (install plotly in the demo environment).</div>", None, None, None, None, None, None, None, None, None, "")
     if not HEALTH:
         return empty
     try:
         r = HEALTH["r"]
+        try:
+            age = None if (age is None or age == "" or float(age) <= 0) else float(age)    # an empty box can arrive as 0
+        except (TypeError, ValueError):
+            age = None
+        use_age, age_src = (age, "typed") if age is not None else (None, "")
+        if use_age is None:                      # no age typed: for a dataset picture the age is in the dataset record
+            _da = GAL.dataset_age(HEALTH.get("name"))
+            if _da is not None:
+                use_age, age_src = _da, "the dataset record"
         a = HA.assess(r.get("leads"), r.get("light", "RED"), r.get("reasons"), r.get("page_found", False), r.get("hr", float("nan")), r.get("n_beats", 0),
-                      HEALTH.get("rr_cv"), HEALTH.get("pr_ms", float("nan")), HEALTH.get("axis_deg", float("nan")), no_output=bool(r.get("error")))
-        return HD.risk_box(a), HD.waveform(r.get("leads")), HD.parameter_chart(a), HD.findings_chart(a), GAL.truth_box(HEALTH.get("name"), a) + HD.results_panel(a)
+                      HEALTH.get("rr_cv"), HEALTH.get("pr_ms", float("nan")), HEALTH.get("axis_deg", float("nan")), no_output=bool(r.get("error")), age=use_age, age_source=age_src)
+        return (HD.risk_box(a), HD.waveform(r.get("leads")), HD.parameter_chart(a), HD.findings_chart(a), HD.hr_gauge(a), HD.pattern_donut(a), HD.risk_rate_chart(a), HD.reliability_bars(r, a), HD.heart_diagram(a), HD.chamber_html(a),
+                GAL.truth_box(HEALTH.get("name"), a) + HD.results_panel(a))
     except Exception:
-        return (f"<b>The heart health tab hit a problem.</b><pre>{traceback.format_exc()[-900:]}</pre>", None, None, None, "")
+        return (f"<b>The heart health tab hit a problem.</b><pre>{traceback.format_exc()[-900:]}</pre>", None, None, None, None, None, None, None, None, None, "")
 
 
 def build():
@@ -330,8 +340,17 @@ def build():
                     out_plot = gr.Plot(label="Digitised lead II")
             with gr.Tab("Heart health assessment (research module)"):
                 gr.HTML("<div style='font-size:13px'>AI-assisted research assessment, not a medical diagnosis. Cardiac risk is not available; findings are ECG patterns that passed our pre-set tests.</div>")
+                out_age = gr.Number(label="Age in years (optional, 16 to 90). If empty: the dataset record is used for dataset pictures, otherwise the age is estimated from the ECG (typical error about 9 years)", value=None, precision=0)
                 out_hrisk = gr.HTML()
                 out_hwave = gr.Plot(label="B. ECG waveform")
+                with gr.Row():
+                    out_hgauge = gr.Plot(label="E. Heart rate gauge")
+                    out_hdonut = gr.Plot(label="F. Strongest ECG pattern (not heart risk)")
+                    out_hrate = gr.Plot(label="I. Heart risk rate (research only, not validated)")
+                out_hrel = gr.Plot(label="G. Is the waveform reliable? Each check against the limit the traffic light uses")
+                with gr.Row():
+                    out_hheart = gr.Plot(label="H. Which part of the heart (patterns found, not a diagnosis)")
+                    out_hchamber = gr.HTML()
                 with gr.Row():
                     out_hpar = gr.Plot(label="C. Measured parameters against reference ranges")
                     out_hfind = gr.Plot(label="D. Supported findings")
@@ -369,7 +388,9 @@ def build():
         gr.HTML("<div class='foot'>" + DISCLAIMER.replace("**", "") + "</div>")
         ev = btn.click(check, inputs=[img, compare], outputs=[out_html, out_img, out_plot, out_txt, out_info, out_about, out_patient, out_general], concurrency_limit=1,
                        show_progress="full", show_progress_on=[out_html])   # one loading bar (on the result box), not one on every output
-        ev.then(health_update, inputs=None, outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hpanel], show_progress="hidden")
+        ev.then(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
+        for _trig in (out_age.submit, out_age.blur):
+            _trig(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
     return demo
 
 

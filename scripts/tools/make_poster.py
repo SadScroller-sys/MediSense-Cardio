@@ -125,7 +125,7 @@ text(x3 + 0.2, Y1 + 1.5, COL - 0.4, H1 - 1.6, bullets([
 YC, HC = Y1 + H1 + 0.55, 4.1
 calls = [("0.2%", PASS, "of GREEN heart rates were wrong on 917 real captures. On printed paper from another phone: 2 of 19, so GREEN is not a guarantee."),
          ("14 → 2", PASS, "bad readings among 40 new photos after straightening the page (p = 0.0005). Also 31 → 15 on 66 printed-paper photos."),
-         ("0", FAIL, "risk numbers shown. Two honest tries at a risk from the ECG failed our rules (AUROC 0.71 and 0.83; age alone 0.80 and 0.82).")]
+         ("0", FAIL, "validated risk numbers. Three honest tries at a risk from the ECG missed our rules (AUROC 0.71, 0.83, 0.81; age alone 0.80, 0.82, 0.80); the app shows only a labelled research-only range.")]
 for i, (big, col, small) in enumerate(calls):
     xx = M + i * (COL + GAP)
     box(xx, YC, COL, HC, fill=CARD, line=EDGE)
@@ -184,7 +184,7 @@ text(M + 0.3 + TW + 0.3, Y3 + 2.55, HW - TW - 1.1, H3 - 2.5, bullets([
 x4 = M + HW + GAP
 card(x4, Y3, HW, H3, "Not shown, and limits", "7")
 text(x4 + 0.2, Y3 + 1.5, HW / 2 - 0.3, H3 - 1.6, [([("Not shown (failed our rules):", 29, True, FAIL)], PP_ALIGN.LEFT, 6)] + bullets([
-    "QT, QRS duration, P and T amplitude: bias and slope checks.", "Conduction pattern on printed paper (AUROC 0.42).", "Any risk number or graph."], size=27, after=8), margin=0.1)
+    "QT, QRS duration, P and T amplitude: bias and slope checks.", "Conduction pattern on printed paper (AUROC 0.42).", "A validated risk number (only a labelled research-only range is shown)."], size=27, after=8), margin=0.1)
 text(x4 + HW / 2 + 0.1, Y3 + 1.5, HW / 2 - 0.3, H3 - 1.6, [([("Limits:", 29, True, BLUE)], PP_ALIGN.LEFT, 6)] + bullets([
     "One digitizer, two phones, mostly screen photos.", "Few positive photos per pattern.", "Reference values are hospital software, not experts.", "Rules not yet approved by the guide."], size=27, after=8), margin=0.1)
 

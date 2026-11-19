@@ -1,0 +1,19 @@
+group,version,n,spearman,same_group,mean_abs_diff,coverage,half_width,age_error
+"drawn pages (dev: new100, F, G)",true age on both (typed or dataset age),300,0.9695112167912976,0.9166666666666666,0.036100901663303375,0.9566666666666667,0.1,
+"drawn pages (dev: new100, F, G)",age estimated from the picture (nothing typed),300,0.9312996811075679,0.89,0.04849764332175255,0.9333333333333333,0.12,10.555193824768066
+drawn pages (dev: K),true age on both (typed or dataset age),100,0.9549834983498348,0.93,0.03605472296476364,0.97,0.1,
+drawn pages (dev: K),age estimated from the picture (nothing typed),100,0.9139753975397539,0.93,0.056699179112911224,0.94,0.12,10.753893165588378
+"real phone photos (dev, not gated)",true age on both (typed or dataset age),140,0.8074266056126247,0.7714285714285715,0.10082568973302841,0.6714285714285714,0.1,
+"real phone photos (dev, not gated)",age estimated from the picture (nothing typed),140,0.7342102694952551,0.7428571428571429,0.09731050580739975,0.7214285714285714,0.12,13.141496004377093
+simulated photos (dev),true age on both (typed or dataset age),118,0.7356039341457917,0.8898305084745762,0.10472506284713745,0.6101694915254238,0.1,
+simulated photos (dev),age estimated from the picture (nothing typed),118,0.676726692133934,0.8305084745762712,0.09849930554628372,0.7033898305084746,0.12,18.572699013402907
+drawn pages (fresh L),true age on both (typed or dataset age),100,0.9047104710471046,0.97,0.049700960516929626,0.89,0.1,
+drawn pages (fresh L),age estimated from the picture (nothing typed),100,0.8395559555955595,0.91,0.07193543761968613,0.88,0.12,14.189413299560547
+drawn pages (fresh M),true age on both (typed or dataset age),100,0.961056105610561,0.92,0.04222534969449043,0.91,0.1,
+drawn pages (fresh M),age estimated from the picture (nothing typed),100,0.9289408940894088,0.94,0.053962405771017075,0.94,0.12,11.901063537597656
+simulated photos (fresh L),true age on both (typed or dataset age),100,0.7382898289828982,0.88,0.10700090229511261,0.66,0.1,
+simulated photos (fresh L),age estimated from the picture (nothing typed),100,0.6492409240924092,0.83,0.11904610693454742,0.67,0.12,18.89827157974243
+simulated photos (fresh M),true age on both (typed or dataset age),100,0.6858205820582058,0.85,0.10942656546831131,0.65,0.1,
+simulated photos (fresh M),age estimated from the picture (nothing typed),100,0.5699729972997299,0.79,0.11773402243852615,0.69,0.12,20.65885301589966
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",true age on both (typed or dataset age),22,0.9022052119940783,0.7272727272727273,0.09792018681764603,0.6818181818181818,0.1,
+"REAL printed-paper STRAIGHT photos (H2, friend's phone)",age estimated from the picture (nothing typed),22,0.6574339984643566,0.7272727272727273,0.11083126813173294,0.7272727272727273,0.12,16.084668246182527

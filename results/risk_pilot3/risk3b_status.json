@@ -1,0 +1,26 @@
+{
+ "n": 19048,
+ "events": 2965,
+ "age_mae": 9.269926955648852,
+ "age_corr": 0.8094332494335365,
+ "age_bias": -1.5640465728578723,
+ "auroc_est_age": 0.7947845173734607,
+ "auroc_est_age_lo95": 0.7864025587542868,
+ "auroc_est_age_hi95": 0.8037296315099821,
+ "auroc_true_age": 0.8114737010862391,
+ "auroc_age_pred_alone": 0.7565145877430308,
+ "slope_after_platt": 0.8798592584895036,
+ "category_rates": [
+  0.02503885339319634,
+  0.09724888035828536,
+  0.3157744468236974
+ ],
+ "category_counts": [
+  5791,
+  6252,
+  7005
+ ],
+ "pass_age_error": true,
+ "pass_auroc": true,
+ "use_in_app": true
+}

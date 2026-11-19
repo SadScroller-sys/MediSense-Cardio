@@ -1,0 +1,21 @@
+{
+ "prev_population": 0.2508830726146698,
+ "prev_set_S": 0.22,
+ "a": 0.336736403627574,
+ "b": -0.9438588178661342,
+ "n_fit": 666,
+ "n_test": 300,
+ "positives_test": 66,
+ "auroc_test": 0.7731157731157731,
+ "sens_at_threshold": 0.7575757575757576,
+ "spec_at_threshold": 0.6581196581196581,
+ "slope": 1.1523665334681608,
+ "ece": 0.04008277158421688,
+ "brier_calibrated": 0.14472004398745653,
+ "brier_uncalibrated": 0.18439656494202844,
+ "brier_prevalence_only": 0.1716,
+ "pass_slope": true,
+ "pass_ece": true,
+ "pass_brier": true,
+ "show_percentage": true
+}

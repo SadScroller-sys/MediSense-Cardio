@@ -33,9 +33,9 @@ Updated 2026-11-16 (final state before the review). Every pass rule below is **t
 - A true cardiac-risk estimate needs a dataset linking ECGs to outcomes; PTB-XL has none. We used **CODE-15%** (open, CC-BY 4.0; all-cause mortality), named "ECG-estimated all-cause mortality risk (research)", never "heart disease risk".
 - **Pilot 1 (1-year, ECG only): failed** (AUROC 0.713 against 0.799 for age alone; calibration slope 0.62; risk of a real printed photo not stable, 0.43).
 - **Pilot 2 (5-year, ECG plus age, new sealed test): failed** (AUROC 0.833 but age alone 0.819; the ECG added +0.013, not significant; risk not stable on simulated photos). Proposed categories (Low under 5%, Moderate 5% to under 15%, High 15% or more) were never used.
-- The app shows "cardiac risk: not available" and says why. Reported as a negative result in the report and the paper.
+- The app shows "cardiac risk: not available" for a validated risk and says why. A third attempt (five-fold cross-validation, 18 Nov) beat age alone but missed the calibration rule (slope 0.76, rule 0.8), so a separate box, labelled research only, shows only a wide range for a GREEN straightened photo (age typed, from the dataset record, or estimated from the ECG with an error of 9.3 years). Reported as a negative result in the report and the paper.
 
-**Question 4:** do you agree to present the risk work as a negative result and show no risk graph?
+**Question 4:** do you agree to present the risk work as a negative result (three attempts, none met all rules) and to show only the labelled, wide, research-only range, not a validated risk?
 
 ## 4. Wording rules
 Never a diagnosis; never "healthy" or "nothing to worry"; never a risk level unless a validated model passed; always "a normal-looking ECG does not exclude heart disease", "not a medical device" and a doctor visit for symptoms. Automatic checker plus 42 automated tests (rotation 3, health 20, explanation 19).
@@ -50,3 +50,6 @@ Never a diagnosis; never "healthy" or "nothing to worry"; never a risk level unl
 | Sign-off | Name | Date | Signature |
 |---|---|---|---|
 | Guide | | | |
+
+
+**Question 5 (added 18 Nov):** the app shows a calibrated 'chance this ECG shows the heart-attack pattern' for simulated phone photos. It passed its pre-set rules on a fresh random set of 300 simulated photos on the SECOND attempt (the first failed by 0.011 on the calibration error). It is labelled research only, second attempt, simulated photos, not tested on real photos, not the chance of a heart attack. Do you agree to show it, with these labels?

@@ -26,9 +26,11 @@ ROWS = [
     ("FINDINGS", "Hypertrophy (first model, drawn pages and photos)", "0.75 on new drawn pages", "NOT SHOWN", FAIL),
     ("FINDINGS", "Left bundle branch block (2 fresh sets, 280 pictures)", "photos: AUROC 0.83, sens 69%, spec 92%", "DATASET ONLY", PASS),
     ("FINDINGS", "Atrial fibrillation (2 fresh sets; passed on 2nd test)", "photos: AUROC 0.84, sens 75%, spec 91%", "DATASET ONLY", PASS),
+    ("FINDINGS", "Heart-attack pattern percentage (fresh set S, 2nd try)", "slope 1.15, error 0.040 (1st try 0.061)", "DATASET ONLY", PASS),
     ("FINDINGS", "4 other extra patterns incl. LAFB (sets P and Q)", "pages 0.90-0.97; photos 0.67-0.77", "RESEARCH ONLY", NA),
     ("RISK", "1-year death risk from the ECG alone", "AUROC 0.71 against 0.80 for age alone", "NOT SHOWN", FAIL),
     ("RISK", "5-year death risk, ECG plus age (sealed test)", "0.83; ECG adds +0.013 (not significant)", "NOT SHOWN", FAIL),
+    ("RISK", "5-year risk, 5-fold cross-validation (19,048 patients)", "0.81; ECG +0.013; calibration 0.76", "RESEARCH ONLY", NA),
 ]
 fig, ax = plt.subplots(figsize=(14, 9.4), dpi=170)
 ax.set_xlim(0, 100)
@@ -50,7 +52,7 @@ for g, claim, num, verdict, col in ROWS:
     ax.add_patch(FancyBboxPatch((83.5, y - 0.27), 16, 0.54, boxstyle="round,pad=0,rounding_size=0.25", fc=col, ec=col))
     ax.text(91.5, y, verdict, fontsize=10, fontweight="bold", va="center", ha="center", color="white")
     y -= 1.0
-ax.text(0, y + 0.1, "Numbers: results/FINAL_NUMBERS.md (sections 10.1 to 10.31). Pass rules are the team's proposal and have not been approved by the guide.", fontsize=9, color="#6b7280", va="center")
+ax.text(0, y + 0.1, "Numbers: results/FINAL_NUMBERS.md (sections 10.1 to 10.39). Pass rules are the team's proposal and have not been approved by the guide.", fontsize=9, color="#6b7280", va="center")
 for ext in ("png", "pdf"):
     fig.savefig(OUT + "fig_results_at_a_glance." + ext, bbox_inches="tight", facecolor="white")
 fig.savefig(OUT + "fig_results_at_a_glance_hires.png", dpi=300, bbox_inches="tight", facecolor="white")      # for the A0 poster (print resolution)

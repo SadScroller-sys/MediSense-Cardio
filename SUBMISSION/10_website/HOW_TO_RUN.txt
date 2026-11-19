@@ -1,0 +1,2 @@
+Static site. Double-click index.html, or run:  python -m http.server 8099 --bind 127.0.0.1   inside this folder, then open http://127.0.0.1:8099
+The fonts load from Google Fonts when online; the site also works offline with plain fonts.

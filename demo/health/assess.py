@@ -400,21 +400,63 @@ def overall(fl, usable):
                 text="None of the patterns this tool can check was found: " + names + ". On phone photos these checks miss about 2 to 3 in 10 true patterns. A normal-looking ECG does not exclude heart disease.")
 
 
-def assess(leads, light, reasons, page_found, hr, n_beats, rr_cv, pr_ms, axis_deg, no_output=False):
+def risk_exploratory(leads, light, page_found, age, usable, age_source="typed"):
+    """Exploratory 5-year death estimate (risk pilot 3; research only, did not meet its calibration rule, not validated on photos). Returns dict(state, ...) with state 'shown', 'need_age' or 'blocked'."""
+    if not (usable and light == "GREEN" and page_found):
+        return dict(state="blocked", reason="shown only for a GREEN light and a straightened photo")
+    from . import risk as RK
+    no_age = age is None or age == ""
+    est = RK.risk3_estimate(leads, None if no_age else age)
+    if est is None:
+        return dict(state="blocked", reason="the estimate could not be computed for this photo or age (age must be 16 to 90)")
+    est.update(state="shown", age_source=("estimated from the ECG, typical error about %d years" % RK.AGE_ERROR_YEARS) if no_age else (age_source or "typed"), text=W.risk_exp_text(est))
+    return est
+
+
+_MI_CAL = {}
+
+
+def _mi_cal():
+    """results/health/MI_photo_calibration_v2.json (second attempt on the fresh set S). Used only if show_percentage is true; {} otherwise or if the file is missing."""
+    if "c" not in _MI_CAL:
+        try:
+            with open(os.path.join(D.ROOT, "results", "health", "MI_photo_calibration_v2.json"), encoding="utf-8") as fh:
+                c = json.load(fh)
+            _MI_CAL["c"] = c if c.get("show_percentage") else {}
+        except Exception:
+            _MI_CAL["c"] = {}
+    return _MI_CAL["c"]
+
+
+def mi_photo_calibration(fl):
+    """Adds p_cal (fraction) to the heart-attack-pattern row when its score exists and the calibration passed its rules. The row is otherwise unchanged."""
+    c = _mi_cal()
+    if not c:
+        return fl
+    for f in fl:
+        if f["cls"] == "MI" and f["state"] == "supported" and f.get("p_internal") is not None:
+            sc = min(max(float(f["p_internal"]), 1e-6), 1 - 1e-6)
+            f["p_cal"] = float(1.0 / (1.0 + np.exp(-(c["a"] * np.log(sc / (1 - sc)) + c["b"]))))
+    return fl
+
+
+def assess(leads, light, reasons, page_found, hr, n_beats, rr_cv, pr_ms, axis_deg, no_output=False, age=None, age_source="typed"):
     usable = (leads is not None) and (not no_output) and light in ("GREEN", "AMBER") and bool(page_found)
+    rexp = risk_exploratory(leads, light, page_found, age, usable, age_source)
     params = parameters(light, hr, rr_cv, pr_ms, axis_deg, page_found, reasons, no_output)
     if usable:
         params = apply_qt(params, leads)
     fl, why = findings(leads if usable else None, light, page_found)
+    fl = mi_photo_calibration(fl)
     ov = overall(fl, usable)
     extra = extra_findings(leads if usable else None, light, page_found)
     fl, extra = promote_validated(fl, extra)
     fl, extra = promote_q(fl, extra, leads if usable else None)
     nxt = W.NEXT_STEPS["retake"] if ov["code"] == "retake" else W.NEXT_STEPS.get(ov["code"], W.NEXT_STEPS["unavailable"])
-    texts = [ov["text"], nxt, W.RISK_UNAVAILABLE, W.DISCLAIMER] + [p["reason"] + " " + p["confidence"] for p in params] + [f["reason"] for f in fl] + [W.EXTRA_NOTE] + [x["name"] for x in extra]
+    texts = [ov["text"], nxt, W.RISK_UNAVAILABLE, W.DISCLAIMER] + [p["reason"] + " " + p["confidence"] for p in params] + [f["reason"] for f in fl] + [W.EXTRA_NOTE] + [x["name"] for x in extra] + ([rexp["text"]] if rexp.get("state") == "shown" else [])
     bad = [w for t in texts for w in W.check_wording(t)]
     if bad:     # the safety checker caught a bad sentence: fall back to the plain safe text
         ov = dict(code="unavailable", colour="#6b7280", label="ECG pattern findings: not available", text="This tool cannot give a reliable assessment for this photo.")
         nxt = W.NEXT_STEPS["unavailable"]
     return dict(usable=usable, light=light, reasons=reasons or [], page_found=bool(page_found), params=params, findings=fl, overall=ov, extra=extra, extra_note=W.EXTRA_NOTE, next_steps=nxt, risk=W.RISK_UNAVAILABLE,
-                disclaimer=W.DISCLAIMER, model_note=why, wording_problems=bad)
+                disclaimer=W.DISCLAIMER, model_note=why, wording_problems=bad, risk_exp=rexp)

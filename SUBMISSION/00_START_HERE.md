@@ -1,6 +1,6 @@
 # MediSense-Cardio: submission folder
 
-Built 17 Nov 2026 19:41 by `scripts/tools/make_submission_folder.py` (copies; the originals stay where the scripts expect them).
+Built 18 Nov 2026 22:55 by `scripts/tools/make_submission_folder.py` (copies; the originals stay where the scripts expect them).
 Research prototype for a university project. Not a medical device.
 
 ## What is where
@@ -35,10 +35,15 @@ Example pictures are in `demo/dataset_examples/` (12 dataset pictures with a key
 2. Straightening the photo reduced bad readings (screen photos 14 to 2 of 40, p = 0.0005; printed paper 31 to 15 of 66).
 3. Heart rate, PR interval and QRS axis are shown; QT and QRS duration are not (they failed their pre-set rules, twice).
 4. Heart-attack and ST/T patterns are shown on photos; left bundle branch block and atrial fibrillation passed our rules on fresh dataset pictures only (not on real phone photos; AF passed on its second test); other patterns are research-only hints.
-5. Mortality risk from the ECG was tried twice and failed its rules, so no risk is shown.
+5. Mortality risk from the ECG was tried three times and failed its rules (the third missed only the calibration rule), so no validated risk is shown; the app has a separate, labelled research-only range.
 
 Every pass rule was written before its result was seen and has not been approved by the guide.
 
 ## Original project folders (do not move: scripts have these paths inside)
 
 `data/` (public datasets), `results/` (all runs), `scripts/` (analysis code), `demo/`, `colab/`, `docs/`, `reproducibility/`, `website/`, `safeguard/`. See the main `README.md`.
+
+
+## The website: `10_website/`
+
+The project website (static). Open `index.html`, or run `python -m http.server 8099` inside the folder and open http://127.0.0.1:8099. Updated 18 Nov 2026 with the latest results.

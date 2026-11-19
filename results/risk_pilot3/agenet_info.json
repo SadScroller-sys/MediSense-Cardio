@@ -1,0 +1,32 @@
+[
+ {
+  "fold": 0,
+  "best_epoch": 12,
+  "val_age_mae": 9.224729537963867,
+  "heldout_age_mae": 9.369894027709961
+ },
+ {
+  "fold": 1,
+  "best_epoch": 12,
+  "val_age_mae": 8.975878715515137,
+  "heldout_age_mae": 9.063322067260742
+ },
+ {
+  "fold": 2,
+  "best_epoch": 12,
+  "val_age_mae": 9.130948066711426,
+  "heldout_age_mae": 9.189403533935547
+ },
+ {
+  "fold": 3,
+  "best_epoch": 11,
+  "val_age_mae": 9.000067710876465,
+  "heldout_age_mae": 9.218399047851562
+ },
+ {
+  "fold": 4,
+  "best_epoch": 10,
+  "val_age_mae": 9.501080513000488,
+  "heldout_age_mae": 9.507372856140137
+ }
+]

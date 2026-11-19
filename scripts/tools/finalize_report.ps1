@@ -35,7 +35,7 @@ try {
     $caps = @{}
     for ($i = $iAfter; $i -le $doc.Paragraphs.Count; $i++) {
       $p = $doc.Paragraphs.Item($i)
-      $t = $p.Range.Text.Trim()
+      $t = ("" + $p.Range.Text).Trim()
       if ($t -match '^(Table|Figure) ([0-9A-Z]+\.[0-9]+):') {
         $key = $Matches[1] + " " + $Matches[2]
         if (-not $caps.ContainsKey($key)) { $caps[$key] = $p.Range.Information(3) }
@@ -45,7 +45,7 @@ try {
     foreach ($range in @(@(($iT + 1), ($iF - 1)), @(($iF + 1), ($iAfter - 1)))) {
       for ($i = $range[0]; $i -le $range[1]; $i++) {
         $p = $doc.Paragraphs.Item($i)
-        $t = $p.Range.Text.Trim()
+        $t = ("" + $p.Range.Text).Trim()
         $t = ($t -split "`t")[0]
         if ($t -match '^(Table|Figure) ([0-9A-Z]+\.[0-9]+):') {
           $key = $Matches[1] + " " + $Matches[2]

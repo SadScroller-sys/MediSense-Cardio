@@ -99,6 +99,25 @@ def show(name):
     return os.path.join(PHOTOS, name + ".jpg"), case_html(name), c["panel_html"]
 
 
+def dataset_age(name):
+    """Age in years of the person in a dataset picture (file name starting with a set-N page id), from the PTB-XL record; None for any other picture. PTB-XL stores 300 for ages over 89."""
+    d = data()
+    if d is None or not name:
+        return None
+    base = os.path.splitext(os.path.basename(str(name)))[0]
+    case = next((c for c in d["cases"] if c["page"] == base[:4]), None)
+    if case is None or not base[:4].startswith("N"):
+        return None
+    try:
+        import pandas as pd
+        from health import data as HD
+        db = pd.read_csv(HD.PT + "ptbxl_database.csv", usecols=["ecg_id", "age"]).set_index("ecg_id")
+        a = float(db.loc[int(case["ecg_id"]), "age"])
+        return float(min(a, 90.0)) if a == a else None
+    except Exception:
+        return None
+
+
 def truth_box(name, a):
     """For a dataset picture (file name starting with a set-N page id, e.g. N037_angled.jpg) the true answer next to what the tool said on THIS check; empty for any other picture."""
     d = data()
