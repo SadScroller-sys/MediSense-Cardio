@@ -340,6 +340,14 @@ def build():
                     out_plot = gr.Plot(label="Digitised lead II")
             with gr.Tab("Heart health assessment (research module)"):
                 gr.HTML("<div style='font-size:13px'>AI-assisted research assessment, not a medical diagnosis. Cardiac risk is not available; findings are ECG patterns that passed our pre-set tests.</div>")
+                with gr.Accordion("Key graphs: start here (5 figures, click one to enlarge)", open=True, visible=False) as kg_box:
+                    _kg = [("fig_pipeline.png", "1. Pipeline: photo, straighten, digitise, heart rate, traffic light"),
+                           ("fig1_hr_error_by_damage.png", "2. Heart-rate error grows as the photo gets worse"),
+                           ("fig2_false_reassurance_and_silent_drops.png", "3. Where the tool looks fine but is wrong, and silent drops"),
+                           ("fig_wrong_by_damage.png", "4. Wrong heart rate (%) at the worst damage level, by damage type"),
+                           ("fig_results_at_a_glance.png", "5. Results at a glance: what works and what is refused")]
+                    gr.Gallery(value=[(os.path.join(HERE, "assets", f), c) for f, c in _kg if os.path.exists(os.path.join(HERE, "assets", f))],
+                               show_label=False, columns=5, height=240, object_fit="contain", allow_preview=True, interactive=False)
                 out_age = gr.Number(label="Age in years (optional, 16 to 90). If empty: the dataset record is used for dataset pictures, otherwise the age is estimated from the ECG (typical error about 9 years)", value=None, precision=0)
                 out_hrisk = gr.HTML()
                 out_hwave = gr.Plot(label="B. ECG waveform")
@@ -410,6 +418,7 @@ def build():
         gr.HTML("<div class='foot'>" + DISCLAIMER.replace("**", "") + "</div>")
         ev = btn.click(check, inputs=[img, compare], outputs=[out_html, out_img, out_plot, out_txt, out_info, out_about, out_patient, out_general], concurrency_limit=1,
                        show_progress="full", show_progress_on=[out_html])   # one loading bar (on the result box), not one on every output
+        ev.then(lambda: gr.update(visible=True), None, kg_box, show_progress="hidden")
         ev.then(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hbars, out_hdbars, out_hline1, out_hline2, out_hageline, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
         for _trig in (out_age.submit, out_age.blur):
             _trig(health_update, inputs=[out_age], outputs=[out_hrisk, out_hwave, out_hpar, out_hfind, out_hgauge, out_hdonut, out_hrate, out_hrel, out_hbars, out_hdbars, out_hline1, out_hline2, out_hageline, out_hheart, out_hchamber, out_hpanel], show_progress="hidden")
